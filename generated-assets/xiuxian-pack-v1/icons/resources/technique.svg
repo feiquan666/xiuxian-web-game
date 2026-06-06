@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">功法</title>
+  <desc id="desc">功法属性图标，表现卷轴和道纹。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#4f587a" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M39 33h50v62H39Z" fill="#fffefa" stroke="#4f587a" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M39 33c-13 0-13 18 0 18M89 77c13 0 13 18 0 18" fill="none" stroke="#4f587a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M51 51h27M51 65h22M51 79h26" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+</svg>

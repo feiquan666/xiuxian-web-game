@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">丹修赠药</title>
+  <desc id="desc">NPC 羁绊徽章，抽象表现丹香赠药。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#b9872c" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#b9872c" opacity="0.18" stroke="#b9872c" stroke-width="4"/>
+  
+  <ellipse cx="64" cy="68" rx="28" ry="24" fill="#b9872c" opacity="0.9"/>
+  <path d="M40 66c13 9 35 10 49 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+  <path d="M53 49c9-10 21-10 30 0" fill="none" stroke="#2f735f" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="77" cy="59" r="5" fill="#fffefa" opacity="0.62"/>
+  <path d="M35 38c-9 11-9 21 0 30M93 38c9 11 9 21 0 30" fill="none" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+</svg>

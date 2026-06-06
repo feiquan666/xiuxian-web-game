@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">购买丹药</title>
+  <desc id="desc">购买丹药按钮图标，表现坊市交易。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#375e91" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M34 53h60l-5 47H39Z" fill="#375e91" opacity="0.84"/>
+  <path d="M28 53 38 32h52l10 21Z" fill="#fffefa" stroke="#375e91" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M44 32v21M64 32v21M84 32v21" stroke="#375e91" stroke-width="4" opacity="0.65"/>
+  <circle cx="64" cy="78" r="13" fill="#d5a84b" opacity="0.8"/>
+  <path d="M55 78h18" stroke="#fffefa" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">雷劫天幕背景</title>
+  <desc id="desc">雷劫天幕场景背景，适合突破和天劫氛围。</desc>
+  <rect width="1200" height="520" fill="#eaf2ee"/>
+  <rect width="1200" height="520" fill="#4f587a" opacity="0.22"/>
+  <path d="M0 104c187-74 383-77 589-8 199 67 403 58 611-28v214H0Z" fill="#222737" opacity="0.46"/>
+  <path d="M0 190c192-52 381-50 568 8 217 67 428 62 632-16v179H0Z" fill="#375e91" opacity="0.3"/>
+  <path d="m583 92-82 142h72l-96 181 187-225h-86l72-98Z" fill="#d5a84b" opacity="0.78"/>
+  <path d="m842 138-45 89h42l-61 108 112-132h-50l39-65Z" fill="#fffefa" opacity="0.42"/>
+  <path d="M0 390 141 300l132 67 122-104 151 126 119-89 149 105 126-132 135 118 125-74v203H0Z" fill="#17241f" opacity="0.28"/>
+  <path d="M0 455c216-38 416-32 600 18 194 53 394 50 600-8v55H0Z" fill="#fffefa" opacity="0.4"/>
+</svg>

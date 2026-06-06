@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">道心</title>
+  <desc id="desc">道心属性图标，表现心印稳固。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#2f735f" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 101C35 80 28 57 43 43c9-8 19-4 21 6 2-10 12-14 21-6 15 14 8 37-21 58Z" fill="#2f735f" opacity="0.88"/>
+  <circle cx="64" cy="66" r="17" fill="none" stroke="#fffefa" stroke-width="5" opacity="0.66"/>
+  <path d="M53 66h22M64 55v22" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.78"/>
+</svg>

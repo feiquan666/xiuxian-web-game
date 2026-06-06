@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-cultivate" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="43" r="12" fill="#fffefa" stroke="#2f735f" stroke-width="5"/>
+    <path d="M44 86c8-22 32-22 40 0" fill="#2f735f" opacity="0.86"/>
+    <path d="M31 89c15 13 51 13 66 0" fill="none" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+    <path d="M36 63c-7-14 0-29 13-35M92 63c7-14 0-29-13-35" fill="none" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-seclusion" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M26 99c7-38 21-62 38-62s31 24 38 62Z" fill="#264f46" opacity="0.82"/>
+    <path d="M49 99V75c0-10 6-18 15-18s15 8 15 18v24Z" fill="#222737" opacity="0.62"/>
+    <path d="M38 53c14-16 38-16 52 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="64" cy="72" r="8" fill="#d5a84b" opacity="0.76"/>
+  </symbol>
+  <symbol id="icon-travel" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M29 102c19-18 23-33 18-48 24 11 39 27 48 48Z" fill="#b9872c" opacity="0.8"/>
+    <path d="M58 100c-4-18 2-35 20-50" fill="none" stroke="#fffefa" stroke-width="6" stroke-linecap="round" opacity="0.72"/>
+    <path d="M35 48c14-16 30-21 50-15" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+    <circle cx="88" cy="39" r="7" fill="#d5a84b" opacity="0.8"/>
+  </symbol>
+  <symbol id="icon-explore-secret-realm" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M37 100V38h54v62" fill="none" stroke="#4f587a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29 38h70M42 53h44" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.38"/>
+    <path d="M50 100c3-21 8-34 14-42 6 8 11 21 14 42Z" fill="#222737" opacity="0.58"/>
+    <circle cx="64" cy="67" r="9" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-breakthrough" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 23 78 57h31L83 76l10 31-29-20-29 20 10-31-26-19h31Z" fill="#d5a84b" opacity="0.88"/>
+    <path d="M45 75c12 8 26 8 38 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M64 20v-9M30 34l-7-7M98 34l7-7" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+  </symbol>
+  <symbol id="icon-refine-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M37 56h54l-8 36H45Z" fill="#b9872c" opacity="0.88"/>
+    <path d="M43 56c4-10 38-10 42 0" fill="none" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.52"/>
+    <path d="M47 93h34M51 101h26" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+    <path d="M52 43c-8-12 7-16 0-28M67 43c-8-12 7-16 0-28M82 43c-8-12 7-16 0-28" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-heal" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 102C33 79 26 56 42 42c9-8 20-5 22 6 2-11 13-14 22-6 16 14 9 37-22 60Z" fill="#2f735f" opacity="0.88"/>
+    <path d="M64 54v28M50 68h28" stroke="#fffefa" stroke-width="7" stroke-linecap="round" opacity="0.78"/>
+    <path d="M34 87c14 8 46 9 60 0" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.48"/>
+  </symbol>
+  <symbol id="icon-suppress-heart-demon" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 29c19 11 29 26 29 42 0 19-12 32-29 38-17-6-29-19-29-38 0-16 10-31 29-42Z" fill="#9a3f3f" opacity="0.82"/>
+    <path d="M47 67c9-11 25-11 34 0M51 82c8 6 18 6 26 0" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round" opacity="0.62"/>
+    <path d="M35 35 93 93M93 35 35 93" stroke="#d5a84b" stroke-width="5" stroke-linecap="round" opacity="0.74"/>
+  </symbol>
+  <symbol id="icon-buy-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M34 53h60l-5 47H39Z" fill="#375e91" opacity="0.84"/>
+    <path d="M28 53 38 32h52l10 21Z" fill="#fffefa" stroke="#375e91" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M44 32v21M64 32v21M84 32v21" stroke="#375e91" stroke-width="4" opacity="0.65"/>
+    <circle cx="64" cy="78" r="13" fill="#d5a84b" opacity="0.8"/>
+    <path d="M55 78h18" stroke="#fffefa" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="icon-cultivation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 22c20 15 30 30 30 45 0 19-14 34-30 39-16-5-30-20-30-39 0-15 10-30 30-45Z" fill="#2f735f" opacity="0.86"/>
+    <path d="M43 72c15-16 31-19 48-10M46 85c13 8 28 10 44 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+    <circle cx="64" cy="58" r="8" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-spirit-stones" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <polygon points="39,49 58,37 73,53 63,78 42,75" fill="#2f735f" opacity="0.84"/>
+    <polygon points="65,58 86,47 98,67 86,91 63,82" fill="#375e91" opacity="0.72"/>
+    <path d="M48 51 58 37l15 16M75 61l11-14 12 20" fill="none" stroke="#fffefa" stroke-width="3" opacity="0.62"/>
+    <circle cx="63" cy="65" r="6" fill="#fffefa" opacity="0.48"/>
+  </symbol>
+  <symbol id="icon-life-span" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="32" fill="none" stroke="#d5a84b" stroke-width="6" opacity="0.86"/>
+    <circle cx="64" cy="64" r="13" fill="#2f735f" opacity="0.76"/>
+    <path d="M64 30v19M64 79v19M30 64h19M79 64h19M40 40l13 13M75 75l13 13M88 40 75 53M53 75 40 88" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-combat-power" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M86 25c-4 31-18 54-47 70 13-29 35-48 47-70Z" fill="#9a3f3f" opacity="0.9"/>
+    <path d="M45 91 34 102M38 84l16 16" stroke="#17241f" stroke-width="6" stroke-linecap="round" opacity="0.56"/>
+    <path d="M61 61c9-8 16-18 21-31" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  </symbol>
+  <symbol id="icon-luck" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M36 78c-14-10-5-31 12-28 6-17 32-17 38 0 17-3 26 18 12 28Z" fill="#b9872c" opacity="0.78"/>
+    <path d="M42 82c14 8 31 9 48 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+    <path d="m74 30 5 10 11 2-8 8 2 12-10-6-10 6 2-12-8-8 11-2Z" fill="#d5a84b" opacity="0.84"/>
+  </symbol>
+  <symbol id="icon-comprehension" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M43 71c-1-21 10-38 27-38 14 0 25 11 25 25 0 13-8 23-22 27v15H55V84c-8-2-11-7-12-13Z" fill="#4f587a" opacity="0.84"/>
+    <path d="M56 59c6-9 18-9 24 0M47 103h34" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="57" r="8" fill="#d5a84b" opacity="0.75"/>
+  </symbol>
+  <symbol id="icon-aptitude" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 28v57M64 55c-13-4-23-12-30-25M64 63c14-1 25-8 34-21M64 83c-11 2-19 9-25 22M64 83c11 2 19 9 25 22" fill="none" stroke="#264f46" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <path d="M50 98h28" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="28" r="8" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-dao-heart" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 101C35 80 28 57 43 43c9-8 19-4 21 6 2-10 12-14 21-6 15 14 8 37-21 58Z" fill="#2f735f" opacity="0.88"/>
+    <circle cx="64" cy="66" r="17" fill="none" stroke="#fffefa" stroke-width="5" opacity="0.66"/>
+    <path d="M53 66h22M64 55v22" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.78"/>
+  </symbol>
+  <symbol id="icon-heart-demon" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 25c21 10 32 25 32 45 0 22-14 34-32 39-18-5-32-17-32-39 0-20 11-35 32-45Z" fill="#9a3f3f" opacity="0.84"/>
+    <path d="M44 47c-9-10-11-19-7-28M84 47c9-10 11-19 7-28" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round"/>
+    <path d="M49 67c7-6 14-6 21 0M58 86c5 4 8 4 12 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-injury" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M36 97 63 27l29 70Z" fill="#9a3f3f" opacity="0.82"/>
+    <path d="M65 31 57 55l12 8-15 31M44 82h39" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.68"/>
+    <path d="M35 101c16 7 42 7 58 0" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.52"/>
+  </symbol>
+  <symbol id="icon-reputation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M42 29h44v56H42Z" fill="#b9872c" opacity="0.86"/>
+    <path d="M35 88h58v15H35Z" fill="#17241f" opacity="0.45"/>
+    <path d="M53 43h22M53 57h22M53 71h17" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="84" cy="87" r="10" fill="#d5a84b" opacity="0.74"/>
+  </symbol>
+  <symbol id="icon-insight" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M74 29c-20 5-30 26-19 43 6 9 17 14 29 12-8 8-20 12-33 8-20-6-29-30-17-48 9-14 25-21 40-15Z" fill="#4f587a" opacity="0.84"/>
+    <path d="M32 88c13-7 25-7 36 0s22 7 33 0M39 101c10-4 20-4 30 0s20 4 30 0" fill="none" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+  </symbol>
+  <symbol id="icon-law" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="33" fill="none" stroke="#375e91" stroke-width="5" opacity="0.78"/>
+    <path d="M64 31v66M31 64h66M41 41l46 46M87 41 41 87" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="64" cy="64" r="8" fill="#d5a84b" opacity="0.82"/>
+  </symbol>
+  <symbol id="icon-origin" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="24" fill="#d5a84b" opacity="0.88"/>
+    <circle cx="64" cy="64" r="41" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.36"/>
+    <path d="M31 64c11-17 55-17 66 0M64 31c17 11 17 55 0 66" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="74" cy="54" r="6" fill="#fffefa" opacity="0.65"/>
+  </symbol>
+  <symbol id="icon-tribulation-resistance" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 26 94 39v25c0 23-12 37-30 45-18-8-30-22-30-45V39Z" fill="#375e91" opacity="0.84"/>
+    <path d="m69 42-17 26h15l-9 27 22-34H65Z" fill="#d5a84b" opacity="0.86"/>
+    <path d="M45 45v20c0 13 5 23 16 30" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+  </symbol>
+  <symbol id="icon-alchemy" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M37 56h54l-8 36H45Z" fill="#b9872c" opacity="0.88"/>
+    <path d="M43 56c4-10 38-10 42 0" fill="none" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.52"/>
+    <path d="M47 93h34M51 101h26" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+    <path d="M52 43c-8-12 7-16 0-28M67 43c-8-12 7-16 0-28M82 43c-8-12 7-16 0-28" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-artifact" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 25 88 45 80 92H48l-8-47Z" fill="#5c517f" opacity="0.84"/>
+    <path d="M52 52h24M55 70h18M64 25v67" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+    <circle cx="64" cy="62" r="8" fill="#d5a84b" opacity="0.74"/>
+  </symbol>
+  <symbol id="icon-technique" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M39 33h50v62H39Z" fill="#fffefa" stroke="#4f587a" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M39 33c-13 0-13 18 0 18M89 77c13 0 13 18 0 18" fill="none" stroke="#4f587a" stroke-width="5" stroke-linecap="round"/>
+    <path d="M51 51h27M51 65h22M51 79h26" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+  </symbol>
+  <symbol id="icon-sect-contribution" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 25 94 48 83 97H45L34 48Z" fill="#264f46" opacity="0.86"/>
+    <path d="M51 51h26M48 66h32M55 81h18" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="48" r="7" fill="#d5a84b" opacity="0.76"/>
+  </symbol>
+  <symbol id="icon-qi-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <ellipse cx="64" cy="68" rx="28" ry="24" fill="#2f735f" opacity="0.9"/>
+    <path d="M40 66c13 9 35 10 49 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <path d="M53 49c9-10 21-10 30 0" fill="none" stroke="#2f735f" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="77" cy="59" r="5" fill="#fffefa" opacity="0.62"/>
+    <path d="M35 38c-9 11-9 21 0 30M93 38c9 11 9 21 0 30" fill="none" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </symbol>
+  <symbol id="icon-healing-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <ellipse cx="64" cy="68" rx="28" ry="24" fill="#2f735f" opacity="0.9"/>
+    <path d="M40 66c13 9 35 10 49 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <path d="M53 49c9-10 21-10 30 0" fill="none" stroke="#2f735f" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="77" cy="59" r="5" fill="#fffefa" opacity="0.62"/>
+    <path d="M35 38c-9 11-9 21 0 30M93 38c9 11 9 21 0 30" fill="none" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </symbol>
+  <symbol id="icon-cleansing-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <ellipse cx="64" cy="68" rx="28" ry="24" fill="#4f587a" opacity="0.9"/>
+    <path d="M40 66c13 9 35 10 49 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <path d="M53 49c9-10 21-10 30 0" fill="none" stroke="#4f587a" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="77" cy="59" r="5" fill="#fffefa" opacity="0.62"/>
+    <path d="M35 38c-9 11-9 21 0 30M93 38c9 11 9 21 0 30" fill="none" stroke="#4f587a" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </symbol>
+  <symbol id="icon-breakthrough-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <ellipse cx="64" cy="68" rx="28" ry="24" fill="#b9872c" opacity="0.9"/>
+    <path d="M40 66c13 9 35 10 49 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <path d="M53 49c9-10 21-10 30 0" fill="none" stroke="#d5a84b" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="77" cy="59" r="5" fill="#fffefa" opacity="0.62"/>
+    <path d="M35 38c-9 11-9 21 0 30M93 38c9 11 9 21 0 30" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </symbol>
+  <symbol id="icon-life-span-pill" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="33" fill="none" stroke="#d5a84b" stroke-width="5" opacity="0.88"/>
+    <path d="M64 27a37 37 0 0 1 36 42M64 101a37 37 0 0 1-36-42" fill="none" stroke="#2f735f" stroke-width="5" stroke-linecap="round" opacity="0.56"/>
+    <ellipse cx="64" cy="68" rx="24" ry="20" fill="#2f735f" opacity="0.92"/>
+    <path d="M52 67c8 6 16 7 25 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.76"/>
+    <path d="M31 78c12-7 21-7 33 1 13 9 24 9 35-1" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+    <path d="M64 36v18M64 82v16M36 64h17M75 64h17" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-array-flag" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M44 100V27" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.62"/>
+    <path d="M48 31c16-9 30 8 45-1v43c-15 9-29-8-45 1Z" fill="#4f587a" opacity="0.86"/>
+    <path d="M55 43h23M55 55h18M55 67h25" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.74"/>
+    <circle cx="44" cy="27" r="6" fill="#d5a84b" opacity="0.82"/>
+  </symbol>
+  <symbol id="icon-thunder-talisman" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M45 24h38l8 12v68H37V36Z" fill="#fffefa" stroke="#375e91" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M47 42h34M48 55c15 5 18 11 10 20 13-5 22-1 23 12" fill="none" stroke="#9a3f3f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68 25v18" stroke="#375e91" stroke-width="5" stroke-linecap="round"/>
+    <path d="m77 74-10 10h12l-12 17" fill="none" stroke="#375e91" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="icon-jade-guard" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 25c19 8 29 22 29 43 0 20-11 33-29 40-18-7-29-20-29-40 0-21 10-35 29-43Z" fill="#2f735f" opacity="0.82"/>
+    <path d="M64 42 79 64 64 87 49 64Z" fill="#fffefa" opacity="0.7"/>
+    <path d="M47 49c-7 15-4 33 17 47" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.68"/>
+  </symbol>
+  <symbol id="icon-ancient-fragment" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M41 38 74 24 90 54 75 101 42 87Z" fill="#b9872c" opacity="0.84"/>
+    <path d="M50 42 71 35M48 67l31-12M52 86l20-8" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <path d="M74 24 67 62l8 39" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </symbol>
+  <symbol id="icon-spirit-herb" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 99V43" stroke="#2f735f" stroke-width="7" stroke-linecap="round"/>
+    <path d="M64 67c-23-1-34-11-36-29 22-2 34 9 36 29ZM64 61c23-1 34-11 36-29-22-2-34 9-36 29ZM64 85c-17-1-26-8-29-22 18-2 28 6 29 22ZM64 80c17-1 26-8 29-22-18-2-28 6-29 22Z" fill="#2f735f" opacity="0.78"/>
+    <circle cx="64" cy="41" r="7" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-spirit-ore" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <polygon points="43,50 63,34 86,43 96,70 76,97 46,91 32,67" fill="#375e91" opacity="0.84"/>
+    <path d="M43 50 63 67l23-24M63 67l13 30M63 67 46 91" fill="none" stroke="#fffefa" stroke-width="4" opacity="0.56"/>
+    <circle cx="68" cy="62" r="7" fill="#2f735f" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-law-shard" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <polygon points="65,24 93,54 77,104 43,95 35,52" fill="#375e91" opacity="0.86"/>
+    <path d="M65 24 58 69l19 35M35 52l23 17 35-15" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="66" cy="68" r="8" fill="#eaf2ee" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-origin-shard" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <polygon points="65,24 93,54 77,104 43,95 35,52" fill="#d5a84b" opacity="0.86"/>
+    <path d="M65 24 58 69l19 35M35 52l23 17 35-15" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="66" cy="68" r="8" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-incense" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M45 100h38l-6-18H51Z" fill="#b9872c" opacity="0.82"/>
+    <path d="M54 81h20" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.42"/>
+    <path d="M54 72V34M64 72V28M74 72V38" stroke="#9a3f3f" stroke-width="4" stroke-linecap="round" opacity="0.78"/>
+    <path d="M49 31c-9-12 8-17 0-28M65 25c-9-12 8-17 0-28M78 35c-7-10 6-14 0-23" fill="none" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.62"/>
+  </symbol>
+  <symbol id="icon-heaven-defying-shadow" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="28" fill="#222737" opacity="0.9"/>
+    <path d="M39 64c12-18 38-23 56-5-9 23-35 31-56 5Z" fill="#9a3f3f" opacity="0.62"/>
+    <circle cx="72" cy="55" r="8" fill="#d5a84b" opacity="0.76"/>
+    <path d="M34 95c19-10 41-10 60 0" fill="none" stroke="#9a3f3f" stroke-width="4" stroke-linecap="round" opacity="0.56"/>
+  </symbol>
+  <symbol id="icon-cave-token" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 25 94 48 83 97H45L34 48Z" fill="#264f46" opacity="0.86"/>
+    <path d="M51 51h26M48 66h32M55 81h18" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="48" r="7" fill="#d5a84b" opacity="0.76"/>
+  </symbol>
+  <symbol id="icon-soul-lamp" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M46 99h36l-5-32H51Z" fill="#d5a84b" opacity="0.84"/>
+    <path d="M42 67h44M49 99h30" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.44"/>
+    <path d="M64 25c14 13 15 30 0 41-15-11-14-28 0-41Z" fill="#d5a84b" opacity="0.86"/>
+    <path d="M64 36c5 7 5 14 0 19" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+  </symbol>
+  <symbol id="icon-remnant-scroll" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M39 33h50v62H39Z" fill="#fffefa" stroke="#4f587a" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M39 33c-13 0-13 18 0 18M89 77c13 0 13 18 0 18" fill="none" stroke="#4f587a" stroke-width="5" stroke-linecap="round"/>
+    <path d="M51 51h27M51 65h22M51 79h26" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+  </symbol>
+  <symbol id="icon-ningqi" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#2f735f" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#2f735f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#2f735f" stroke-width="4"/>
+  </symbol>
+  <symbol id="icon-foundation-building" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#264f46" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#264f46" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#264f46" stroke-width="4"/>
+  </symbol>
+  <symbol id="icon-core-formation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#d5a84b" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#d5a84b" stroke-width="4"/>
+    <circle cx="64" cy="72" r="11" fill="#d5a84b" opacity="0.85"/>
+  </symbol>
+  <symbol id="icon-nascent-soul" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#b9872c" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#b9872c" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#b9872c" stroke-width="4"/>
+    <circle cx="64" cy="72" r="11" fill="#d5a84b" opacity="0.85"/>
+  </symbol>
+  <symbol id="icon-spirit-transformation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#4f587a" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#4f587a" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#4f587a" stroke-width="4"/>
+    
+    <path d="M34 79c18-14 42-14 60 0M47 34h34" fill="none" stroke="#4f587a" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  </symbol>
+  <symbol id="icon-infant-transformation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#5c517f" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#5c517f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#5c517f" stroke-width="4"/>
+    
+    <path d="M34 79c18-14 42-14 60 0M47 34h34" fill="none" stroke="#4f587a" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  </symbol>
+  <symbol id="icon-ask-ding" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#375e91" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#375e91" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#375e91" stroke-width="4"/>
+    
+    <path d="M34 79c18-14 42-14 60 0M47 34h34" fill="none" stroke="#4f587a" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  </symbol>
+  <symbol id="icon-yin-xu" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#4f587a" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#4f587a" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#4f587a" stroke-width="4"/>
+  </symbol>
+  <symbol id="icon-yang-shi" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#b9872c" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#b9872c" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#b9872c" stroke-width="4"/>
+  </symbol>
+  <symbol id="icon-peek-nirvana" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#375e91" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#375e91" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#375e91" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-clean-nirvana" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#2f735f" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#2f735f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#2f735f" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-shatter-nirvana" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#9a3f3f" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#9a3f3f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#9a3f3f" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-five-declines" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#9a3f3f" stroke-width="5" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#9a3f3f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#9a3f3f" stroke-width="4"/>
+    
+    
+    
+    <path d="M42 37 57 62l-9 28M84 39 69 64l9 27" fill="none" stroke="#9a3f3f" stroke-width="4" stroke-linecap="round" opacity="0.64"/>
+  </symbol>
+  <symbol id="icon-empty-nirvana" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#d5a84b" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#d5a84b" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-empty-spirit" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#2f735f" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#2f735f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#2f735f" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-empty-mystic" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#4f587a" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#4f587a" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#4f587a" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-empty-calamity" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="32" fill="none" stroke="#375e91" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#375e91" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#375e91" stroke-width="4"/>
+    
+    
+    <path d="M31 61h66M64 28v66M41 38l46 46" stroke="#d5a84b" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+  </symbol>
+  <symbol id="icon-half-step-heaven-trampling" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="37" fill="none" stroke="#5c517f" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#5c517f" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#5c517f" stroke-width="4"/>
+    
+    
+    
+    
+    <path d="M25 100c22-31 56-31 78 0M34 88c18-19 42-19 60 0" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.44"/>
+  </symbol>
+  <symbol id="icon-heaven-trampling" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="61" r="37" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.76"/>
+    <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#d5a84b" opacity="0.78"/>
+    <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#d5a84b" stroke-width="4"/>
+    
+    
+    
+    
+    <path d="M25 100c22-31 56-31 78 0M34 88c18-19 42-19 60 0" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.44"/>
+  </symbol>
+  <symbol id="icon-root-test" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#2f735f" opacity="0.18" stroke="#2f735f" stroke-width="4"/>
+    
+    <path d="M64 28v57M64 55c-13-4-23-12-30-25M64 63c14-1 25-8 34-21M64 83c-11 2-19 9-25 22M64 83c11 2 19 9 25 22" fill="none" stroke="#2f735f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+    <path d="M50 98h28" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="28" r="8" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-cave-contest" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#264f46" opacity="0.18" stroke="#264f46" stroke-width="4"/>
+    
+    <path d="M26 99c7-38 21-62 38-62s31 24 38 62Z" fill="#264f46" opacity="0.82"/>
+    <path d="M49 99V75c0-10 6-18 15-18s15 8 15 18v24Z" fill="#222737" opacity="0.62"/>
+    <path d="M38 53c14-16 38-16 52 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="64" cy="72" r="8" fill="#d5a84b" opacity="0.76"/>
+  </symbol>
+  <symbol id="icon-core-thunder-tribulation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#375e91" opacity="0.18" stroke="#375e91" stroke-width="4"/>
+    
+    <path d="M64 26 94 39v25c0 23-12 37-30 45-18-8-30-22-30-45V39Z" fill="#375e91" opacity="0.84"/>
+    <path d="m69 42-17 26h15l-9 27 22-34H65Z" fill="#d5a84b" opacity="0.86"/>
+    <path d="M45 45v20c0 13 5 23 16 30" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+  </symbol>
+  <symbol id="icon-nascent-soul-out-of-body" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#b9872c" opacity="0.18" stroke="#b9872c" stroke-width="4"/>
+    
+    <circle cx="64" cy="64" r="24" fill="#b9872c" opacity="0.88"/>
+    <circle cx="64" cy="64" r="41" fill="none" stroke="#b9872c" stroke-width="4" opacity="0.36"/>
+    <path d="M31 64c11-17 55-17 66 0M64 31c17 11 17 55 0 66" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="74" cy="54" r="6" fill="#fffefa" opacity="0.65"/>
+  </symbol>
+  <symbol id="icon-red-dust-heart-refinement" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#9a3f3f" opacity="0.18" stroke="#9a3f3f" stroke-width="4"/>
+    
+    <path d="M36 78c-14-10-5-31 12-28 6-17 32-17 38 0 17-3 26 18 12 28Z" fill="#9a3f3f" opacity="0.78"/>
+    <path d="M42 82c14 8 31 9 48 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+    <path d="m74 30 5 10 11 2-8 8 2 12-10-6-10 6 2-12-8-8 11-2Z" fill="#d5a84b" opacity="0.84"/>
+  </symbol>
+  <symbol id="icon-primordial-spirit-transformation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#5c517f" opacity="0.18" stroke="#5c517f" stroke-width="4"/>
+    
+    <path d="M43 71c-1-21 10-38 27-38 14 0 25 11 25 25 0 13-8 23-22 27v15H55V84c-8-2-11-7-12-13Z" fill="#5c517f" opacity="0.84"/>
+    <path d="M56 59c6-9 18-9 24 0M47 103h34" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="57" r="8" fill="#d5a84b" opacity="0.75"/>
+  </symbol>
+  <symbol id="icon-ask-ding-heaven-gate" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#375e91" opacity="0.18" stroke="#375e91" stroke-width="4"/>
+    
+    <path d="M37 100V38h54v62" fill="none" stroke="#375e91" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29 38h70M42 53h44" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.38"/>
+    <path d="M50 100c3-21 8-34 14-42 6 8 11 21 14 42Z" fill="#222737" opacity="0.58"/>
+    <circle cx="64" cy="67" r="9" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-void-real-transition" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#4f587a" opacity="0.18" stroke="#4f587a" stroke-width="4"/>
+    
+    <path d="M74 29c-20 5-30 26-19 43 6 9 17 14 29 12-8 8-20 12-33 8-20-6-29-30-17-48 9-14 25-21 40-15Z" fill="#4f587a" opacity="0.84"/>
+    <path d="M32 88c13-7 25-7 36 0s22 7 33 0M39 101c10-4 20-4 30 0s20 4 30 0" fill="none" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+  </symbol>
+  <symbol id="icon-origin-threshold" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#d5a84b" opacity="0.18" stroke="#d5a84b" stroke-width="4"/>
+    
+    <circle cx="64" cy="64" r="24" fill="#d5a84b" opacity="0.88"/>
+    <circle cx="64" cy="64" r="41" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.36"/>
+    <path d="M31 64c11-17 55-17 66 0M64 31c17 11 17 55 0 66" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="74" cy="54" r="6" fill="#fffefa" opacity="0.65"/>
+  </symbol>
+  <symbol id="icon-first-glimpse-of-law" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#375e91" opacity="0.18" stroke="#375e91" stroke-width="4"/>
+    
+    <circle cx="64" cy="64" r="33" fill="none" stroke="#375e91" stroke-width="5" opacity="0.78"/>
+    <path d="M64 31v66M31 64h66M41 41l46 46M87 41 41 87" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="64" cy="64" r="8" fill="#d5a84b" opacity="0.82"/>
+  </symbol>
+  <symbol id="icon-domain-purification" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#2f735f" opacity="0.18" stroke="#2f735f" stroke-width="4"/>
+    
+    <circle cx="64" cy="64" r="33" fill="none" stroke="#2f735f" stroke-width="5" opacity="0.78"/>
+    <path d="M64 31v66M31 64h66M41 41l46 46M87 41 41 87" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="64" cy="64" r="8" fill="#d5a84b" opacity="0.82"/>
+  </symbol>
+  <symbol id="icon-origin-seed" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#d5a84b" opacity="0.18" stroke="#d5a84b" stroke-width="4"/>
+    
+    <path d="M64 99V43" stroke="#d5a84b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M64 67c-23-1-34-11-36-29 22-2 34 9 36 29ZM64 61c23-1 34-11 36-29-22-2-34 9-36 29ZM64 85c-17-1-26-8-29-22 18-2 28 6 29 22ZM64 80c17-1 26-8 29-22-18-2-28 6-29 22Z" fill="#d5a84b" opacity="0.78"/>
+    <circle cx="64" cy="41" r="7" fill="#d5a84b" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-encounter-five-declines" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#9a3f3f" opacity="0.18" stroke="#9a3f3f" stroke-width="4"/>
+    
+    <path d="M36 97 63 27l29 70Z" fill="#9a3f3f" opacity="0.82"/>
+    <path d="M65 31 57 55l12 8-15 31M44 82h39" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.68"/>
+    <path d="M35 101c16 7 42 7 58 0" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.52"/>
+  </symbol>
+  <symbol id="icon-mystic-tribulation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#4f587a" opacity="0.18" stroke="#4f587a" stroke-width="4"/>
+    
+    <path d="M64 26 94 39v25c0 23-12 37-30 45-18-8-30-22-30-45V39Z" fill="#4f587a" opacity="0.84"/>
+    <path d="m69 42-17 26h15l-9 27 22-34H65Z" fill="#d5a84b" opacity="0.86"/>
+    <path d="M45 45v20c0 13 5 23 16 30" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+  </symbol>
+  <symbol id="icon-heaven-bridge" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#5c517f" opacity="0.18" stroke="#5c517f" stroke-width="4"/>
+    
+    <path d="M29 102c19-18 23-33 18-48 24 11 39 27 48 48Z" fill="#5c517f" opacity="0.8"/>
+    <path d="M58 100c-4-18 2-35 20-50" fill="none" stroke="#fffefa" stroke-width="6" stroke-linecap="round" opacity="0.72"/>
+    <path d="M35 48c14-16 30-21 50-15" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+    <circle cx="88" cy="39" r="7" fill="#d5a84b" opacity="0.8"/>
+  </symbol>
+  <symbol id="icon-senior-discourse" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#264f46" opacity="0.18" stroke="#264f46" stroke-width="4"/>
+    
+    <path d="M64 101C35 80 28 57 43 43c9-8 19-4 21 6 2-10 12-14 21-6 15 14 8 37-21 58Z" fill="#264f46" opacity="0.88"/>
+    <circle cx="64" cy="66" r="17" fill="none" stroke="#fffefa" stroke-width="5" opacity="0.66"/>
+    <path d="M53 66h22M64 55v22" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.78"/>
+  </symbol>
+  <symbol id="icon-pill-cultivator-gift" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#b9872c" opacity="0.18" stroke="#b9872c" stroke-width="4"/>
+    
+    <ellipse cx="64" cy="68" rx="28" ry="24" fill="#b9872c" opacity="0.9"/>
+    <path d="M40 66c13 9 35 10 49 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <path d="M53 49c9-10 21-10 30 0" fill="none" stroke="#2f735f" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="77" cy="59" r="5" fill="#fffefa" opacity="0.62"/>
+    <path d="M35 38c-9 11-9 21 0 30M93 38c9 11 9 21 0 30" fill="none" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </symbol>
+  <symbol id="icon-causal-chess-game" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#4f587a" opacity="0.18" stroke="#4f587a" stroke-width="4"/>
+    
+    <path d="M42 29h44v56H42Z" fill="#4f587a" opacity="0.86"/>
+    <path d="M35 88h58v15H35Z" fill="#17241f" opacity="0.45"/>
+    <path d="M53 43h22M53 57h22M53 71h17" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="84" cy="87" r="10" fill="#d5a84b" opacity="0.74"/>
+  </symbol>
+  <symbol id="icon-breakthrough-success" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 23 78 57h31L83 76l10 31-29-20-29 20 10-31-26-19h31Z" fill="#2f735f" opacity="0.88"/>
+    <path d="M45 75c12 8 26 8 38 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M64 20v-9M30 34l-7-7M98 34l7-7" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+  </symbol>
+  <symbol id="icon-special-breakthrough" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="24" fill="#d5a84b" opacity="0.88"/>
+    <circle cx="64" cy="64" r="41" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.36"/>
+    <path d="M31 64c11-17 55-17 66 0M64 31c17 11 17 55 0 66" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="74" cy="54" r="6" fill="#fffefa" opacity="0.65"/>
+  </symbol>
+  <symbol id="icon-breakthrough-failure" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M36 97 63 27l29 70Z" fill="#4f587a" opacity="0.82"/>
+    <path d="M65 31 57 55l12 8-15 31M44 82h39" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.68"/>
+    <path d="M35 101c16 7 42 7 58 0" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.52"/>
+  </symbol>
+  <symbol id="icon-severe-backlash" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 29c19 11 29 26 29 42 0 19-12 32-29 38-17-6-29-19-29-38 0-16 10-31 29-42Z" fill="#9a3f3f" opacity="0.82"/>
+    <path d="M47 67c9-11 25-11 34 0M51 82c8 6 18 6 26 0" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round" opacity="0.62"/>
+    <path d="M35 35 93 93M93 35 35 93" stroke="#d5a84b" stroke-width="5" stroke-linecap="round" opacity="0.74"/>
+  </symbol>
+  <symbol id="icon-heavenly-tribulation" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 26 94 39v25c0 23-12 37-30 45-18-8-30-22-30-45V39Z" fill="#375e91" opacity="0.84"/>
+    <path d="m69 42-17 26h15l-9 27 22-34H65Z" fill="#d5a84b" opacity="0.86"/>
+    <path d="M45 45v20c0 13 5 23 16 30" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+  </symbol>
+  <symbol id="icon-heart-demon-effect" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 25c21 10 32 25 32 45 0 22-14 34-32 39-18-5-32-17-32-39 0-20 11-35 32-45Z" fill="#9a3f3f" opacity="0.84"/>
+    <path d="M44 47c-9-10-11-19-7-28M84 47c9-10 11-19 7-28" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round"/>
+    <path d="M49 67c7-6 14-6 21 0M58 86c5 4 8 4 12 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  </symbol>
+  <symbol id="icon-injury-effect" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M36 97 63 27l29 70Z" fill="#9a3f3f" opacity="0.82"/>
+    <path d="M65 31 57 55l12 8-15 31M44 82h39" fill="none" stroke="#222737" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.68"/>
+    <path d="M35 101c16 7 42 7 58 0" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.52"/>
+  </symbol>
+  <symbol id="icon-healing-effect" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 102C33 79 26 56 42 42c9-8 20-5 22 6 2-11 13-14 22-6 16 14 9 37-22 60Z" fill="#2f735f" opacity="0.88"/>
+    <path d="M64 54v28M50 68h28" stroke="#fffefa" stroke-width="7" stroke-linecap="round" opacity="0.78"/>
+    <path d="M34 87c14 8 46 9 60 0" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.48"/>
+  </symbol>
+  <symbol id="icon-cleansing-mind" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M43 71c-1-21 10-38 27-38 14 0 25 11 25 25 0 13-8 23-22 27v15H55V84c-8-2-11-7-12-13Z" fill="#4f587a" opacity="0.84"/>
+    <path d="M56 59c6-9 18-9 24 0M47 103h34" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+    <circle cx="64" cy="57" r="8" fill="#d5a84b" opacity="0.75"/>
+  </symbol>
+  <symbol id="icon-tribulation-resistance-effect" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M64 26 94 39v25c0 23-12 37-30 45-18-8-30-22-30-45V39Z" fill="#375e91" opacity="0.84"/>
+    <path d="m69 42-17 26h15l-9 27 22-34H65Z" fill="#d5a84b" opacity="0.86"/>
+    <path d="M45 45v20c0 13 5 23 16 30" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+  </symbol>
+  <symbol id="icon-law-resonance" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="33" fill="none" stroke="#375e91" stroke-width="5" opacity="0.78"/>
+    <path d="M64 31v66M31 64h66M41 41l46 46M87 41 41 87" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="64" cy="64" r="8" fill="#d5a84b" opacity="0.82"/>
+  </symbol>
+  <symbol id="icon-origin-awakening" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+    <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+    <circle cx="64" cy="64" r="24" fill="#d5a84b" opacity="0.88"/>
+    <circle cx="64" cy="64" r="41" fill="none" stroke="#d5a84b" stroke-width="4" opacity="0.36"/>
+    <path d="M31 64c11-17 55-17 66 0M64 31c17 11 17 55 0 66" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="74" cy="54" r="6" fill="#fffefa" opacity="0.65"/>
+  </symbol>
+</svg>

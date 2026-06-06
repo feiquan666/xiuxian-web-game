@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">洞府令</title>
+  <desc id="desc">特殊图标，可换一处短暂清修之地。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#264f46" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 25 94 48 83 97H45L34 48Z" fill="#264f46" opacity="0.86"/>
+  <path d="M51 51h26M48 66h32M55 81h18" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+  <circle cx="64" cy="48" r="7" fill="#d5a84b" opacity="0.76"/>
+</svg>

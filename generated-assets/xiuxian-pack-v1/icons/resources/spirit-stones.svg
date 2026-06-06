@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">灵石</title>
+  <desc id="desc">灵石资源图标，表现晶石灵光。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#2f735f" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <polygon points="39,49 58,37 73,53 63,78 42,75" fill="#2f735f" opacity="0.84"/>
+  <polygon points="65,58 86,47 98,67 86,91 63,82" fill="#375e91" opacity="0.72"/>
+  <path d="M48 51 58 37l15 16M75 61l11-14 12 20" fill="none" stroke="#fffefa" stroke-width="3" opacity="0.62"/>
+  <circle cx="63" cy="65" r="6" fill="#fffefa" opacity="0.48"/>
+</svg>

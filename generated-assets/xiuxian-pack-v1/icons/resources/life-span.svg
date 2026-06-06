@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">寿元</title>
+  <desc id="desc">寿元属性图标，表现命轮和寿元气。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#d5a84b" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="64" cy="64" r="32" fill="none" stroke="#d5a84b" stroke-width="6" opacity="0.86"/>
+  <circle cx="64" cy="64" r="13" fill="#2f735f" opacity="0.76"/>
+  <path d="M64 30v19M64 79v19M30 64h19M79 64h19M40 40l13 13M75 75l13 13M88 40 75 53M53 75 40 88" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">虚实转换</title>
+  <desc id="desc">奇遇徽章，虚与实互相映照。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#4f587a" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#4f587a" opacity="0.18" stroke="#4f587a" stroke-width="4"/>
+  
+  <path d="M74 29c-20 5-30 26-19 43 6 9 17 14 29 12-8 8-20 12-33 8-20-6-29-30-17-48 9-14 25-21 40-15Z" fill="#4f587a" opacity="0.84"/>
+  <path d="M32 88c13-7 25-7 36 0s22 7 33 0M39 101c10-4 20-4 30 0s20 4 30 0" fill="none" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+</svg>

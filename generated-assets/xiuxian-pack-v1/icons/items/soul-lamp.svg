@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">命魂灯</title>
+  <desc id="desc">特殊图标，灯火不灭，道心不散。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#d5a84b" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M46 99h36l-5-32H51Z" fill="#d5a84b" opacity="0.84"/>
+  <path d="M42 67h44M49 99h30" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.44"/>
+  <path d="M64 25c14 13 15 30 0 41-15-11-14-28 0-41Z" fill="#d5a84b" opacity="0.86"/>
+  <path d="M64 36c5 7 5 14 0 19" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">天逆珠碎影</title>
+  <desc id="desc">特殊图标，似能逆转一线命数。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#9a3f3f" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="64" cy="64" r="28" fill="#222737" opacity="0.9"/>
+  <path d="M39 64c12-18 38-23 56-5-9 23-35 31-56 5Z" fill="#9a3f3f" opacity="0.62"/>
+  <circle cx="72" cy="55" r="8" fill="#d5a84b" opacity="0.76"/>
+  <path d="M34 95c19-10 41-10 60 0" fill="none" stroke="#9a3f3f" stroke-width="4" stroke-linecap="round" opacity="0.56"/>
+</svg>

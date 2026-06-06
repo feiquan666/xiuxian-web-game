@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">灵矿</title>
+  <desc id="desc">材料图标，炼器与阵旗材料。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#375e91" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <polygon points="43,50 63,34 86,43 96,70 76,97 46,91 32,67" fill="#375e91" opacity="0.84"/>
+  <path d="M43 50 63 67l23-24M63 67l13 30M63 67 46 91" fill="none" stroke="#fffefa" stroke-width="4" opacity="0.56"/>
+  <circle cx="68" cy="62" r="7" fill="#2f735f" opacity="0.72"/>
+</svg>

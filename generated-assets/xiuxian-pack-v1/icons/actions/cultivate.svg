@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">修炼</title>
+  <desc id="desc">修炼按钮图标，表现运转周天和灵气入体。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#2f735f" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="64" cy="43" r="12" fill="#fffefa" stroke="#2f735f" stroke-width="5"/>
+  <path d="M44 86c8-22 32-22 40 0" fill="#2f735f" opacity="0.86"/>
+  <path d="M31 89c15 13 51 13 66 0" fill="none" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M36 63c-7-14 0-29 13-35M92 63c7-14 0-29-13-35" fill="none" stroke="#2f735f" stroke-width="4" stroke-linecap="round" opacity="0.42"/>
+</svg>

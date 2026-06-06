@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">疗伤</title>
+  <desc id="desc">状态符号，疗伤恢复。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#2f735f" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 102C33 79 26 56 42 42c9-8 20-5 22 6 2-11 13-14 22-6 16 14 9 37-22 60Z" fill="#2f735f" opacity="0.88"/>
+  <path d="M64 54v28M50 68h28" stroke="#fffefa" stroke-width="7" stroke-linecap="round" opacity="0.78"/>
+  <path d="M34 87c14 8 46 9 60 0" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.48"/>
+</svg>

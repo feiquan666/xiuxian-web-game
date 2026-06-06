@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">法则</title>
+  <desc id="desc">法则资源图标，表现规则线和天地纹。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#375e91" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="64" cy="64" r="33" fill="none" stroke="#375e91" stroke-width="5" opacity="0.78"/>
+  <path d="M64 31v66M31 64h66M41 41l46 46M87 41 41 87" stroke="#375e91" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  <circle cx="64" cy="64" r="8" fill="#d5a84b" opacity="0.82"/>
+</svg>

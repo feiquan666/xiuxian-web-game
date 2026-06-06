@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">炼丹</title>
+  <desc id="desc">炼丹按钮图标，表现丹炉和炉火。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#b9872c" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M37 56h54l-8 36H45Z" fill="#b9872c" opacity="0.88"/>
+  <path d="M43 56c4-10 38-10 42 0" fill="none" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.52"/>
+  <path d="M47 93h34M51 101h26" stroke="#17241f" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M52 43c-8-12 7-16 0-28M67 43c-8-12 7-16 0-28M82 43c-8-12 7-16 0-28" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+</svg>

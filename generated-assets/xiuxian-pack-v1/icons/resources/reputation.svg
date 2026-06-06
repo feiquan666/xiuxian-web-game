@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">声望</title>
+  <desc id="desc">声望属性图标，表现名帖和印记。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#b9872c" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M42 29h44v56H42Z" fill="#b9872c" opacity="0.86"/>
+  <path d="M35 88h58v15H35Z" fill="#17241f" opacity="0.45"/>
+  <path d="M53 43h22M53 57h22M53 71h17" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="84" cy="87" r="10" fill="#d5a84b" opacity="0.74"/>
+</svg>

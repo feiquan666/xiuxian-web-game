@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">元婴出窍</title>
+  <desc id="desc">奇遇徽章，元婴离体遇神识窥探。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#b9872c" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#b9872c" opacity="0.18" stroke="#b9872c" stroke-width="4"/>
+  
+  <circle cx="64" cy="64" r="24" fill="#b9872c" opacity="0.88"/>
+  <circle cx="64" cy="64" r="41" fill="none" stroke="#b9872c" stroke-width="4" opacity="0.36"/>
+  <path d="M31 64c11-17 55-17 66 0M64 31c17 11 17 55 0 66" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  <circle cx="74" cy="54" r="6" fill="#fffefa" opacity="0.65"/>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">元婴</title>
+  <desc id="desc">元婴境界图标，元婴虚影初成。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#b9872c" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="64" cy="61" r="32" fill="none" stroke="#b9872c" stroke-width="4" opacity="0.76"/>
+  <path d="M49 95V68c0-10 6-18 15-18s15 8 15 18v27Z" fill="#b9872c" opacity="0.78"/>
+  <circle cx="64" cy="43" r="10" fill="#fffefa" stroke="#b9872c" stroke-width="4"/>
+  <circle cx="64" cy="72" r="11" fill="#d5a84b" opacity="0.85"/>
+</svg>

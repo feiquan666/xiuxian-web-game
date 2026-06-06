@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">踏天桥</title>
+  <desc id="desc">奇遇徽章，九座桥浮在轮回尽头。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#5c517f" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#5c517f" opacity="0.18" stroke="#5c517f" stroke-width="4"/>
+  
+  <path d="M29 102c19-18 23-33 18-48 24 11 39 27 48 48Z" fill="#5c517f" opacity="0.8"/>
+  <path d="M58 100c-4-18 2-35 20-50" fill="none" stroke="#fffefa" stroke-width="6" stroke-linecap="round" opacity="0.72"/>
+  <path d="M35 48c14-16 30-21 50-15" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  <circle cx="88" cy="39" r="7" fill="#d5a84b" opacity="0.8"/>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">金丹雷劫</title>
+  <desc id="desc">奇遇徽章，金丹雷劫垂落。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#375e91" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#375e91" opacity="0.18" stroke="#375e91" stroke-width="4"/>
+  
+  <path d="M64 26 94 39v25c0 23-12 37-30 45-18-8-30-22-30-45V39Z" fill="#375e91" opacity="0.84"/>
+  <path d="m69 42-17 26h15l-9 27 22-34H65Z" fill="#d5a84b" opacity="0.86"/>
+  <path d="M45 45v20c0 13 5 23 16 30" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">古宝残片</title>
+  <desc id="desc">法宝图标，残破古宝仍有灵压。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#b9872c" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M41 38 74 24 90 54 75 101 42 87Z" fill="#b9872c" opacity="0.84"/>
+  <path d="M50 42 71 35M48 67l31-12M52 86l20-8" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  <path d="M74 24 67 62l8 39" fill="none" stroke="#17241f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+</svg>

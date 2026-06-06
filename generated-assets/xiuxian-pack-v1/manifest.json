@@ -1,0 +1,998 @@
+{
+  "packId": "xiuxian-pack-v1",
+  "style": "ink-wash-flat-mobile",
+  "assetCount": 99,
+  "generatedAt": "2026-06-06",
+  "assets": [
+    {
+      "id": "cultivate",
+      "name": "修炼",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/cultivate.svg",
+      "usage": "修炼按钮图标，表现运转周天和灵气入体。"
+    },
+    {
+      "id": "seclusion",
+      "name": "闭关",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/seclusion.svg",
+      "usage": "闭关按钮图标，表现洞府封关和静修。"
+    },
+    {
+      "id": "travel",
+      "name": "外出历练",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/travel.svg",
+      "usage": "外出历练按钮图标，表现山路远行和机缘。"
+    },
+    {
+      "id": "explore-secret-realm",
+      "name": "探索秘境",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/explore-secret-realm.svg",
+      "usage": "探索秘境按钮图标，表现秘境石门和未知风险。"
+    },
+    {
+      "id": "breakthrough",
+      "name": "突破境界",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/breakthrough.svg",
+      "usage": "突破境界按钮图标，表现灵光破障。"
+    },
+    {
+      "id": "refine-pill",
+      "name": "炼丹",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/refine-pill.svg",
+      "usage": "炼丹按钮图标，表现丹炉和炉火。"
+    },
+    {
+      "id": "heal",
+      "name": "疗伤",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/heal.svg",
+      "usage": "疗伤按钮图标，表现温养经脉。"
+    },
+    {
+      "id": "suppress-heart-demon",
+      "name": "压制心魔",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/suppress-heart-demon.svg",
+      "usage": "压制心魔按钮图标，表现镇压魔念。"
+    },
+    {
+      "id": "buy-pill",
+      "name": "购买丹药",
+      "category": "actions",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/actions/buy-pill.svg",
+      "usage": "购买丹药按钮图标，表现坊市交易。"
+    },
+    {
+      "id": "cultivation",
+      "name": "修为",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/cultivation.svg",
+      "usage": "修为资源图标，表现灵气周天循环。"
+    },
+    {
+      "id": "spirit-stones",
+      "name": "灵石",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/spirit-stones.svg",
+      "usage": "灵石资源图标，表现晶石灵光。"
+    },
+    {
+      "id": "life-span",
+      "name": "寿元",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/life-span.svg",
+      "usage": "寿元属性图标，表现命轮和寿元气。"
+    },
+    {
+      "id": "combat-power",
+      "name": "战力",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/combat-power.svg",
+      "usage": "战力属性图标，表现锋芒和威压。"
+    },
+    {
+      "id": "luck",
+      "name": "气运",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/luck.svg",
+      "usage": "气运属性图标，表现云纹和星点。"
+    },
+    {
+      "id": "comprehension",
+      "name": "悟性",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/comprehension.svg",
+      "usage": "悟性属性图标，表现心灯开悟。"
+    },
+    {
+      "id": "aptitude",
+      "name": "根骨",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/aptitude.svg",
+      "usage": "根骨属性图标，表现灵根和骨纹。"
+    },
+    {
+      "id": "dao-heart",
+      "name": "道心",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/dao-heart.svg",
+      "usage": "道心属性图标，表现心印稳固。"
+    },
+    {
+      "id": "heart-demon",
+      "name": "心魔",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/heart-demon.svg",
+      "usage": "心魔状态图标，表现魔影和反噬。"
+    },
+    {
+      "id": "injury",
+      "name": "伤势",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/injury.svg",
+      "usage": "伤势状态图标，表现裂纹和血色。"
+    },
+    {
+      "id": "reputation",
+      "name": "声望",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/reputation.svg",
+      "usage": "声望属性图标，表现名帖和印记。"
+    },
+    {
+      "id": "insight",
+      "name": "意境",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/insight.svg",
+      "usage": "意境资源图标，表现月影入水。"
+    },
+    {
+      "id": "law",
+      "name": "法则",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/law.svg",
+      "usage": "法则资源图标，表现规则线和天地纹。"
+    },
+    {
+      "id": "origin",
+      "name": "本源",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/origin.svg",
+      "usage": "本源资源图标，表现本源光轮。"
+    },
+    {
+      "id": "tribulation-resistance",
+      "name": "天劫抗性",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/tribulation-resistance.svg",
+      "usage": "天劫抗性图标，表现护阵挡雷。"
+    },
+    {
+      "id": "alchemy",
+      "name": "炼丹",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/alchemy.svg",
+      "usage": "炼丹属性图标，表现丹炉熟练度。"
+    },
+    {
+      "id": "artifact",
+      "name": "法宝",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/artifact.svg",
+      "usage": "法宝属性图标，表现护身古器。"
+    },
+    {
+      "id": "technique",
+      "name": "功法",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/technique.svg",
+      "usage": "功法属性图标，表现卷轴和道纹。"
+    },
+    {
+      "id": "sect-contribution",
+      "name": "宗门贡献",
+      "category": "resources",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/resources/sect-contribution.svg",
+      "usage": "宗门贡献图标，表现宗门令牌。"
+    },
+    {
+      "id": "qi-pill",
+      "name": "聚气丹",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/qi-pill.svg",
+      "usage": "丹药图标，聚拢灵气辅助修行。"
+    },
+    {
+      "id": "healing-pill",
+      "name": "疗伤丹",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/healing-pill.svg",
+      "usage": "丹药图标，温养经脉缓解伤势。"
+    },
+    {
+      "id": "cleansing-pill",
+      "name": "清心丹",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/cleansing-pill.svg",
+      "usage": "丹药图标，清心压念削去心魔。"
+    },
+    {
+      "id": "breakthrough-pill",
+      "name": "破境丹",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/breakthrough-pill.svg",
+      "usage": "丹药图标，短时提高突破把握。"
+    },
+    {
+      "id": "life-span-pill",
+      "name": "寿元丹",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/life-span-pill.svg",
+      "usage": "珍稀丹药图标，中后期补寿元。"
+    },
+    {
+      "id": "array-flag",
+      "name": "阵旗",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/array-flag.svg",
+      "usage": "法宝图标，布阵避开部分劫锋。"
+    },
+    {
+      "id": "thunder-talisman",
+      "name": "雷劫符",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/thunder-talisman.svg",
+      "usage": "法宝图标，引雷入阵换取抗劫之力。"
+    },
+    {
+      "id": "jade-guard",
+      "name": "护身玉简",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/jade-guard.svg",
+      "usage": "法宝图标，危急时护住根基。"
+    },
+    {
+      "id": "ancient-fragment",
+      "name": "古宝残片",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/ancient-fragment.svg",
+      "usage": "法宝图标，残破古宝仍有灵压。"
+    },
+    {
+      "id": "spirit-herb",
+      "name": "灵草",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/spirit-herb.svg",
+      "usage": "材料图标，炼丹常用灵材。"
+    },
+    {
+      "id": "spirit-ore",
+      "name": "灵矿",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/spirit-ore.svg",
+      "usage": "材料图标，炼器与阵旗材料。"
+    },
+    {
+      "id": "law-shard",
+      "name": "规则残片",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/law-shard.svg",
+      "usage": "材料图标，隐有天地规则回声。"
+    },
+    {
+      "id": "origin-shard",
+      "name": "本源碎片",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/origin-shard.svg",
+      "usage": "材料图标，本源之力凝成微光。"
+    },
+    {
+      "id": "incense",
+      "name": "香火",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/incense.svg",
+      "usage": "材料图标，信念杂音与愿力并存。"
+    },
+    {
+      "id": "heaven-defying-shadow",
+      "name": "天逆珠碎影",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/heaven-defying-shadow.svg",
+      "usage": "特殊图标，似能逆转一线命数。"
+    },
+    {
+      "id": "cave-token",
+      "name": "洞府令",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/cave-token.svg",
+      "usage": "特殊图标，可换一处短暂清修之地。"
+    },
+    {
+      "id": "soul-lamp",
+      "name": "命魂灯",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/soul-lamp.svg",
+      "usage": "特殊图标，灯火不灭，道心不散。"
+    },
+    {
+      "id": "remnant-scroll",
+      "name": "残卷",
+      "category": "items",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/items/remnant-scroll.svg",
+      "usage": "特殊图标，半页残卷藏着入道门径。"
+    },
+    {
+      "id": "ningqi",
+      "name": "凝气",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/ningqi.svg",
+      "usage": "凝气境界图标，洞府清修，灵光初聚。"
+    },
+    {
+      "id": "foundation-building",
+      "name": "筑基",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/foundation-building.svg",
+      "usage": "筑基境界图标，根基成台，灵气沉稳。"
+    },
+    {
+      "id": "core-formation",
+      "name": "结丹",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/core-formation.svg",
+      "usage": "结丹境界图标，金丹光晕护体。"
+    },
+    {
+      "id": "nascent-soul",
+      "name": "元婴",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/nascent-soul.svg",
+      "usage": "元婴境界图标，元婴虚影初成。"
+    },
+    {
+      "id": "spirit-transformation",
+      "name": "化神",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/spirit-transformation.svg",
+      "usage": "化神境界图标，红尘意境入心。"
+    },
+    {
+      "id": "infant-transformation",
+      "name": "婴变",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/infant-transformation.svg",
+      "usage": "婴变境界图标，元神肉身互相牵引。"
+    },
+    {
+      "id": "ask-ding",
+      "name": "问鼎",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/ask-ding.svg",
+      "usage": "问鼎境界图标，问天门影压心。"
+    },
+    {
+      "id": "yin-xu",
+      "name": "阴虚",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/yin-xu.svg",
+      "usage": "阴虚境界图标，虚实转换。"
+    },
+    {
+      "id": "yang-shi",
+      "name": "阳实",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/yang-shi.svg",
+      "usage": "阳实境界图标，元力炼实。"
+    },
+    {
+      "id": "peek-nirvana",
+      "name": "窥涅",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/peek-nirvana.svg",
+      "usage": "窥涅境界图标，初窥法则缝隙。"
+    },
+    {
+      "id": "clean-nirvana",
+      "name": "净涅",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/clean-nirvana.svg",
+      "usage": "净涅境界图标，领域逐渐清明。"
+    },
+    {
+      "id": "shatter-nirvana",
+      "name": "碎涅",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/shatter-nirvana.svg",
+      "usage": "碎涅境界图标，碎法重组，本源萌发。"
+    },
+    {
+      "id": "five-declines",
+      "name": "天人五衰",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/five-declines.svg",
+      "usage": "天人五衰图标，命轮裂纹和衰气缠身。"
+    },
+    {
+      "id": "empty-nirvana",
+      "name": "空涅",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/empty-nirvana.svg",
+      "usage": "空涅境界图标，本源证道。"
+    },
+    {
+      "id": "empty-spirit",
+      "name": "空灵",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/empty-spirit.svg",
+      "usage": "空灵境界图标，内天地初开。"
+    },
+    {
+      "id": "empty-mystic",
+      "name": "空玄",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/empty-mystic.svg",
+      "usage": "空玄境界图标，玄劫压顶。"
+    },
+    {
+      "id": "empty-calamity",
+      "name": "空劫",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/empty-calamity.svg",
+      "usage": "空劫境界图标，大道压制如海。"
+    },
+    {
+      "id": "half-step-heaven-trampling",
+      "name": "半步踏天",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/half-step-heaven-trampling.svg",
+      "usage": "半步踏天境界图标，九桥问心证道。"
+    },
+    {
+      "id": "heaven-trampling",
+      "name": "踏天",
+      "category": "realms",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/realms/heaven-trampling.svg",
+      "usage": "踏天境界图标，踏天问道，轮回外见真我。"
+    },
+    {
+      "id": "root-test",
+      "name": "灵根测试",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/root-test.svg",
+      "usage": "奇遇徽章，宗门灵盘照骨测灵根。"
+    },
+    {
+      "id": "cave-contest",
+      "name": "洞府争夺",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/cave-contest.svg",
+      "usage": "奇遇徽章，山腰洞府争夺。"
+    },
+    {
+      "id": "core-thunder-tribulation",
+      "name": "金丹雷劫",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/core-thunder-tribulation.svg",
+      "usage": "奇遇徽章，金丹雷劫垂落。"
+    },
+    {
+      "id": "nascent-soul-out-of-body",
+      "name": "元婴出窍",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/nascent-soul-out-of-body.svg",
+      "usage": "奇遇徽章，元婴离体遇神识窥探。"
+    },
+    {
+      "id": "red-dust-heart-refinement",
+      "name": "红尘炼心",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/red-dust-heart-refinement.svg",
+      "usage": "奇遇徽章，一城灯火炼心。"
+    },
+    {
+      "id": "primordial-spirit-transformation",
+      "name": "元神蜕变",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/primordial-spirit-transformation.svg",
+      "usage": "奇遇徽章，元神蜕变。"
+    },
+    {
+      "id": "ask-ding-heaven-gate",
+      "name": "问鼎天门",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/ask-ding-heaven-gate.svg",
+      "usage": "奇遇徽章，虚空天门问己问天。"
+    },
+    {
+      "id": "void-real-transition",
+      "name": "虚实转换",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/void-real-transition.svg",
+      "usage": "奇遇徽章，虚与实互相映照。"
+    },
+    {
+      "id": "origin-threshold",
+      "name": "本源门槛",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/origin-threshold.svg",
+      "usage": "奇遇徽章，本源门槛低鸣。"
+    },
+    {
+      "id": "first-glimpse-of-law",
+      "name": "法则初窥",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/first-glimpse-of-law.svg",
+      "usage": "奇遇徽章，第一次看见规则缝隙。"
+    },
+    {
+      "id": "domain-purification",
+      "name": "领域净化",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/domain-purification.svg",
+      "usage": "奇遇徽章，法则洗净领域浑浊。"
+    },
+    {
+      "id": "origin-seed",
+      "name": "本源种子",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/origin-seed.svg",
+      "usage": "奇遇徽章，规则碎后凝成本源微光。"
+    },
+    {
+      "id": "encounter-five-declines",
+      "name": "天人五衰",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/encounter-five-declines.svg",
+      "usage": "奇遇徽章，衰气从命轮落下。"
+    },
+    {
+      "id": "mystic-tribulation",
+      "name": "玄劫压顶",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/mystic-tribulation.svg",
+      "usage": "奇遇徽章，外劫内劫魂劫轮转。"
+    },
+    {
+      "id": "heaven-bridge",
+      "name": "踏天桥",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/heaven-bridge.svg",
+      "usage": "奇遇徽章，九座桥浮在轮回尽头。"
+    },
+    {
+      "id": "senior-discourse",
+      "name": "前辈论道",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/senior-discourse.svg",
+      "usage": "NPC 羁绊徽章，抽象表现雨中论道。"
+    },
+    {
+      "id": "pill-cultivator-gift",
+      "name": "丹修赠药",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/pill-cultivator-gift.svg",
+      "usage": "NPC 羁绊徽章，抽象表现丹香赠药。"
+    },
+    {
+      "id": "causal-chess-game",
+      "name": "棋局因果",
+      "category": "npc-badges",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/npc-badges/causal-chess-game.svg",
+      "usage": "NPC 羁绊徽章，抽象表现棋盘因果。"
+    },
+    {
+      "id": "breakthrough-success",
+      "name": "突破成功",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/breakthrough-success.svg",
+      "usage": "状态符号，突破成功反馈。"
+    },
+    {
+      "id": "special-breakthrough",
+      "name": "特殊突破",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/special-breakthrough.svg",
+      "usage": "状态符号，特殊突破反馈。"
+    },
+    {
+      "id": "breakthrough-failure",
+      "name": "突破失败",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/breakthrough-failure.svg",
+      "usage": "状态符号，突破失败反馈。"
+    },
+    {
+      "id": "severe-backlash",
+      "name": "严重反噬",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/severe-backlash.svg",
+      "usage": "状态符号，严重反噬反馈。"
+    },
+    {
+      "id": "heavenly-tribulation",
+      "name": "天劫",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/heavenly-tribulation.svg",
+      "usage": "状态符号，天劫降临。"
+    },
+    {
+      "id": "heart-demon-effect",
+      "name": "心魔",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/heart-demon-effect.svg",
+      "usage": "状态符号，心魔侵扰。"
+    },
+    {
+      "id": "injury-effect",
+      "name": "伤势",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/injury-effect.svg",
+      "usage": "状态符号，伤势积累。"
+    },
+    {
+      "id": "healing-effect",
+      "name": "疗伤",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/healing-effect.svg",
+      "usage": "状态符号，疗伤恢复。"
+    },
+    {
+      "id": "cleansing-mind",
+      "name": "清心",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/cleansing-mind.svg",
+      "usage": "状态符号，清心压念。"
+    },
+    {
+      "id": "tribulation-resistance-effect",
+      "name": "抗劫",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/tribulation-resistance-effect.svg",
+      "usage": "状态符号，抗劫护持。"
+    },
+    {
+      "id": "law-resonance",
+      "name": "法则共鸣",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/law-resonance.svg",
+      "usage": "状态符号，法则共鸣。"
+    },
+    {
+      "id": "origin-awakening",
+      "name": "本源觉醒",
+      "category": "status-effects",
+      "format": "svg",
+      "width": 128,
+      "height": 128,
+      "path": "icons/status-effects/origin-awakening.svg",
+      "usage": "状态符号，本源觉醒。"
+    },
+    {
+      "id": "cave-cultivation",
+      "name": "洞府清修背景",
+      "category": "backgrounds",
+      "format": "svg",
+      "width": 1200,
+      "height": 520,
+      "path": "backgrounds/cave-cultivation.svg",
+      "usage": "洞府清修场景背景，适合修炼页或首页氛围。"
+    },
+    {
+      "id": "secret-realm-exploration",
+      "name": "秘境探索背景",
+      "category": "backgrounds",
+      "format": "svg",
+      "width": 1200,
+      "height": 520,
+      "path": "backgrounds/secret-realm-exploration.svg",
+      "usage": "秘境探索场景背景，适合奇遇和探索氛围。"
+    },
+    {
+      "id": "thunder-tribulation-sky",
+      "name": "雷劫天幕背景",
+      "category": "backgrounds",
+      "format": "svg",
+      "width": 1200,
+      "height": 520,
+      "path": "backgrounds/thunder-tribulation-sky.svg",
+      "usage": "雷劫天幕场景背景，适合突破和天劫氛围。"
+    },
+    {
+      "id": "heaven-trampling-nine-bridge",
+      "name": "踏天九桥背景",
+      "category": "backgrounds",
+      "format": "svg",
+      "width": 1200,
+      "height": 520,
+      "path": "backgrounds/heaven-trampling-nine-bridge.svg",
+      "usage": "踏天九桥场景背景，适合后期境界和终局氛围。"
+    }
+  ]
+}

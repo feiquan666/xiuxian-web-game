@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">前辈论道</title>
+  <desc id="desc">NPC 羁绊徽章，抽象表现雨中论道。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#264f46" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M64 18 96 36v56l-32 18-32-18V36Z" fill="#264f46" opacity="0.18" stroke="#264f46" stroke-width="4"/>
+  
+  <path d="M64 101C35 80 28 57 43 43c9-8 19-4 21 6 2-10 12-14 21-6 15 14 8 37-21 58Z" fill="#264f46" opacity="0.88"/>
+  <circle cx="64" cy="66" r="17" fill="none" stroke="#fffefa" stroke-width="5" opacity="0.66"/>
+  <path d="M53 66h22M64 55v22" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.78"/>
+</svg>

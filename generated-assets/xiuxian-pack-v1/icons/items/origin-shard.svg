@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">本源碎片</title>
+  <desc id="desc">材料图标，本源之力凝成微光。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#d5a84b" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <polygon points="65,24 93,54 77,104 43,95 35,52" fill="#d5a84b" opacity="0.86"/>
+  <path d="M65 24 58 69l19 35M35 52l23 17 35-15" fill="none" stroke="#fffefa" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  <circle cx="66" cy="68" r="8" fill="#d5a84b" opacity="0.72"/>
+</svg>

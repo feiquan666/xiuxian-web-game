@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">洞府清修背景</title>
+  <desc id="desc">洞府清修场景背景，适合修炼页或首页氛围。</desc>
+  <rect width="1200" height="520" fill="#eaf2ee"/>
+  <linearGradient id="caveSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fffefa"/><stop offset="1" stop-color="#eaf2ee"/></linearGradient>
+  <rect width="1200" height="520" fill="url(#caveSky)"/>
+  <path d="M0 346 146 234l110 69 128-126 151 139 117-82 150 104 126-145 134 129 95-69 143 101v166H0Z" fill="#2f735f" opacity="0.18"/>
+  <path d="M0 418 170 300l116 85 114-131 156 155 135-117 171 122 111-96 117 77 110-124v249H0Z" fill="#17241f" opacity="0.16"/>
+  <path d="M451 520c34-176 101-270 202-270s168 94 202 270Z" fill="#264f46" opacity="0.55"/>
+  <path d="M565 520V398c0-57 39-96 88-96s88 39 88 96v122Z" fill="#222737" opacity="0.48"/>
+  <circle cx="653" cy="397" r="38" fill="#d5a84b" opacity="0.33"/>
+  <path d="M0 430c209-54 415-53 616 4s395 56 584-7v93H0Z" fill="#fffefa" opacity="0.54"/>
+</svg>

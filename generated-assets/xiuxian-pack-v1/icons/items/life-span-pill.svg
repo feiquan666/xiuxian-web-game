@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">寿元丹</title>
+  <desc id="desc">珍稀丹药图标，中后期补寿元。</desc>
+  <defs>
+    <radialGradient id="paperGlow" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#fffefa" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#d5a84b" stop-opacity="0.18"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="56" fill="url(#paperGlow)" opacity="0.95"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#17241f" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="64" cy="64" r="33" fill="none" stroke="#d5a84b" stroke-width="5" opacity="0.88"/>
+  <path d="M64 27a37 37 0 0 1 36 42M64 101a37 37 0 0 1-36-42" fill="none" stroke="#2f735f" stroke-width="5" stroke-linecap="round" opacity="0.56"/>
+  <ellipse cx="64" cy="68" rx="24" ry="20" fill="#2f735f" opacity="0.92"/>
+  <path d="M52 67c8 6 16 7 25 0" fill="none" stroke="#fffefa" stroke-width="5" stroke-linecap="round" opacity="0.76"/>
+  <path d="M31 78c12-7 21-7 33 1 13 9 24 9 35-1" fill="none" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+  <path d="M64 36v18M64 82v16M36 64h17M75 64h17" stroke="#d5a84b" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+</svg>
