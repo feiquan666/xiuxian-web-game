@@ -355,6 +355,59 @@ h2 {
   gap: 10px;
 }
 
+.resource-codex {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.resource-chip {
+  min-height: 70px;
+  padding: 8px;
+  border: 1px solid rgba(47, 115, 95, 0.18);
+  border-radius: 8px;
+  background: rgba(236, 246, 241, 0.72);
+}
+
+.resource-chip span,
+.resource-chip small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.resource-chip strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--pine);
+  font-size: 1.06rem;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.resource-chip small {
+  margin-top: 4px;
+}
+
+.bag-category-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 2px 2px;
+  color: var(--pine);
+}
+
+.bag-category-title span {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.bag-category-title small {
+  color: var(--muted);
+}
+
 .item-card {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr) 72px;
@@ -483,8 +536,10 @@ h2 {
 
 .avatar-halo,
 .avatar-robe,
-.avatar-core,
-.avatar-bridge {
+.avatar-core-orb,
+.avatar-bridge,
+.avatar-domain,
+.avatar-runes {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -510,7 +565,7 @@ h2 {
   box-shadow: 0 16px 30px rgba(28, 45, 39, 0.22);
 }
 
-.avatar-core {
+.avatar-core-orb {
   top: 58px;
   width: 28px;
   height: 28px;
@@ -528,6 +583,29 @@ h2 {
   opacity: 0;
 }
 
+.avatar-domain {
+  top: 13px;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  opacity: 0;
+  background:
+    radial-gradient(circle, rgba(255, 255, 250, 0.18), transparent 62%),
+    conic-gradient(from 40deg, transparent, rgba(47, 115, 95, 0.2), transparent, rgba(185, 135, 44, 0.18), transparent);
+}
+
+.avatar-runes {
+  top: 18px;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  opacity: 0;
+  background:
+    linear-gradient(0deg, transparent 46%, rgba(47, 115, 95, 0.26) 48% 52%, transparent 54%),
+    linear-gradient(60deg, transparent 46%, rgba(185, 135, 44, 0.2) 48% 52%, transparent 54%),
+    linear-gradient(120deg, transparent 46%, rgba(79, 88, 122, 0.2) 48% 52%, transparent 54%);
+}
+
 .avatar-caption {
   position: absolute;
   right: 14px;
@@ -538,15 +616,25 @@ h2 {
   line-height: 1.35;
 }
 
-.avatar-core-stage .avatar-halo {
+.avatar-core .avatar-halo {
   border-color: rgba(185, 135, 44, 0.52);
   box-shadow: 0 0 36px rgba(185, 135, 44, 0.42);
+}
+
+.avatar-core .avatar-core-orb {
+  width: 34px;
+  height: 34px;
 }
 
 .avatar-spirit .avatar-halo {
   border-style: double;
   border-color: rgba(79, 88, 122, 0.52);
   box-shadow: 0 0 38px rgba(79, 88, 122, 0.36);
+}
+
+.avatar-spirit .avatar-domain,
+.avatar-spirit .avatar-runes {
+  opacity: 0.7;
 }
 
 .avatar-law .avatar-halo {
@@ -556,9 +644,19 @@ h2 {
     linear-gradient(0deg, transparent 48%, rgba(185, 135, 44, 0.22) 49% 51%, transparent 52%);
 }
 
+.avatar-law .avatar-domain,
+.avatar-law .avatar-runes {
+  opacity: 0.95;
+}
+
 .avatar-decline .avatar-halo {
   border-color: rgba(154, 63, 63, 0.5);
   box-shadow: 0 0 34px rgba(154, 63, 63, 0.34);
+}
+
+.avatar-decline .avatar-domain {
+  opacity: 0.9;
+  background: conic-gradient(from 20deg, transparent, rgba(154, 63, 63, 0.24), transparent, rgba(37, 43, 61, 0.16), transparent);
 }
 
 .avatar-heaven .avatar-bridge {
@@ -572,11 +670,16 @@ h2 {
   box-shadow: 0 0 44px rgba(37, 43, 61, 0.36);
 }
 
+.avatar-heaven .avatar-domain,
+.avatar-heaven .avatar-runes {
+  opacity: 1;
+}
+
 .has-injury .avatar-robe {
   filter: saturate(0.8);
 }
 
-.has-demon .avatar-core {
+.has-demon .avatar-core-orb {
   background: var(--cinnabar);
   box-shadow: 0 0 24px rgba(154, 63, 63, 0.68);
 }
@@ -639,6 +742,14 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.62);
+}
+
+.flow-arrow {
+  display: grid;
+  place-items: center;
+  height: 16px;
+  color: var(--amber);
+  font-weight: 700;
 }
 
 .help-icon {
@@ -787,6 +898,14 @@ h2 {
 
   .bag-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resource-codex {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .bag-category-title {
+    grid-column: 1 / -1;
   }
 
   .character-panel {

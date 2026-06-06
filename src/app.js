@@ -50,6 +50,7 @@ const elements = {
   encounterDescription: document.querySelector('#encounterDescription'),
   encounterMeta: document.querySelector('#encounterMeta'),
   encounterChoices: document.querySelector('#encounterChoices'),
+  resourceCodex: document.querySelector('#resourceCodex'),
   itemGrid: document.querySelector('#itemGrid'),
   characterAvatar: document.querySelector('#characterAvatar'),
   attributeRadar: document.querySelector('#attributeRadar'),
@@ -173,6 +174,7 @@ function render() {
   elements.buyPillButton.disabled = state.spiritStones < 20 || Boolean(state.ending);
 
   renderEncounter();
+  renderResourceCodex(realm);
   renderInventory();
   renderCharacter(realm);
   renderRadar(realm);
@@ -214,6 +216,28 @@ function renderEncounter() {
   }
 }
 
+function renderResourceCodex(realm) {
+  const resourceEntries = [
+    ['灵石', state.spiritStones, '坊市、疗伤、避劫'],
+    ['丹药', state.pills, '突破准备'],
+    ['法宝', state.artifact, '战力与护身'],
+    ['功法', state.technique, '产速与根基'],
+    ['意境', state.insight, '化神后破境'],
+    ['法则', state.law, '涅境门槛'],
+    ['本源', state.origin, '空境核心'],
+    ['香火', state.inventory?.incense ?? 0, realm.index >= 55 ? '信念与杂音' : '高阶材料'],
+  ];
+
+  elements.resourceCodex.replaceChildren(
+    ...resourceEntries.map(([label, value, hint]) => {
+      const item = document.createElement('article');
+      item.className = 'resource-chip';
+      item.innerHTML = `<span>${label}</span><strong>${formatNumber(value)}</strong><small>${hint}</small>`;
+      return item;
+    }),
+  );
+}
+
 function renderInventory() {
   const rarityOrder = ['凡', '灵', '玄', '地', '天', '逆'];
   const items = [...defaultItems].sort((left, right) => {
@@ -221,8 +245,18 @@ function renderInventory() {
     return rarityOrder.indexOf(right.rarity) - rarityOrder.indexOf(left.rarity);
   });
 
-  elements.itemGrid.replaceChildren(
-    ...items.map((item) => {
+  const categories = ['丹药', '法宝', '材料', '特殊'];
+  const nodes = [];
+  for (const category of categories) {
+    const categoryItems = items.filter((item) => item.category === category);
+    if (categoryItems.length === 0) continue;
+
+    const heading = document.createElement('div');
+    heading.className = 'bag-category-title';
+    heading.innerHTML = `<span>${category}</span><small>${categoryHint(category)}</small>`;
+    nodes.push(heading);
+
+    nodes.push(...categoryItems.map((item) => {
       const count = Math.floor(Number(state.inventory?.[item.id] ?? 0));
       const card = document.createElement('article');
       card.className = `item-card rarity-${rarityClass(item.rarity)}${count <= 0 ? ' is-empty' : ''}`;
@@ -272,8 +306,10 @@ function renderInventory() {
 
       card.append(icon, body, useButton);
       return card;
-    }),
-  );
+    }));
+  }
+
+  elements.itemGrid.replaceChildren(...nodes);
 }
 
 function renderRealms() {
@@ -309,13 +345,17 @@ function renderCharacter(realm) {
   const robe = document.createElement('div');
   robe.className = 'avatar-robe';
   const core = document.createElement('div');
-  core.className = 'avatar-core';
+  core.className = 'avatar-core-orb';
   const bridge = document.createElement('div');
   bridge.className = 'avatar-bridge';
+  const domain = document.createElement('div');
+  domain.className = 'avatar-domain';
+  const runes = document.createElement('div');
+  runes.className = 'avatar-runes';
   const caption = document.createElement('div');
   caption.className = 'avatar-caption';
   caption.textContent = avatarCaption(realm);
-  figure.append(halo, robe, core, bridge);
+  figure.append(domain, halo, robe, core, bridge, runes);
   elements.characterAvatar.replaceChildren(figure, caption);
 }
 
@@ -372,7 +412,7 @@ function renderHelp() {
   ];
 
   elements.helpContent.replaceChildren(
-    ...steps.map(([iconText, title, body]) => {
+    ...steps.flatMap(([iconText, title, body], index) => {
       const card = document.createElement('article');
       card.className = 'help-step';
       const icon = document.createElement('span');
@@ -385,7 +425,12 @@ function renderHelp() {
       description.textContent = body;
       text.append(heading, description);
       card.append(icon, text);
-      return card;
+      if (index >= steps.length - 1) return [card];
+
+      const arrow = document.createElement('div');
+      arrow.className = 'flow-arrow';
+      arrow.textContent = '↓';
+      return [card, arrow];
     }),
   );
 }
@@ -471,12 +516,21 @@ function rarityClass(rarity) {
   }[rarity] ?? 'common';
 }
 
+function categoryHint(category) {
+  return {
+    丹药: '入炉成丹，救急破境',
+    法宝: '护身抗劫，古宝压阵',
+    材料: '灵草灵矿，法则本源',
+    特殊: '逆修机缘，命数暗线',
+  }[category] ?? '行囊杂物';
+}
+
 function avatarClass(realm) {
   if (realm.major === '天人五衰') return 'avatar-decline';
   if (['半步踏天', '踏天'].includes(realm.major)) return 'avatar-heaven';
   if (['窥涅', '净涅', '碎涅', '空涅', '空灵', '空玄', '空劫'].includes(realm.major)) return 'avatar-law';
   if (['化神', '婴变', '问鼎'].includes(realm.major)) return 'avatar-spirit';
-  if (['结丹', '元婴'].includes(realm.major)) return 'avatar-core-stage';
+  if (['结丹', '元婴'].includes(realm.major)) return 'avatar-core';
   return 'avatar-qigong';
 }
 

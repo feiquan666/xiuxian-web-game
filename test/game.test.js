@@ -287,6 +287,19 @@ test('encounter still blocks true resource shortages', () => {
   assert.match(result.message, /灵石不足/);
 });
 
+test('encounter still blocks life span shortages', () => {
+  const state = {
+    ...createInitialState(0),
+    pendingEncounterId: 'five-decline',
+    lifeSpan: 7,
+  };
+
+  const result = resolveEncounter(state, 'endure', 1_000, 0.5);
+
+  assert.equal(result.ok, false);
+  assert.match(result.message, /寿元不足/);
+});
+
 test('using a cleansing pill lowers heart demon and consumes inventory', () => {
   const state = {
     ...createInitialState(0),
@@ -299,6 +312,21 @@ test('using a cleansing pill lowers heart demon and consumes inventory', () => {
   assert.equal(result.ok, true);
   assert.equal(result.state.inventory.cleansing_pill, 0);
   assert.ok(result.state.heartDemon < 18);
+});
+
+test('using an injury reducing item works at zero injury', () => {
+  const state = {
+    ...createInitialState(0),
+    injury: 0,
+    inventory: { jade_guard: 1 },
+  };
+
+  const result = useInventoryItem(state, 'jade_guard', 1_000);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.jade_guard, 0);
+  assert.equal(result.state.injury, 0);
+  assert.ok(result.state.daoHeart > state.daoHeart);
 });
 
 test('using a missing item is blocked', () => {

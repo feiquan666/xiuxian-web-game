@@ -25,6 +25,7 @@ test('mobile shell exposes all expected tabs and action controls', () => {
   ];
   const requiredPanels = [
     'itemGrid',
+    'resourceCodex',
     'helpContent',
     'characterAvatar',
     'attributeRadar',
@@ -44,11 +45,17 @@ test('mobile shell exposes all expected tabs and action controls', () => {
 
 test('app script imports game engine and wires tabbed gameplay actions', () => {
   const app = readFileSync('src/app.js', 'utf8');
+  const css = readFileSync('styles.css', 'utf8');
 
   assert.match(app, /import\s+\{/);
   assert.match(app, /performAction/);
   assert.match(app, /tryBreakthrough/);
   assert.match(app, /data-tab/);
+  assert.match(app, /bag-category-title/);
+  assert.match(app, /flow-arrow/);
+  assert.match(app, /return 'avatar-core'/);
+  assert.match(css, /\.avatar-core\s+\.avatar-halo/);
+  assert.match(css, /\.resource-codex/);
 });
 
 test('GitHub Pages static site uses branch-deploy friendly relative assets', () => {
