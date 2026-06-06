@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Ink mountain landscape</title>
+  <desc id="desc">Layered ink mountains, mist, a small pavilion, and distant birds for a xiuxian game backdrop.</desc>
+  <defs>
+    <linearGradient id="mist" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f9fbf7" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#f9fbf7" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#f9fbf7" stop-opacity="0.96"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="520" fill="none"/>
+  <path fill="#b9c8c1" opacity="0.48" d="M0 322 104 236l72 31 96-94 122 112 88-78 126 96 118-142 114 128 83-68 118 101 143-146 121 143v201H0Z"/>
+  <path fill="#788e87" opacity="0.36" d="M0 383 132 264l109 89 99-132 144 153 112-118 166 124 92-86 105 75 108-122 133 128v145H0Z"/>
+  <path fill="#273832" opacity="0.26" d="M0 430 116 346l121 42 105-89 139 116 119-80 124 78 118-132 116 119 92-45 150 82v83H0Z"/>
+  <path fill="#182722" opacity="0.2" d="M0 468h1200v52H0z"/>
+  <path fill="url(#mist)" d="M0 228h1200v292H0z"/>
+  <g stroke="#22352f" stroke-width="4" stroke-linecap="round" opacity="0.44">
+    <path d="m908 334 42-34 46 34"/>
+    <path d="M928 334v53M977 334v53M908 387h88"/>
+    <path d="M929 307h46"/>
+  </g>
+  <g fill="none" stroke="#22352f" stroke-width="5" stroke-linecap="round" opacity="0.38">
+    <path d="M176 138c18-21 36-21 54 0"/>
+    <path d="M238 116c15-17 31-17 46 0"/>
+    <path d="M987 128c20-22 39-22 59 0"/>
+  </g>
+  <g fill="#2f735f" opacity="0.36">
+    <circle cx="228" cy="418" r="4"/>
+    <circle cx="254" cy="409" r="3"/>
+    <circle cx="286" cy="424" r="5"/>
+    <circle cx="817" cy="392" r="4"/>
+    <circle cx="844" cy="384" r="3"/>
+  </g>
+</svg>

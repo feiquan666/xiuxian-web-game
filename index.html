@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>修仙小游戏</title>
+    <link rel="preload" href="./assets/ink-mountain.svg" as="image">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
@@ -13,23 +14,46 @@
           <p class="eyebrow">洞府清修</p>
           <h1>修仙小游戏</h1>
         </div>
-        <button id="resetButton" class="icon-button" type="button" title="重置存档" aria-label="重置存档">
-          ↻
-        </button>
+        <button id="resetButton" class="icon-button" type="button" title="重置存档" aria-label="重置存档">↻</button>
       </section>
 
-      <section class="resource-grid" aria-label="资源">
-        <article class="resource-card">
-          <span>境界</span>
-          <strong id="realmName">炼气一层</strong>
+      <section class="hero-scene" aria-label="当前境界">
+        <div>
+          <p id="realmStep" class="eyebrow">修仙第一步</p>
+          <h2 id="realmName">凝气一层</h2>
+          <p id="realmHint" class="realm-hint">入门吐纳，灵气初聚。</p>
+        </div>
+        <span id="breakthroughChance" class="badge">突破率 78%</span>
+      </section>
+
+      <section class="resource-grid" aria-label="核心状态">
+        <article class="resource-card is-primary">
+          <span>修为</span>
+          <strong id="cultivationValue">0</strong>
         </article>
         <article class="resource-card">
-          <span>灵气</span>
-          <strong id="energyValue">0</strong>
+          <span>寿元</span>
+          <strong id="lifeSpanValue">80</strong>
+        </article>
+        <article class="resource-card danger-watch">
+          <span>心魔</span>
+          <strong id="heartDemonValue">0</strong>
+        </article>
+        <article class="resource-card danger-watch">
+          <span>伤势</span>
+          <strong id="injuryValue">0</strong>
+        </article>
+        <article class="resource-card">
+          <span>灵石</span>
+          <strong id="spiritStoneValue">20</strong>
         </article>
         <article class="resource-card">
           <span>丹药</span>
           <strong id="pillValue">0</strong>
+        </article>
+        <article class="resource-card">
+          <span>战力</span>
+          <strong id="combatValue">12</strong>
         </article>
         <article class="resource-card">
           <span>产速</span>
@@ -37,39 +61,63 @@
         </article>
       </section>
 
-      <section class="cultivation-panel" aria-label="修炼">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">周天运转</p>
-            <h2 id="realmTitle">炼气一层</h2>
-          </div>
-          <span id="breakthroughChance" class="badge">突破率 78%</span>
+      <section class="progress-panel" aria-label="突破进度">
+        <div class="progress-track" aria-label="修为进度">
+          <div id="cultivationProgress" class="progress-fill"></div>
         </div>
-        <div class="progress-track" aria-label="灵气进度">
-          <div id="energyProgress" class="progress-fill"></div>
-        </div>
-        <p id="energyRequired" class="muted">0 / 60 灵气</p>
-        <div class="actions">
-          <button id="refineButton" class="primary-action" type="button">炼丹</button>
-          <button id="breakthroughButton" class="secondary-action" type="button" disabled>突破</button>
-        </div>
+        <p id="cultivationRequired" class="muted">0 / 60 修为</p>
         <p id="message" class="message" aria-live="polite"></p>
       </section>
 
-      <section id="encounterPanel" class="encounter-panel hidden" aria-label="奇遇">
-        <p class="eyebrow">奇遇</p>
-        <h2 id="encounterTitle"></h2>
-        <p id="encounterDescription"></p>
-        <div id="encounterChoices" class="choice-list"></div>
+      <nav class="tabbar" aria-label="游戏栏目">
+        <button class="tab-button is-active" type="button" data-tab="practice">修炼</button>
+        <button class="tab-button" type="button" data-tab="encounter">奇遇</button>
+        <button class="tab-button" type="button" data-tab="realm">境界</button>
+        <button class="tab-button" type="button" data-tab="npc">人物</button>
+        <button class="tab-button" type="button" data-tab="log">日志</button>
+      </nav>
+
+      <section id="practicePanel" class="tab-panel is-active" aria-label="修炼操作">
+        <div class="action-grid">
+          <button id="cultivateButton" class="primary-action" type="button">修炼</button>
+          <button id="seclusionButton" type="button">闭关</button>
+          <button id="travelButton" type="button">外出历练</button>
+          <button id="exploreButton" class="risk-action" type="button">探索秘境</button>
+          <button id="breakthroughButton" class="secondary-action" type="button">突破境界</button>
+          <button id="refineButton" type="button">炼丹</button>
+          <button id="healButton" type="button">疗伤</button>
+          <button id="suppressButton" type="button">压制心魔</button>
+          <button id="buyPillButton" type="button">购买丹药</button>
+        </div>
       </section>
 
-      <section class="log-panel" aria-label="修炼日志">
-        <h2>修炼日志</h2>
-        <ol id="logList"></ol>
+      <section id="encounterPanel" class="tab-panel" aria-label="奇遇事件">
+        <div id="encounterEmpty" class="empty-state">山风暂歇，未有奇遇。</div>
+        <article id="encounterCard" class="encounter-card hidden">
+          <p class="eyebrow">奇遇</p>
+          <h2 id="encounterTitle"></h2>
+          <p id="encounterDescription"></p>
+          <div id="encounterMeta" class="meta-row"></div>
+          <div id="encounterChoices" class="choice-list"></div>
+        </article>
+      </section>
+
+      <section id="realmPanel" class="tab-panel" aria-label="境界总览">
+        <div class="stat-strip">
+          <span id="advancedStats"></span>
+        </div>
+        <ol id="realmList" class="realm-list"></ol>
+      </section>
+
+      <section id="npcPanel" class="tab-panel" aria-label="人物羁绊">
+        <ol id="npcList" class="npc-list"></ol>
+      </section>
+
+      <section id="logPanel" class="tab-panel" aria-label="事件日志">
+        <ol id="logList" class="log-list"></ol>
       </section>
     </main>
 
-    <script src="./src/game-browser.js"></script>
-    <script src="./src/app.js"></script>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>

@@ -1,72 +1,51 @@
 :root {
   color-scheme: light;
-  --ink: #20312c;
-  --muted: #65736b;
-  --paper: rgba(255, 253, 246, 0.82);
-  --line: rgba(57, 77, 70, 0.18);
-  --jade: #4f7d69;
-  --moss: #8aa05d;
-  --gold: #b68a38;
-  --mist: #edf4ef;
+  --ink: #17241f;
+  --muted: #65706b;
+  --paper: rgba(255, 255, 250, 0.9);
+  --paper-solid: #fffefa;
+  --line: rgba(38, 55, 49, 0.18);
+  --jade: #2f735f;
+  --pine: #264f46;
+  --amber: #b9872c;
+  --cinnabar: #9a3f3f;
+  --indigo: #4f587a;
+  --mist: #eaf2ee;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  min-width: 320px;
+  background: #dfe8e3;
+}
+
 body {
-  margin: 0;
   min-height: 100vh;
+  margin: 0;
   color: var(--ink);
   font-family: ui-serif, "Songti SC", "STSong", Georgia, serif;
   background:
-    radial-gradient(circle at 12% 18%, rgba(79, 125, 105, 0.16), transparent 28%),
-    radial-gradient(circle at 88% 10%, rgba(80, 101, 126, 0.13), transparent 24%),
-    linear-gradient(165deg, #edf4ef 0%, #dfe9e1 46%, #f7f0df 100%);
-}
-
-body::before {
-  position: fixed;
-  inset: auto -10vw 0 -10vw;
-  height: 34vh;
-  content: "";
-  pointer-events: none;
-  background:
-    linear-gradient(150deg, transparent 15%, rgba(42, 59, 53, 0.14) 16%, transparent 17%),
-    linear-gradient(22deg, transparent 31%, rgba(42, 59, 53, 0.16) 32%, transparent 33%),
-    radial-gradient(ellipse at 44% 100%, rgba(30, 49, 44, 0.19), transparent 58%);
+    linear-gradient(180deg, rgba(224, 235, 230, 0.78), rgba(247, 242, 228, 0.9)),
+    url("./assets/ink-mountain.svg") center bottom / min(1100px, 165vw) auto no-repeat,
+    #dfe8e3;
 }
 
 button {
-  min-height: 44px;
-  border: 0;
+  min-height: 46px;
+  border: 1px solid var(--line);
   border-radius: 8px;
   color: inherit;
   font: inherit;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.game-shell {
-  position: relative;
-  z-index: 1;
-  width: min(920px, 100%);
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 18px;
-}
-
-.topbar,
-.panel-heading,
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: space-between;
+  opacity: 0.48;
 }
 
 h1,
@@ -76,201 +55,397 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.9rem, 7vw, 3.8rem);
-  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.08;
   letter-spacing: 0;
 }
 
 h2 {
   font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: 0;
 }
 
-.eyebrow {
-  color: var(--jade);
-  font-size: 0.78rem;
+.game-shell {
+  width: min(980px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 16px 14px 90px;
+}
+
+.topbar,
+.hero-scene,
+.meta-row,
+.stat-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.topbar {
+  min-height: 56px;
+}
+
+.eyebrow,
+.muted {
+  color: var(--muted);
+  font-size: 0.82rem;
   letter-spacing: 0;
 }
 
 .icon-button {
   width: 48px;
-  border: 1px solid var(--line);
+  flex: 0 0 48px;
   background: var(--paper);
   font-size: 1.35rem;
 }
 
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin: 18px 0 12px;
-}
-
-.resource-card,
-.cultivation-panel,
-.encounter-panel,
-.log-panel {
+.hero-scene,
+.progress-panel,
+.tab-panel,
+.resource-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
-  box-shadow: 0 18px 45px rgba(31, 48, 43, 0.1);
+  box-shadow: 0 16px 34px rgba(28, 45, 39, 0.11);
   backdrop-filter: blur(14px);
 }
 
-.resource-card {
-  padding: 13px;
-}
-
-.resource-card span,
-.muted {
-  display: block;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.resource-card strong {
-  display: block;
-  margin-top: 3px;
-  overflow: hidden;
-  font-size: 1.24rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.cultivation-panel,
-.encounter-panel,
-.log-panel {
-  margin-top: 12px;
+.hero-scene {
+  min-height: 112px;
+  margin-top: 14px;
   padding: 16px;
+  overflow: hidden;
+  background:
+    linear-gradient(105deg, rgba(255, 255, 250, 0.93), rgba(234, 242, 238, 0.66)),
+    url("./assets/ink-mountain.svg") right bottom / 230px auto no-repeat;
+}
+
+.realm-hint {
+  max-width: 34rem;
+  margin-top: 8px;
+  color: #3d514b;
+  line-height: 1.45;
 }
 
 .badge {
   flex: 0 0 auto;
-  padding: 6px 10px;
-  border: 1px solid rgba(182, 138, 56, 0.35);
-  border-radius: 999px;
-  color: #705018;
-  background: rgba(246, 225, 172, 0.45);
+  min-width: 84px;
+  padding: 7px 10px;
+  border: 1px solid rgba(185, 135, 44, 0.32);
+  border-radius: 8px;
+  color: #684913;
+  background: rgba(255, 241, 201, 0.72);
   font-size: 0.9rem;
+  text-align: center;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.resource-card {
+  min-height: 74px;
+  padding: 11px 10px;
+}
+
+.resource-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.resource-card strong {
+  display: block;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 1.04rem;
+  line-height: 1.12;
+}
+
+.resource-card.is-primary {
+  grid-column: span 2;
+  border-color: rgba(47, 115, 95, 0.28);
+}
+
+.danger-watch strong {
+  color: var(--cinnabar);
+}
+
+.progress-panel {
+  margin-top: 12px;
+  padding: 14px;
 }
 
 .progress-track {
   height: 14px;
-  margin-top: 18px;
   overflow: hidden;
-  border-radius: 999px;
-  background: rgba(93, 111, 103, 0.17);
+  border-radius: 8px;
+  background: rgba(69, 88, 82, 0.16);
 }
 
 .progress-fill {
   width: 0%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--jade), var(--moss), var(--gold));
-  transition: width 240ms ease;
-}
-
-.actions {
-  margin-top: 16px;
-}
-
-.actions button {
-  flex: 1;
-}
-
-.primary-action {
-  color: white;
-  background: var(--jade);
-}
-
-.secondary-action {
-  color: #244138;
-  background: rgba(138, 160, 93, 0.25);
+  background: linear-gradient(90deg, var(--jade), var(--amber), var(--indigo));
+  transition: width 220ms ease;
 }
 
 .message {
   min-height: 24px;
+  margin-top: 10px;
+  color: #5c451d;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.tabbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 8px 10px max(8px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: rgba(255, 254, 250, 0.94);
+  backdrop-filter: blur(18px);
+}
+
+.tab-button {
+  min-height: 48px;
+  border-color: transparent;
+  background: transparent;
+  color: #4b5a55;
+  font-size: 0.92rem;
+}
+
+.tab-button.is-active {
+  color: white;
+  background: var(--pine);
+}
+
+.tab-panel {
+  display: none;
   margin-top: 12px;
-  color: #5b4823;
+  padding: 14px;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.action-grid button {
+  min-height: 52px;
+  background: rgba(255, 255, 255, 0.64);
+  font-size: 1rem;
+}
+
+.action-grid .primary-action {
+  color: white;
+  background: var(--jade);
+}
+
+.action-grid .secondary-action {
+  color: white;
+  background: var(--indigo);
+}
+
+.action-grid .risk-action {
+  border-color: rgba(154, 63, 63, 0.28);
+  color: #6c2929;
+  background: rgba(255, 239, 232, 0.76);
+}
+
+.empty-state {
+  min-height: 86px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
   text-align: center;
 }
 
-.encounter-panel {
-  border-color: rgba(182, 138, 56, 0.34);
-  background: rgba(255, 248, 226, 0.9);
+.hidden {
+  display: none !important;
 }
 
-.encounter-panel.hidden {
-  display: none;
-}
-
-.encounter-panel p:not(.eyebrow) {
+.encounter-card h2,
+.encounter-card p:not(.eyebrow) {
   margin-top: 8px;
-  color: #4f4535;
-  line-height: 1.6;
+}
+
+.encounter-card p:not(.eyebrow) {
+  color: #46544f;
+  line-height: 1.55;
+}
+
+.meta-row {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.meta-row span,
+.stat-strip {
+  padding: 6px 8px;
+  border: 1px solid rgba(79, 88, 122, 0.18);
+  border-radius: 8px;
+  color: #39415f;
+  background: rgba(238, 241, 249, 0.72);
+  font-size: 0.82rem;
 }
 
 .choice-list {
   display: grid;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
-.choice-list button {
-  border: 1px solid rgba(182, 138, 56, 0.28);
-  background: rgba(255, 255, 255, 0.55);
+.choice-button {
+  width: 100%;
+  background: var(--paper-solid);
   text-align: left;
 }
 
-.log-panel ol {
+.stat-strip {
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.realm-list,
+.npc-list,
+.log-list {
   display: grid;
-  gap: 7px;
-  margin: 12px 0 0;
+  gap: 8px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.log-panel li {
-  padding-bottom: 7px;
-  border-bottom: 1px dashed var(--line);
-  color: #3e5049;
-  line-height: 1.45;
+.realm-list li,
+.npc-list li,
+.log-list li {
+  min-height: 42px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.55);
+  line-height: 1.35;
 }
 
-@media (min-width: 760px) {
-  .game-shell {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    grid-template-areas:
-      "top top"
-      "resources log"
-      "cultivation log"
-      "encounter log";
-    gap: 14px;
-    align-content: start;
-    padding: 28px;
-  }
+.realm-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 
-  .topbar {
-    grid-area: top;
+.realm-list small {
+  color: var(--muted);
+}
+
+.realm-list li.is-current {
+  border-color: rgba(47, 115, 95, 0.34);
+  background: rgba(228, 243, 236, 0.9);
+}
+
+.realm-list li.is-past {
+  color: #61706a;
+}
+
+.npc-list li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.npc-list strong {
+  color: var(--amber);
+}
+
+.log-list li {
+  color: #3e514b;
+}
+
+@media (max-width: 380px) {
+  .game-shell {
+    padding-inline: 10px;
   }
 
   .resource-grid {
-    grid-area: resources;
-    margin: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .cultivation-panel {
-    grid-area: cultivation;
-    margin: 0;
+  .resource-card.is-primary {
+    grid-column: span 1;
   }
 
-  .encounter-panel {
-    grid-area: encounter;
-    margin: 0;
+  .hero-scene {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 760px) {
+  h1 {
+    font-size: 2.4rem;
   }
 
-  .log-panel {
-    grid-area: log;
-    margin: 0;
+  .game-shell {
+    display: grid;
+    grid-template-columns: 1fr 0.95fr;
+    gap: 14px;
+    align-content: start;
+    padding: 26px 22px 106px;
+  }
+
+  .topbar,
+  .hero-scene,
+  .resource-grid,
+  .progress-panel,
+  .tabbar {
+    grid-column: 1 / -1;
+  }
+
+  .resource-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .tab-panel {
+    min-height: 360px;
+  }
+
+  #practicePanel,
+  #encounterPanel {
+    grid-column: 1;
+  }
+
+  #realmPanel,
+  #npcPanel,
+  #logPanel {
+    grid-column: 2;
+  }
+
+  .tabbar {
+    position: sticky;
+    bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
   }
 }
