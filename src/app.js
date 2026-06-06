@@ -1,4 +1,4 @@
-import {
+const {
   createInitialState,
   defaultEncounters,
   defaultRealms,
@@ -9,7 +9,7 @@ import {
   saveState,
   tick,
   tryBreakthrough,
-} from './game.js';
+} = window.XiuxianGame;
 
 const elements = {
   realmName: document.querySelector('#realmName'),
