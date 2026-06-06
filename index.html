@@ -11,7 +11,7 @@
     <link rel="preload" href="./assets/ink-mountain.svg" as="image">
     <link rel="preload" href="./generated-assets/xiuxian-pack-v1/backgrounds/cave-cultivation.svg" as="image">
     <link rel="preload" href="./generated-assets/xiuxian-pack-v1/sprites/icons-sprite.svg" as="image">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=assets-20260606-1">
   </head>
   <body>
     <main class="game-shell">
@@ -21,73 +21,96 @@
           <h1>修仙小游戏</h1>
         </div>
         <div class="top-actions">
-          <button id="immersiveButton" class="icon-button" type="button" title="沉浸模式" aria-label="沉浸模式">⛶</button>
-          <button id="resetButton" class="icon-button" type="button" title="重置存档" aria-label="重置存档">↻</button>
+          <button id="topMenuButton" class="icon-button menu-button" type="button" title="菜单" aria-label="菜单" aria-expanded="false">菜单</button>
+          <div id="topMenuPanel" class="top-menu-panel hidden" aria-label="更多操作">
+            <button id="immersiveButton" type="button">全屏</button>
+            <button id="helpShortcutButton" type="button">说明</button>
+            <button id="resetButton" type="button">重置</button>
+          </div>
         </div>
       </section>
 
-      <section class="hero-scene" aria-label="当前境界">
+      <section id="compactStatusHeader" class="compact-status-header" aria-label="紧凑状态">
         <div>
-          <p id="realmStep" class="eyebrow">修仙第一步</p>
-          <h2 id="realmName">凝气一层</h2>
-          <p id="realmHint" class="realm-hint">入门吐纳，灵气初聚。</p>
+          <p class="eyebrow">当前境界</p>
+          <strong id="compactRealmName">凝气一层</strong>
         </div>
-        <span id="breakthroughChance" class="badge">突破率 78%</span>
+        <div class="compact-status-grid">
+          <span id="compactCultivation">修为 0 / 60</span>
+          <span id="compactLifeSpan">寿元 80年</span>
+          <span id="compactCombat">战力 12</span>
+          <span id="compactBreakthrough">突破率 78%</span>
+        </div>
       </section>
 
-      <section class="resource-grid" aria-label="核心状态">
-        <article class="resource-card is-primary">
-          <span>修为</span>
-          <strong id="cultivationValue">0</strong>
-        </article>
-        <article class="resource-card">
-          <span>寿元</span>
-          <strong id="lifeSpanValue">80</strong>
-        </article>
-        <article class="resource-card danger-watch">
-          <span>心魔</span>
-          <strong id="heartDemonValue">0</strong>
-        </article>
-        <article class="resource-card danger-watch">
-          <span>伤势</span>
-          <strong id="injuryValue">0</strong>
-        </article>
-        <article class="resource-card">
-          <span>灵石</span>
-          <strong id="spiritStoneValue">20</strong>
-        </article>
-        <article class="resource-card">
-          <span>丹药</span>
-          <strong id="pillValue">0</strong>
-        </article>
-        <article class="resource-card">
-          <span>战力</span>
-          <strong id="combatValue">12</strong>
-        </article>
-        <article class="resource-card">
-          <span>产速</span>
-          <strong id="gainRate">1.0/s</strong>
-        </article>
-      </section>
-
-      <section class="progress-panel" aria-label="突破进度">
-        <div class="progress-track" aria-label="修为进度">
-          <div id="cultivationProgress" class="progress-fill"></div>
-        </div>
-        <p id="cultivationRequired" class="muted">0 / 60 修为</p>
-        <p id="message" class="message" aria-live="polite"></p>
-      </section>
+      <p id="toastMessage" class="toast-message" aria-live="polite"></p>
 
       <nav class="tabbar" aria-label="游戏栏目">
         <button class="tab-button is-active" type="button" data-tab="practice">修炼</button>
         <button class="tab-button" type="button" data-tab="encounter">奇遇</button>
-        <button class="tab-button" type="button" data-tab="bag">储物袋</button>
+        <button class="tab-button" type="button" data-tab="bag" aria-label="储物袋">储物</button>
         <button class="tab-button" type="button" data-tab="npc">人物</button>
-        <button class="tab-button" type="button" data-tab="realm">境界</button>
-        <button class="tab-button" type="button" data-tab="help">说明</button>
+        <button class="tab-button" type="button" data-tab="more">更多</button>
       </nav>
 
       <section id="practicePanel" class="tab-panel is-active" aria-label="修炼操作">
+        <div id="fullStatusDashboard" class="full-status-dashboard">
+          <section class="hero-scene" aria-label="当前境界">
+            <div>
+              <p id="realmStep" class="eyebrow">修仙第一步</p>
+              <h2 id="realmName">凝气一层</h2>
+              <p id="realmHint" class="realm-hint">入门吐纳，灵气初聚。</p>
+            </div>
+            <span id="breakthroughChance" class="badge">突破率 78%</span>
+          </section>
+
+          <section class="resource-grid" aria-label="核心状态">
+            <article class="resource-card is-primary">
+              <span>修为</span>
+              <strong id="cultivationValue">0</strong>
+            </article>
+            <article class="resource-card">
+              <span>寿元</span>
+              <strong id="lifeSpanValue">80年</strong>
+            </article>
+            <article class="resource-card">
+              <span>灵石</span>
+              <strong id="spiritStoneValue">20</strong>
+            </article>
+            <article class="resource-card">
+              <span>丹药</span>
+              <strong id="pillValue">0</strong>
+            </article>
+            <article class="resource-card">
+              <span>战力</span>
+              <strong id="combatValue">12</strong>
+            </article>
+            <article class="resource-card">
+              <span>产速</span>
+              <strong id="gainRate">1.0/s</strong>
+            </article>
+            <article class="resource-card danger-watch">
+              <span>伤势</span>
+              <strong id="injuryValue">0</strong>
+            </article>
+            <article class="resource-card danger-watch">
+              <span>心魔</span>
+              <strong id="heartDemonValue">0</strong>
+            </article>
+          </section>
+
+          <section class="progress-panel" aria-label="突破进度">
+            <div class="progress-heading">
+              <strong id="progressStatus">境界进度</strong>
+              <span id="cultivationRequired" class="muted">修为 0 / 60</span>
+            </div>
+            <div class="progress-track" aria-label="修为进度">
+              <div id="cultivationProgress" class="progress-fill"></div>
+            </div>
+            <p id="message" class="message" aria-live="polite"></p>
+          </section>
+        </div>
+
         <div class="action-grid">
           <button id="cultivateButton" class="primary-action" type="button">修炼</button>
           <button id="seclusionButton" type="button">闭关</button>
@@ -106,6 +129,12 @@
       </section>
 
       <section id="encounterPanel" class="tab-panel" aria-label="奇遇事件">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">奇遇</p>
+            <h2>当前机缘</h2>
+          </div>
+        </div>
         <div id="encounterEmpty" class="empty-state">山风暂歇，未有奇遇。</div>
         <article id="encounterCard" class="encounter-card hidden">
           <div class="encounter-heading">
@@ -127,13 +156,28 @@
             <p class="eyebrow">储物袋</p>
             <h2>行囊法物</h2>
           </div>
-          <span class="badge">可用法物</span>
+          <span class="badge">可使用</span>
+        </div>
+        <div id="bagFilterBar" class="filter-bar" aria-label="储物袋筛选">
+          <button class="filter-button is-active" type="button" data-bag-filter="全部">全部</button>
+          <button class="filter-button" type="button" data-bag-filter="可使用">可使用</button>
+          <button class="filter-button" type="button" data-bag-filter="丹药">丹药</button>
+          <button class="filter-button" type="button" data-bag-filter="法宝">法宝</button>
+          <button class="filter-button" type="button" data-bag-filter="材料">材料</button>
+          <button class="filter-button" type="button" data-bag-filter="特殊">特殊</button>
         </div>
         <div id="resourceCodex" class="resource-codex" aria-label="资源谱"></div>
         <div id="itemGrid" class="bag-grid"></div>
       </section>
 
       <section id="npcPanel" class="tab-panel" aria-label="人物羁绊">
+        <article id="characterSummary" class="character-summary">
+          <div>
+            <p class="eyebrow">人物</p>
+            <h2 id="characterTitle">洞府修士</h2>
+          </div>
+          <div id="characterState" class="character-state">无伤 · 无心魔</div>
+        </article>
         <div class="character-panel">
           <div id="characterAvatar" class="character-avatar" aria-label="当前修士形象"></div>
           <div class="radar-card">
@@ -144,24 +188,59 @@
         <ol id="npcList" class="npc-list"></ol>
       </section>
 
-      <section id="realmPanel" class="tab-panel" aria-label="境界总览">
-        <div class="stat-strip">
-          <span id="advancedStats"></span>
-        </div>
-        <ol id="realmList" class="realm-list"></ol>
-      </section>
-
-      <section id="helpPanel" class="tab-panel" aria-label="游戏说明">
+      <section id="morePanel" class="tab-panel" aria-label="更多内容">
         <div class="panel-heading">
           <div>
-            <p class="eyebrow">说明</p>
-            <h2>修行卷轴</h2>
+            <p class="eyebrow">更多</p>
+            <h2>卷轴与设置</h2>
           </div>
         </div>
-        <div id="helpContent" class="help-flow"></div>
+        <div class="more-grid">
+          <article class="more-card">
+            <p class="eyebrow">境界体系</p>
+            <div class="stat-strip">
+              <span id="advancedStats"></span>
+            </div>
+            <ol id="realmList" class="realm-list"></ol>
+          </article>
+          <article class="more-card">
+            <p class="eyebrow">游戏说明</p>
+            <div id="helpContent" class="help-flow"></div>
+          </article>
+          <article class="more-card">
+            <p class="eyebrow">存档管理</p>
+            <div class="settings-actions">
+              <button type="button" data-menu-action="save">保存</button>
+              <button type="button" data-menu-action="fullscreen">全屏</button>
+              <button type="button" data-menu-action="reset">重置</button>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
 
-    <script type="module" src="./src/app.js"></script>
+    <section id="pillChoiceDialog" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="pillChoiceTitle">
+      <div class="pill-choice-card">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">丹药</p>
+            <h2 id="pillChoiceTitle">选择丹药</h2>
+          </div>
+          <button id="pillChoiceCloseButton" class="icon-button menu-button" type="button">关闭</button>
+        </div>
+        <div class="pill-choice-list">
+          <button type="button" data-pill-choice="qi_pill">
+            <strong>聚气丹</strong>
+            <span>突破准备，20 灵石</span>
+          </button>
+          <button type="button" data-pill-choice="longevity_pill">
+            <strong>寿元丹</strong>
+            <span>寿元 +80，60 灵石</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="./src/app.js?v=assets-20260606-1"></script>
   </body>
 </html>

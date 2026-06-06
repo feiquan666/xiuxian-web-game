@@ -5,15 +5,15 @@ import test from 'node:test';
 test('index uses the module app entry for GitHub Pages', () => {
   const html = readFileSync('index.html', 'utf8');
 
-  assert.match(html, /<script type="module" src="\.\/src\/app\.js"><\/script>/);
+  assert.match(html, /<script type="module" src="\.\/src\/app\.js\?v=[^"]+"><\/script>/);
   assert.equal(html.includes('game-browser.js'), false);
 });
 
 test('mobile shell exposes all expected tabs and action controls', () => {
   const html = readFileSync('index.html', 'utf8');
-  const requiredTabs = ['practice', 'encounter', 'bag', 'npc', 'realm', 'help'];
+  const requiredTabs = ['practice', 'encounter', 'bag', 'npc', 'more'];
   const requiredButtons = [
-    'immersiveButton',
+    'topMenuButton',
     'cultivateButton',
     'seclusionButton',
     'travelButton',
@@ -24,23 +24,38 @@ test('mobile shell exposes all expected tabs and action controls', () => {
     'buyPillButton',
   ];
   const requiredPanels = [
+    'fullStatusDashboard',
+    'compactStatusHeader',
+    'pillChoiceDialog',
+    'pillChoiceTitle',
+    'progressStatus',
+    'toastMessage',
     'itemGrid',
+    'bagFilterBar',
     'resourceCodex',
     'helpContent',
     'characterAvatar',
     'attributeRadar',
+    'morePanel',
   ];
-
   for (const tab of requiredTabs) {
     assert.match(html, new RegExp(`data-tab="${tab}"`));
     assert.match(html, new RegExp(`id="${tab}Panel"`));
   }
+  assert.doesNotMatch(html, /data-tab="help"/);
+  assert.doesNotMatch(html, /data-tab="realm"/);
   for (const id of requiredButtons) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
   for (const id of requiredPanels) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  assert.match(html, /data-pill-choice="longevity_pill"/);
+  assert.doesNotMatch(html, /id="refinePillSelect"/);
+  assert.doesNotMatch(html, /id="buyPillSelect"/);
+  assert.match(html, />储物<\/button>/);
+  assert.match(html, /id="topMenuButton"[^>]*>菜单<\/button>/);
+  assert.doesNotMatch(html, />\.\.\.<\/button>/);
 });
 
 test('app script imports game engine and wires tabbed gameplay actions', () => {
@@ -49,21 +64,42 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
 
   assert.match(app, /import\s+\{/);
   assert.match(app, /performAction/);
+  assert.match(app, /buyPill/);
   assert.match(app, /tryBreakthrough/);
+  assert.match(app, /openPillChoiceDialog/);
+  assert.match(app, /function pillBuyCost/);
+  assert.match(app, /has-encounter-notice/);
+  assert.doesNotMatch(app, /switchTab\('encounter'\)/);
+  assert.match(app, /toastTimeoutId/);
+  assert.match(app, /clearTimeout\(toastTimeoutId\)/);
+  assert.match(app, /setTimeout\(/);
   assert.match(app, /data-tab/);
   assert.match(app, /bag-category-title/);
+  assert.match(app, /formatChineseNumber/);
+  assert.match(app, /mergeLogEntries/);
+  assert.match(app, /已满足突破条件/);
   assert.match(app, /flow-arrow/);
   assert.match(app, /return 'avatar-core'/);
   assert.match(css, /\.avatar-core\s+\.avatar-halo/);
+  assert.match(css, /calc\(88px \+ env\(safe-area-inset-bottom\)\)/);
+  assert.match(css, /\.compact-status-header/);
+  assert.match(css, /\.modal-backdrop/);
+  assert.match(css, /\.pill-choice-list/);
+  assert.match(css, /\.tab-button\.has-encounter-notice::after/);
+  assert.doesNotMatch(css, /repeat\(6, minmax\(0, 1fr\)\)/);
+  assert.match(css, /body\[data-active-tab\]:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
+  assert.doesNotMatch(css, /body:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
   assert.match(css, /\.resource-codex/);
+  assert.doesNotMatch(app, /buyPillSelect/);
+  assert.doesNotMatch(app, /selectedPillBuyCost/);
 });
 
 test('GitHub Pages static site uses branch-deploy friendly relative assets', () => {
   const html = readFileSync('index.html', 'utf8');
 
   assert.equal(existsSync('.nojekyll'), true);
-  assert.match(html, /href="\.\/styles\.css"/);
-  assert.match(html, /src="\.\/src\/app\.js"/);
+  assert.match(html, /href="\.\/styles\.css\?v=[^"]+"/);
+  assert.match(html, /src="\.\/src\/app\.js\?v=[^"]+"/);
   assert.match(html, /href="\.\/manifest\.webmanifest"/);
 });
 
@@ -77,7 +113,7 @@ test('generated asset pack is wired into the static UI shell', () => {
   assert.match(html, /generated-assets\/xiuxian-pack-v1\/sprites\/icons-sprite\.svg/);
   assert.match(html, /id="encounterBadge"/);
   assert.match(app, /ASSET_BASE/);
-  assert.match(app, /life_span_pill/);
+  assert.match(app, /longevity_pill/);
   assert.match(app, /encounterBadgePath/);
   assert.match(app, /realmIconPath/);
   assert.match(css, /generated-assets\/xiuxian-pack-v1\/icons\/actions\/cultivate\.svg/);

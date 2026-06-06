@@ -125,10 +125,10 @@ export const defaultEncounters = buildEncounters();
 
 export const defaultItems = [
   item('qi_pill', '聚气丹', '丹药', '灵', '突破时添一分把握。', ['突破', '丹药'], [{ type: 'pills', amount: 1 }], false),
+  item('longevity_pill', '寿元丹', '丹药', '玄', '温补命火，补回消耗的寿元。', ['寿元', '破境'], [{ type: 'lifeSpan', amount: 80 }]),
   item('healing_pill', '疗伤丹', '丹药', '灵', '温养经脉，缓解伤势。', ['疗伤'], [{ type: 'injury', amount: -18 }]),
   item('cleansing_pill', '清心丹', '丹药', '玄', '清心压念，削去心魔。', ['心魔'], [{ type: 'heartDemon', amount: -14 }]),
   item('breakthrough_pill', '破境丹', '丹药', '地', '短时提高突破把握。', ['突破'], [{ type: 'breakthroughBoost', amount: 0.08, durationMs: 180_000 }]),
-  item('life_span_pill', '寿元丹', '丹药', '地', '青金寿纹凝成一线生机，能补回部分寿元。', ['寿元', '珍稀'], [{ type: 'lifeSpan', amount: 30 }]),
   item('array_flag', '阵旗', '法宝', '玄', '避开部分劫锋。', ['抗劫'], [{ type: 'tribulationResistance', amount: 2 }]),
   item('thunder_talisman', '雷劫符', '法宝', '地', '引雷入阵，换取抗劫之力。', ['雷劫'], [{ type: 'tribulationResistance', amount: 4 }, { type: 'injury', amount: 5 }]),
   item('jade_guard', '护身玉简', '法宝', '玄', '危急时护住根基。', ['防护'], [{ type: 'injury', amount: -10 }, { type: 'daoHeart', amount: 1 }]),
@@ -303,21 +303,13 @@ export function performAction(state, actionId, now = Date.now(), roll = Math.ran
   }
 
   if (actionId === 'buyPill') {
-    if (state.spiritStones < 20) {
-      return { ok: false, message: '灵石不足，坊市摊主不肯赊账。', state };
-    }
-    const next = applyEffects(state, [
-      { type: 'spiritStones', amount: -20 },
-      { type: 'pills', amount: 1 },
-      { type: 'alchemy', amount: roll > 0.82 ? 1 : 0 },
-    ], now, roll);
-    return actionResult(next, '换得丹药一枚，突破时可添几分把握。', now);
+    return buyPill(state, 'qi_pill', now, roll);
   }
 
   return { ok: false, message: '此法尚未参透。', state };
 }
 
-export function refinePill(state, now = Date.now(), roll = Math.random()) {
+export function refinePill(state, now = Date.now(), roll = Math.random(), itemId = 'qi_pill') {
   if (state.ending) {
     return { ok: false, message: state.ending, state };
   }
@@ -325,8 +317,13 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
     return { ok: false, message: '丹炉尚温，稍后再炼。', state };
   }
 
+  const selected = getPillOption(itemId);
+  if (!selected) {
+    return { ok: false, message: '此丹方尚未参透。', state };
+  }
+
   const bonus = roll > 0.86 ? 1 : 0;
-  const rareLifeSpanPill = roll > 0.96 ? 1 : 0;
+  const amount = 1 + bonus;
   const next = addLog(
     applyEffects(
       {
@@ -334,9 +331,7 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
         pillCooldownUntil: now + PILL_COOLDOWN_MS,
       },
       [
-        { type: 'pills', amount: 1 + bonus },
-        { type: 'item', itemId: 'qi_pill', amount: 1 + bonus },
-        { type: 'item', itemId: 'life_span_pill', amount: rareLifeSpanPill },
+        ...pillRewardEffects(selected.id, amount),
         { type: 'item', itemId: 'spirit_herb', amount: roll > 0.68 ? 1 : 0 },
         { type: 'alchemy', amount: 1 },
         { type: 'sectContribution', amount: 1 },
@@ -344,10 +339,33 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
       now,
       roll,
     ),
-    rareLifeSpanPill ? '炉中寿纹一闪，得寿元丹一枚。' : bonus ? '炉火生纹，多成一枚聚气丹。' : '炉火一转，得聚气丹一枚。',
+    bonus ? `炉火生纹，多成一枚${selected.name}。` : `炉火一转，得${selected.name}一枚。`,
     now,
   );
-  return { ok: true, message: rareLifeSpanPill ? '得寿元丹一枚。' : bonus ? '多成一枚聚气丹。' : '得聚气丹一枚。', state: next };
+  return { ok: true, message: bonus ? `多成一枚${selected.name}。` : `得${selected.name}一枚。`, state: next };
+}
+
+export function buyPill(state, itemId = 'qi_pill', now = Date.now(), roll = Math.random()) {
+  if (state.ending) {
+    return { ok: false, message: state.ending, state };
+  }
+
+  const selected = getPillOption(itemId);
+  if (!selected) {
+    return { ok: false, message: '坊市暂无此丹。', state };
+  }
+
+  const cost = pillBuyCost(selected.id);
+  if (state.spiritStones < cost) {
+    return { ok: false, message: `灵石不足，购买${selected.name}需要${cost}灵石。`, state };
+  }
+
+  const next = applyEffects(state, [
+    { type: 'spiritStones', amount: -cost },
+    ...pillRewardEffects(selected.id, 1),
+    { type: 'alchemy', amount: roll > 0.82 ? 1 : 0 },
+  ], now, roll);
+  return actionResult(next, `换得${selected.name}一枚。`, now);
 }
 
 export function useInventoryItem(state, itemId, now = Date.now(), varianceRoll = Math.random()) {
@@ -413,7 +431,7 @@ export function tryBreakthrough(state, now = Date.now(), roll = Math.random()) {
 
   const missing = missingRequirements(state, realm);
   if (missing.length > 0) {
-    return { ok: false, message: `${missing[0].label}不足，冲关只会自损根基。`, state };
+    return { ok: false, message: `${missing[0].label}不足（${formatRequirementProgress(missing[0])}），冲关只会自损根基。`, state };
   }
 
   const chance = calculateBreakthroughChance(state);
@@ -615,7 +633,7 @@ function buildRequirements(major, index) {
   if (major === '天人五衰') {
     requirements.daoHeart += 8;
     requirements.tribulationResistance = 8;
-    requirements.lifeSpan = 400;
+    requirements.lifeSpan = 300;
   }
   if (major === '空玄' || major === '空劫') {
     requirements.origin += 8;
@@ -806,6 +824,34 @@ function item(id, name, category, rarity, description, tags, effects, usable = t
   return { id, name, category, rarity, description, tags, effects, usable };
 }
 
+function getPillOption(itemId) {
+  const selected = defaultItems.find((itemConfig) => itemConfig.id === itemId);
+  if (!selected || selected.category !== '丹药') {
+    return null;
+  }
+  if (!['qi_pill', 'longevity_pill'].includes(selected.id)) {
+    return null;
+  }
+  return selected;
+}
+
+function pillBuyCost(itemId) {
+  return {
+    qi_pill: 20,
+    longevity_pill: 60,
+  }[itemId] ?? 20;
+}
+
+function pillRewardEffects(itemId, amount) {
+  if (itemId === 'qi_pill') {
+    return [
+      { type: 'pills', amount },
+      { type: 'item', itemId, amount },
+    ];
+  }
+  return [{ type: 'item', itemId, amount }];
+}
+
 function addInventory(state, itemId, amount) {
   const current = inventoryCount(state, itemId);
   const nextCount = Math.max(0, current + Math.round(amount));
@@ -882,7 +928,16 @@ function missingRequirements(state, realm) {
     .filter(([key]) => key !== 'cultivation')
     .filter(([key, needed]) => Number(state[key] ?? 0) < needed)
     .sort(([left], [right]) => order.indexOf(left) - order.indexOf(right))
-    .map(([key, needed]) => ({ key, needed, label: REQUIREMENT_LABELS[key] ?? key }));
+    .map(([key, needed]) => ({
+      key,
+      needed,
+      current: Math.floor(Number(state[key] ?? 0)),
+      label: REQUIREMENT_LABELS[key] ?? key,
+    }));
+}
+
+function formatRequirementProgress(requirement) {
+  return `${requirement.current} / ${requirement.needed}`;
 }
 
 function normalizeState(state, now) {

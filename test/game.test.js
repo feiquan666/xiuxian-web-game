@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   ATTRIBUTE_KEYS,
+  buyPill,
   calculateBreakthroughChance,
   createInitialState,
   defaultItems,
@@ -128,7 +129,10 @@ test('initial state contains all core and advanced attributes', () => {
 test('item content provides categorized storage bag entries', () => {
   assert.ok(defaultItems.length >= 12);
   assert.ok(defaultItems.some((item) => item.id === 'cleansing_pill' && item.usable));
-  assert.ok(defaultItems.some((item) => item.id === 'life_span_pill' && item.usable));
+  assert.ok(defaultItems.some((item) =>
+    item.id === 'longevity_pill' &&
+    item.name === '寿元丹' &&
+    item.effects.some((effect) => effect.type === 'lifeSpan' && effect.amount > 0)));
   assert.ok(defaultItems.some((item) => item.category === '特殊'));
 });
 
@@ -136,13 +140,13 @@ test('life span pill is usable and restores life span', () => {
   const state = {
     ...createInitialState(0),
     lifeSpan: 40,
-    inventory: { life_span_pill: 1 },
+    inventory: { longevity_pill: 1 },
   };
 
-  const result = useInventoryItem(state, 'life_span_pill', 1_000);
+  const result = useInventoryItem(state, 'longevity_pill', 1_000);
 
   assert.equal(result.ok, true);
-  assert.equal(result.state.inventory.life_span_pill, 0);
+  assert.equal(result.state.inventory.longevity_pill, 0);
   assert.ok(result.state.lifeSpan > state.lifeSpan);
 });
 
@@ -172,14 +176,29 @@ test('refinePill increases pills and sets cooldown', () => {
   assert.ok(result.state.pillCooldownUntil > 1_000);
 });
 
-test('refinePill can rarely produce a life span pill', () => {
+test('refinePill can craft a longevity pill for life span recovery', () => {
   const state = createInitialState(0);
 
-  const result = refinePill(state, 1_000, 0.99);
+  const result = refinePill(state, 1_000, 0.5, 'longevity_pill');
 
   assert.equal(result.ok, true);
-  assert.equal(result.state.inventory.life_span_pill, 1);
+  assert.equal(result.state.inventory.longevity_pill, 1);
+  assert.equal(result.state.pills, 0);
   assert.match(result.message, /寿元丹/);
+});
+
+test('buyPill can buy a selected longevity pill', () => {
+  const state = {
+    ...createInitialState(0),
+    spiritStones: 80,
+  };
+
+  const result = buyPill(state, 'longevity_pill', 1_000, 0.5);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.spiritStones, 20);
+  assert.equal(result.state.inventory.longevity_pill, 1);
+  assert.equal(result.state.pills, 0);
 });
 
 test('breakthrough is blocked before enough cultivation', () => {
@@ -267,6 +286,51 @@ test('failed breakthrough applies heavier penalties during heavenly decline', ()
   assert.ok(result.state.heartDemon > state.heartDemon);
 });
 
+test('heavenly decline breakthrough accepts life span above 300 years', () => {
+  const declineIndex = defaultRealms.findIndex((realm) => realm.major === '天人五衰');
+  const state = {
+    ...createInitialState(0),
+    realmIndex: declineIndex,
+    cultivation: defaultRealms[declineIndex].energyRequired,
+    spiritStones: 300,
+    pills: 2,
+    daoHeart: 40,
+    insight: 300,
+    law: 300,
+    origin: 300,
+    tribulationResistance: 20,
+    lifeSpan: 320,
+  };
+
+  const result = tryBreakthrough(state, 1_000, 0.01);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.realmIndex, declineIndex + 1);
+});
+
+test('life span gate tells the player current and required values', () => {
+  const declineIndex = defaultRealms.findIndex((realm) => realm.major === '天人五衰');
+  const state = {
+    ...createInitialState(0),
+    realmIndex: declineIndex,
+    cultivation: defaultRealms[declineIndex].energyRequired,
+    spiritStones: 300,
+    pills: 2,
+    daoHeart: 40,
+    insight: 300,
+    law: 300,
+    origin: 300,
+    tribulationResistance: 20,
+    lifeSpan: 299,
+  };
+
+  const result = tryBreakthrough(state, 1_000, 0.01);
+
+  assert.equal(result.ok, false);
+  assert.match(result.message, /寿元不足/);
+  assert.match(result.message, /299\s*\/\s*300/);
+});
+
 test('resolveEncounter applies effects and clears pending encounter', () => {
   const event = defaultEncounters.find((item) => item.id === 'npc-wanglin-daoxin');
   const state = {
@@ -337,6 +401,20 @@ test('using a cleansing pill lowers heart demon and consumes inventory', () => {
   assert.equal(result.ok, true);
   assert.equal(result.state.inventory.cleansing_pill, 0);
   assert.ok(result.state.heartDemon < 18);
+});
+
+test('using a longevity pill increases life span and consumes inventory', () => {
+  const state = {
+    ...createInitialState(0),
+    lifeSpan: 7,
+    inventory: { longevity_pill: 1 },
+  };
+
+  const result = useInventoryItem(state, 'longevity_pill', 1_000);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.longevity_pill, 0);
+  assert.ok(result.state.lifeSpan > 7);
 });
 
 test('using an injury reducing item works at zero injury', () => {
