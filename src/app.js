@@ -18,6 +18,7 @@ import {
 } from './game.js';
 
 const elements = {
+  shell: document.querySelector('.game-shell'),
   realmStep: document.querySelector('#realmStep'),
   realmName: document.querySelector('#realmName'),
   realmHint: document.querySelector('#realmHint'),
@@ -32,9 +33,19 @@ const elements = {
   breakthroughChance: document.querySelector('#breakthroughChance'),
   cultivationProgress: document.querySelector('#cultivationProgress'),
   cultivationRequired: document.querySelector('#cultivationRequired'),
+  progressStatus: document.querySelector('#progressStatus'),
   message: document.querySelector('#message'),
+  toastMessage: document.querySelector('#toastMessage'),
+  topMenuButton: document.querySelector('#topMenuButton'),
+  topMenuPanel: document.querySelector('#topMenuPanel'),
   immersiveButton: document.querySelector('#immersiveButton'),
+  helpShortcutButton: document.querySelector('#helpShortcutButton'),
   resetButton: document.querySelector('#resetButton'),
+  compactRealmName: document.querySelector('#compactRealmName'),
+  compactCultivation: document.querySelector('#compactCultivation'),
+  compactLifeSpan: document.querySelector('#compactLifeSpan'),
+  compactCombat: document.querySelector('#compactCombat'),
+  compactBreakthrough: document.querySelector('#compactBreakthrough'),
   cultivateButton: document.querySelector('#cultivateButton'),
   seclusionButton: document.querySelector('#seclusionButton'),
   travelButton: document.querySelector('#travelButton'),
@@ -51,8 +62,12 @@ const elements = {
   encounterMeta: document.querySelector('#encounterMeta'),
   encounterChoices: document.querySelector('#encounterChoices'),
   resourceCodex: document.querySelector('#resourceCodex'),
+  bagFilterBar: document.querySelector('#bagFilterBar'),
+  bagFilterButtons: document.querySelectorAll('[data-bag-filter]'),
   itemGrid: document.querySelector('#itemGrid'),
   characterAvatar: document.querySelector('#characterAvatar'),
+  characterTitle: document.querySelector('#characterTitle'),
+  characterState: document.querySelector('#characterState'),
   attributeRadar: document.querySelector('#attributeRadar'),
   helpContent: document.querySelector('#helpContent'),
   advancedStats: document.querySelector('#advancedStats'),
@@ -75,6 +90,7 @@ const actionButtonMap = new Map([
 
 let state = loadState();
 let activeTab = 'practice';
+let activeBagFilter = '全部';
 
 for (const [button, actionId] of actionButtonMap) {
   button.addEventListener('click', () => runAction(actionId));
@@ -90,7 +106,55 @@ elements.breakthroughButton.addEventListener('click', () => {
   applyResult(result);
 });
 
-elements.immersiveButton.addEventListener('click', async () => {
+elements.topMenuButton.addEventListener('click', () => {
+  const isOpen = !elements.topMenuPanel.classList.contains('hidden');
+  elements.topMenuPanel.classList.toggle('hidden', isOpen);
+  elements.topMenuButton.setAttribute('aria-expanded', String(!isOpen));
+});
+
+elements.immersiveButton.addEventListener('click', () => {
+  elements.topMenuPanel.classList.add('hidden');
+  elements.topMenuButton.setAttribute('aria-expanded', 'false');
+  toggleFullscreen();
+});
+
+elements.helpShortcutButton.addEventListener('click', () => {
+  elements.topMenuPanel.classList.add('hidden');
+  elements.topMenuButton.setAttribute('aria-expanded', 'false');
+  switchTab('more');
+});
+
+elements.resetButton.addEventListener('click', () => {
+  elements.topMenuPanel.classList.add('hidden');
+  elements.topMenuButton.setAttribute('aria-expanded', 'false');
+  resetGame();
+});
+
+for (const button of document.querySelectorAll('[data-menu-action]')) {
+  button.addEventListener('click', () => {
+    if (button.dataset.menuAction === 'save') {
+      saveState(state);
+      showMessage('存档已保存。');
+      return;
+    }
+    if (button.dataset.menuAction === 'fullscreen') {
+      toggleFullscreen();
+      return;
+    }
+    if (button.dataset.menuAction === 'reset') {
+      resetGame();
+    }
+  });
+}
+
+for (const button of elements.bagFilterButtons) {
+  button.addEventListener('click', () => {
+    activeBagFilter = button.dataset.bagFilter;
+    renderInventory();
+  });
+}
+
+async function toggleFullscreen() {
   try {
     if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
       await document.documentElement.requestFullscreen();
@@ -104,9 +168,9 @@ elements.immersiveButton.addEventListener('click', async () => {
   } catch {
     showMessage('全屏需要浏览器允许。');
   }
-});
+}
 
-elements.resetButton.addEventListener('click', () => {
+function resetGame() {
   if (!confirm('确定重置存档，重新入山吗？')) {
     return;
   }
@@ -114,12 +178,13 @@ elements.resetButton.addEventListener('click', () => {
   saveState(state);
   showMessage('重新入山。');
   render();
-});
+}
 
 for (const button of elements.tabButtons) {
   button.addEventListener('click', () => {
-    activeTab = button.dataset.tab;
-    renderTabs();
+    elements.topMenuPanel.classList.add('hidden');
+    elements.topMenuButton.setAttribute('aria-expanded', 'false');
+    switchTab(button.dataset.tab);
   });
 }
 
@@ -127,7 +192,7 @@ function runAction(actionId) {
   const result = performAction(state, actionId);
   applyResult(result);
   if (state.pendingEncounterId) {
-    activeTab = 'encounter';
+    switchTab('encounter');
   }
 }
 
@@ -146,7 +211,9 @@ function gameTick() {
 
 function render() {
   const realm = getCurrentRealm(state);
-  const progress = Math.min(1, state.cultivation / realm.energyRequired);
+  const progressRatio = realm.energyRequired > 0 ? state.cultivation / realm.energyRequired : 0;
+  const progress = clamp(progressRatio, 0, 1);
+  const hasReachedBreakthrough = progressRatio >= 1;
   const cooldownLeft = Math.max(0, Math.ceil((state.pillCooldownUntil - Date.now()) / 1000));
   const gainRate = realm.gainRate * (1 + state.aptitude * 0.018 + state.comprehension * 0.014 + state.technique * 0.018);
   const chance = calculateBreakthroughChance(state);
@@ -154,17 +221,26 @@ function render() {
   elements.realmStep.textContent = realm.step;
   elements.realmName.textContent = realm.name;
   elements.realmHint.textContent = realmHint(realm);
-  elements.cultivationValue.textContent = formatNumber(state.cultivation);
-  elements.lifeSpanValue.textContent = `${formatNumber(state.lifeSpan)}年`;
-  elements.heartDemonValue.textContent = formatNumber(state.heartDemon);
-  elements.injuryValue.textContent = formatNumber(state.injury);
-  elements.spiritStoneValue.textContent = formatNumber(state.spiritStones);
-  elements.pillValue.textContent = formatNumber(state.pills);
-  elements.combatValue.textContent = formatNumber(state.combatPower);
+  elements.cultivationValue.textContent = formatChineseNumber(state.cultivation);
+  elements.cultivationValue.title = formatNumber(state.cultivation);
+  elements.lifeSpanValue.textContent = `${formatChineseNumber(state.lifeSpan)}年`;
+  elements.heartDemonValue.textContent = formatChineseNumber(state.heartDemon);
+  elements.injuryValue.textContent = formatChineseNumber(state.injury);
+  elements.spiritStoneValue.textContent = formatChineseNumber(state.spiritStones);
+  elements.pillValue.textContent = formatChineseNumber(state.pills);
+  elements.combatValue.textContent = formatChineseNumber(state.combatPower);
   elements.gainRate.textContent = `${gainRate.toFixed(1)}/s`;
   elements.breakthroughChance.textContent = `突破率 ${Math.round(chance * 100)}%`;
   elements.cultivationProgress.style.width = `${progress * 100}%`;
-  elements.cultivationRequired.textContent = `${formatNumber(state.cultivation)} / ${formatNumber(realm.energyRequired)} 修为`;
+  elements.cultivationProgress.classList.toggle('is-complete', hasReachedBreakthrough);
+  elements.progressStatus.textContent = hasReachedBreakthrough ? '已满足突破条件' : '境界进度';
+  elements.cultivationRequired.textContent = `修为 ${formatChineseNumber(state.cultivation)} / ${formatChineseNumber(realm.energyRequired)}`;
+  elements.cultivationRequired.title = `${formatNumber(state.cultivation)} / ${formatNumber(realm.energyRequired)} 修为`;
+  elements.compactRealmName.textContent = realm.name;
+  elements.compactCultivation.textContent = `修为 ${formatChineseNumber(state.cultivation)} / ${formatChineseNumber(realm.energyRequired)}`;
+  elements.compactLifeSpan.textContent = `寿元 ${formatChineseNumber(state.lifeSpan)}年`;
+  elements.compactCombat.textContent = `战力 ${formatChineseNumber(state.combatPower)}`;
+  elements.compactBreakthrough.textContent = hasReachedBreakthrough ? '可突破' : `突破率 ${Math.round(chance * 100)}%`;
 
   elements.refineButton.disabled = cooldownLeft > 0 || Boolean(state.ending);
   elements.refineButton.textContent = cooldownLeft > 0 ? `炼丹 ${cooldownLeft}s` : '炼丹';
@@ -172,6 +248,10 @@ function render() {
   elements.healButton.disabled = state.spiritStones < 10 || state.injury <= 0 || Boolean(state.ending);
   elements.suppressButton.disabled = state.cultivation < 20 || state.heartDemon <= 0 || Boolean(state.ending);
   elements.buyPillButton.disabled = state.spiritStones < 20 || Boolean(state.ending);
+  setDisabledReason(elements.breakthroughButton, breakthroughDisabledReason(realm));
+  setDisabledReason(elements.healButton, state.injury <= 0 ? '当前伤势为 0，无需疗伤' : state.spiritStones < 10 ? '灵石不足，疗伤需要 10' : '');
+  setDisabledReason(elements.suppressButton, state.heartDemon <= 0 ? '当前心魔为 0，无需压制' : state.cultivation < 20 ? '修为不足，压制需要 20' : '');
+  setDisabledReason(elements.buyPillButton, state.spiritStones < 20 ? '灵石不足，购买丹药需要 20' : '');
 
   renderEncounter();
   renderResourceCodex(realm);
@@ -232,7 +312,7 @@ function renderResourceCodex(realm) {
     ...resourceEntries.map(([label, value, hint]) => {
       const item = document.createElement('article');
       item.className = 'resource-chip';
-      item.innerHTML = `<span>${label}</span><strong>${formatNumber(value)}</strong><small>${hint}</small>`;
+      item.innerHTML = `<span>${label}</span><strong>${formatChineseNumber(value)}</strong><small>${hint}</small>`;
       return item;
     }),
   );
@@ -240,10 +320,18 @@ function renderResourceCodex(realm) {
 
 function renderInventory() {
   const rarityOrder = ['凡', '灵', '玄', '地', '天', '逆'];
-  const items = [...defaultItems].sort((left, right) => {
+  const items = [...defaultItems].filter((item) => {
+    const count = inventoryCount(item.id);
+    if (activeBagFilter === '全部') return true;
+    if (activeBagFilter === '可使用') return item.usable && count > 0;
+    return item.category === activeBagFilter;
+  }).sort((left, right) => {
     if (left.category !== right.category) return left.category.localeCompare(right.category, 'zh-CN');
     return rarityOrder.indexOf(right.rarity) - rarityOrder.indexOf(left.rarity);
   });
+  for (const button of elements.bagFilterButtons) {
+    button.classList.toggle('is-active', button.dataset.bagFilter === activeBagFilter);
+  }
 
   const categories = ['丹药', '法宝', '材料', '特殊'];
   const nodes = [];
@@ -274,7 +362,7 @@ function renderInventory() {
       const title = document.createElement('strong');
       title.textContent = item.name;
       const amount = document.createElement('span');
-      amount.textContent = `x${count}`;
+      amount.textContent = `x${formatChineseNumber(count)}`;
       titleRow.append(title, amount);
 
       const meta = document.createElement('p');
@@ -299,6 +387,7 @@ function renderInventory() {
       useButton.type = 'button';
       useButton.textContent = item.usable ? '使用' : '收纳';
       useButton.disabled = !item.usable || count <= 0 || Boolean(state.ending);
+      setDisabledReason(useButton, !item.usable ? '此物暂不可直接使用' : count <= 0 ? '储物袋中暂无此物' : '');
       useButton.addEventListener('click', () => {
         const result = useInventoryItem(state, item.id);
         applyResult(result);
@@ -307,6 +396,13 @@ function renderInventory() {
       card.append(icon, body, useButton);
       return card;
     }));
+  }
+
+  if (nodes.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.textContent = activeBagFilter === '可使用' ? '暂无可使用法物。' : '此类法物暂未入袋。';
+    nodes.push(empty);
   }
 
   elements.itemGrid.replaceChildren(...nodes);
@@ -330,6 +426,14 @@ function renderRealms() {
 }
 
 function renderCharacter(realm) {
+  elements.characterTitle.textContent = `无名道人 · ${realm.name}`;
+  elements.characterState.textContent = [
+    state.injury > 0 ? `伤势 ${formatChineseNumber(state.injury)}` : '无伤',
+    state.heartDemon > 0 ? `心魔 ${formatChineseNumber(state.heartDemon)}` : '无心魔',
+    `寿元 ${formatChineseNumber(state.lifeSpan)}年`,
+    `战力 ${formatChineseNumber(state.combatPower)}`,
+  ].join(' · ');
+
   elements.characterAvatar.className = [
     'character-avatar',
     avatarClass(realm),
@@ -449,15 +553,16 @@ function renderNpcs() {
 
 function renderLog() {
   elements.logList.replaceChildren(
-    ...state.log.slice(0, 14).map((entry) => {
+    ...mergeLogEntries(state.log).slice(0, 5).map((entry) => {
       const item = document.createElement('li');
-      item.textContent = entry.text;
+      item.textContent = `${formatLogTime(entry.at)} ${entry.text}${entry.count > 1 ? ` x${entry.count}` : ''}`;
       return item;
     }),
   );
 }
 
 function renderTabs() {
+  document.body.dataset.activeTab = activeTab;
   for (const button of elements.tabButtons) {
     button.classList.toggle('is-active', button.dataset.tab === activeTab);
   }
@@ -466,8 +571,16 @@ function renderTabs() {
   }
 }
 
+function switchTab(tabId) {
+  activeTab = tabId;
+  elements.shell.scrollTop = 0;
+  elements.shell.scrollLeft = 0;
+  renderTabs();
+}
+
 function showMessage(message) {
   elements.message.textContent = message;
+  elements.toastMessage.textContent = message;
 }
 
 function metaChip(text) {
@@ -565,6 +678,65 @@ function radarStats(realm) {
     { label: '气运', value: normalizeStat(state.luck, 35) },
     { label: coreLabel, value: normalizeStat(coreValue, 100) },
   ];
+}
+
+function setDisabledReason(button, reason) {
+  if (button.disabled && reason) {
+    button.title = reason;
+    button.setAttribute('aria-label', `${button.textContent}，${reason}`);
+    return;
+  }
+  button.removeAttribute('title');
+  button.removeAttribute('aria-label');
+}
+
+function breakthroughDisabledReason(realm) {
+  if (state.ending) return state.ending;
+  if (realm.final) return '已立当前版本最高境界';
+  if (state.cultivation < realm.energyRequired) return '修为未满，尚不可突破';
+  return '';
+}
+
+function inventoryCount(itemId) {
+  return Math.max(0, Math.floor(Number(state.inventory?.[itemId] ?? 0)));
+}
+
+function mergeLogEntries(logEntries = []) {
+  const merged = [];
+  for (const entry of logEntries) {
+    const latest = merged.at(-1);
+    if (latest?.text === entry.text) {
+      latest.count += 1;
+      continue;
+    }
+    merged.push({ ...entry, count: 1 });
+  }
+  return merged;
+}
+
+function formatLogTime(value) {
+  return new Date(value).toLocaleTimeString('zh-CN', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+function formatChineseNumber(value) {
+  const number = Math.floor(Number(value) || 0);
+  if (number >= 100_000_000) {
+    return `${trimNumber(number / 100_000_000, 2)}亿`;
+  }
+  if (number >= 10_000_000) {
+    return `${Math.round(number / 10_000)}万`;
+  }
+  if (number >= 10_000) {
+    return `${trimNumber(number / 10_000, 1)}万`;
+  }
+  return number.toLocaleString('zh-CN');
+}
+
+function trimNumber(value, digits) {
+  return value.toFixed(digits).replace(/\.0+$/, '').replace(/(\.\d*?)0+$/, '$1');
 }
 
 function radarPoints(values, center, radius) {

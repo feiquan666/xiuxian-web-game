@@ -11,9 +11,9 @@ test('index uses the module app entry for GitHub Pages', () => {
 
 test('mobile shell exposes all expected tabs and action controls', () => {
   const html = readFileSync('index.html', 'utf8');
-  const requiredTabs = ['practice', 'encounter', 'bag', 'npc', 'realm', 'help'];
+  const requiredTabs = ['practice', 'encounter', 'bag', 'npc', 'more'];
   const requiredButtons = [
-    'immersiveButton',
+    'topMenuButton',
     'cultivateButton',
     'seclusionButton',
     'travelButton',
@@ -24,17 +24,25 @@ test('mobile shell exposes all expected tabs and action controls', () => {
     'buyPillButton',
   ];
   const requiredPanels = [
+    'fullStatusDashboard',
+    'compactStatusHeader',
+    'progressStatus',
+    'toastMessage',
     'itemGrid',
+    'bagFilterBar',
     'resourceCodex',
     'helpContent',
     'characterAvatar',
     'attributeRadar',
+    'morePanel',
   ];
 
   for (const tab of requiredTabs) {
     assert.match(html, new RegExp(`data-tab="${tab}"`));
     assert.match(html, new RegExp(`id="${tab}Panel"`));
   }
+  assert.doesNotMatch(html, /data-tab="help"/);
+  assert.doesNotMatch(html, /data-tab="realm"/);
   for (const id of requiredButtons) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
@@ -52,9 +60,14 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(app, /tryBreakthrough/);
   assert.match(app, /data-tab/);
   assert.match(app, /bag-category-title/);
+  assert.match(app, /formatChineseNumber/);
+  assert.match(app, /mergeLogEntries/);
+  assert.match(app, /已满足突破条件/);
   assert.match(app, /flow-arrow/);
   assert.match(app, /return 'avatar-core'/);
   assert.match(css, /\.avatar-core\s+\.avatar-halo/);
+  assert.match(css, /calc\(88px \+ env\(safe-area-inset-bottom\)\)/);
+  assert.match(css, /\.compact-status-header/);
   assert.match(css, /\.resource-codex/);
 });
 
