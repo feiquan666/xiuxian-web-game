@@ -36,6 +36,10 @@ test('mobile shell exposes all expected tabs and action controls', () => {
     'attributeRadar',
     'morePanel',
   ];
+  const requiredControls = [
+    'refinePillSelect',
+    'buyPillSelect',
+  ];
 
   for (const tab of requiredTabs) {
     assert.match(html, new RegExp(`data-tab="${tab}"`));
@@ -46,9 +50,13 @@ test('mobile shell exposes all expected tabs and action controls', () => {
   for (const id of requiredButtons) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  for (const id of requiredControls) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
   for (const id of requiredPanels) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  assert.match(html, /<option value="longevity_pill">寿元丹<\/option>/);
   assert.match(html, />储物<\/button>/);
   assert.match(html, /id="topMenuButton"[^>]*>菜单<\/button>/);
   assert.doesNotMatch(html, />\.\.\.<\/button>/);
@@ -60,6 +68,7 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
 
   assert.match(app, /import\s+\{/);
   assert.match(app, /performAction/);
+  assert.match(app, /buyPill/);
   assert.match(app, /tryBreakthrough/);
   assert.match(app, /data-tab/);
   assert.match(app, /bag-category-title/);

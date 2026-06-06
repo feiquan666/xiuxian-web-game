@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   ATTRIBUTE_KEYS,
+  buyPill,
   calculateBreakthroughChance,
   createInitialState,
   defaultItems,
@@ -128,6 +129,10 @@ test('initial state contains all core and advanced attributes', () => {
 test('item content provides categorized storage bag entries', () => {
   assert.ok(defaultItems.length >= 12);
   assert.ok(defaultItems.some((item) => item.id === 'cleansing_pill' && item.usable));
+  assert.ok(defaultItems.some((item) =>
+    item.id === 'longevity_pill' &&
+    item.name === '寿元丹' &&
+    item.effects.some((effect) => effect.type === 'lifeSpan' && effect.amount > 0)));
   assert.ok(defaultItems.some((item) => item.category === '特殊'));
 });
 
@@ -155,6 +160,31 @@ test('refinePill increases pills and sets cooldown', () => {
   assert.equal(result.ok, true);
   assert.equal(result.state.pills, 1);
   assert.ok(result.state.pillCooldownUntil > 1_000);
+});
+
+test('refinePill can craft a longevity pill for life span recovery', () => {
+  const state = createInitialState(0);
+
+  const result = refinePill(state, 1_000, 0.5, 'longevity_pill');
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.longevity_pill, 1);
+  assert.equal(result.state.pills, 0);
+  assert.match(result.message, /寿元丹/);
+});
+
+test('buyPill can buy a selected longevity pill', () => {
+  const state = {
+    ...createInitialState(0),
+    spiritStones: 80,
+  };
+
+  const result = buyPill(state, 'longevity_pill', 1_000, 0.5);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.spiritStones, 20);
+  assert.equal(result.state.inventory.longevity_pill, 1);
+  assert.equal(result.state.pills, 0);
 });
 
 test('breakthrough is blocked before enough cultivation', () => {
@@ -312,6 +342,20 @@ test('using a cleansing pill lowers heart demon and consumes inventory', () => {
   assert.equal(result.ok, true);
   assert.equal(result.state.inventory.cleansing_pill, 0);
   assert.ok(result.state.heartDemon < 18);
+});
+
+test('using a longevity pill increases life span and consumes inventory', () => {
+  const state = {
+    ...createInitialState(0),
+    lifeSpan: 7,
+    inventory: { longevity_pill: 1 },
+  };
+
+  const result = useInventoryItem(state, 'longevity_pill', 1_000);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.longevity_pill, 0);
+  assert.ok(result.state.lifeSpan > 7);
 });
 
 test('using an injury reducing item works at zero injury', () => {

@@ -9,7 +9,7 @@
     <title>修仙小游戏</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="preload" href="./assets/ink-mountain.svg" as="image">
-    <link rel="stylesheet" href="./styles.css?v=ui-20260606-2">
+    <link rel="stylesheet" href="./styles.css?v=ui-20260606-3">
   </head>
   <body>
     <main class="game-shell">
@@ -115,9 +115,23 @@
           <button id="travelButton" type="button">外出历练</button>
           <button id="exploreButton" class="risk-action" type="button">探索秘境</button>
           <button id="breakthroughButton" class="secondary-action" type="button">突破境界</button>
+          <label class="action-control">
+            <span>炼制</span>
+            <select id="refinePillSelect" aria-label="选择炼制丹药">
+              <option value="qi_pill">聚气丹</option>
+              <option value="longevity_pill">寿元丹</option>
+            </select>
+          </label>
           <button id="refineButton" type="button">炼丹</button>
           <button id="healButton" type="button">疗伤</button>
           <button id="suppressButton" type="button">压制心魔</button>
+          <label class="action-control">
+            <span>购买</span>
+            <select id="buyPillSelect" aria-label="选择购买丹药">
+              <option value="qi_pill">聚气丹</option>
+              <option value="longevity_pill">寿元丹</option>
+            </select>
+          </label>
           <button id="buyPillButton" type="button">购买丹药</button>
         </div>
         <div class="compact-log">
@@ -212,6 +226,6 @@
       </section>
     </main>
 
-    <script type="module" src="./src/app.js?v=ui-20260606-2"></script>
+    <script type="module" src="./src/app.js?v=ui-20260606-3"></script>
   </body>
 </html>

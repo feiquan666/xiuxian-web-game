@@ -125,6 +125,7 @@ export const defaultEncounters = buildEncounters();
 
 export const defaultItems = [
   item('qi_pill', '聚气丹', '丹药', '灵', '突破时添一分把握。', ['突破', '丹药'], [{ type: 'pills', amount: 1 }], false),
+  item('longevity_pill', '寿元丹', '丹药', '玄', '温补命火，补回消耗的寿元。', ['寿元', '破境'], [{ type: 'lifeSpan', amount: 80 }]),
   item('healing_pill', '疗伤丹', '丹药', '灵', '温养经脉，缓解伤势。', ['疗伤'], [{ type: 'injury', amount: -18 }]),
   item('cleansing_pill', '清心丹', '丹药', '玄', '清心压念，削去心魔。', ['心魔'], [{ type: 'heartDemon', amount: -14 }]),
   item('breakthrough_pill', '破境丹', '丹药', '地', '短时提高突破把握。', ['突破'], [{ type: 'breakthroughBoost', amount: 0.08, durationMs: 180_000 }]),
@@ -302,21 +303,13 @@ export function performAction(state, actionId, now = Date.now(), roll = Math.ran
   }
 
   if (actionId === 'buyPill') {
-    if (state.spiritStones < 20) {
-      return { ok: false, message: '灵石不足，坊市摊主不肯赊账。', state };
-    }
-    const next = applyEffects(state, [
-      { type: 'spiritStones', amount: -20 },
-      { type: 'pills', amount: 1 },
-      { type: 'alchemy', amount: roll > 0.82 ? 1 : 0 },
-    ], now, roll);
-    return actionResult(next, '换得丹药一枚，突破时可添几分把握。', now);
+    return buyPill(state, 'qi_pill', now, roll);
   }
 
   return { ok: false, message: '此法尚未参透。', state };
 }
 
-export function refinePill(state, now = Date.now(), roll = Math.random()) {
+export function refinePill(state, now = Date.now(), roll = Math.random(), itemId = 'qi_pill') {
   if (state.ending) {
     return { ok: false, message: state.ending, state };
   }
@@ -324,7 +317,13 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
     return { ok: false, message: '丹炉尚温，稍后再炼。', state };
   }
 
+  const selected = getPillOption(itemId);
+  if (!selected) {
+    return { ok: false, message: '此丹方尚未参透。', state };
+  }
+
   const bonus = roll > 0.86 ? 1 : 0;
+  const amount = 1 + bonus;
   const next = addLog(
     applyEffects(
       {
@@ -332,8 +331,7 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
         pillCooldownUntil: now + PILL_COOLDOWN_MS,
       },
       [
-        { type: 'pills', amount: 1 + bonus },
-        { type: 'item', itemId: 'qi_pill', amount: 1 + bonus },
+        ...pillRewardEffects(selected.id, amount),
         { type: 'item', itemId: 'spirit_herb', amount: roll > 0.68 ? 1 : 0 },
         { type: 'alchemy', amount: 1 },
         { type: 'sectContribution', amount: 1 },
@@ -341,10 +339,33 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
       now,
       roll,
     ),
-    bonus ? '炉火生纹，多成一枚聚气丹。' : '炉火一转，得聚气丹一枚。',
+    bonus ? `炉火生纹，多成一枚${selected.name}。` : `炉火一转，得${selected.name}一枚。`,
     now,
   );
-  return { ok: true, message: bonus ? '多成一枚聚气丹。' : '得聚气丹一枚。', state: next };
+  return { ok: true, message: bonus ? `多成一枚${selected.name}。` : `得${selected.name}一枚。`, state: next };
+}
+
+export function buyPill(state, itemId = 'qi_pill', now = Date.now(), roll = Math.random()) {
+  if (state.ending) {
+    return { ok: false, message: state.ending, state };
+  }
+
+  const selected = getPillOption(itemId);
+  if (!selected) {
+    return { ok: false, message: '坊市暂无此丹。', state };
+  }
+
+  const cost = pillBuyCost(selected.id);
+  if (state.spiritStones < cost) {
+    return { ok: false, message: `灵石不足，购买${selected.name}需要${cost}灵石。`, state };
+  }
+
+  const next = applyEffects(state, [
+    { type: 'spiritStones', amount: -cost },
+    ...pillRewardEffects(selected.id, 1),
+    { type: 'alchemy', amount: roll > 0.82 ? 1 : 0 },
+  ], now, roll);
+  return actionResult(next, `换得${selected.name}一枚。`, now);
 }
 
 export function useInventoryItem(state, itemId, now = Date.now(), varianceRoll = Math.random()) {
@@ -801,6 +822,34 @@ function choice(id, label, result, effects, npcBond = 0) {
 
 function item(id, name, category, rarity, description, tags, effects, usable = true) {
   return { id, name, category, rarity, description, tags, effects, usable };
+}
+
+function getPillOption(itemId) {
+  const selected = defaultItems.find((itemConfig) => itemConfig.id === itemId);
+  if (!selected || selected.category !== '丹药') {
+    return null;
+  }
+  if (!['qi_pill', 'longevity_pill'].includes(selected.id)) {
+    return null;
+  }
+  return selected;
+}
+
+function pillBuyCost(itemId) {
+  return {
+    qi_pill: 20,
+    longevity_pill: 60,
+  }[itemId] ?? 20;
+}
+
+function pillRewardEffects(itemId, amount) {
+  if (itemId === 'qi_pill') {
+    return [
+      { type: 'pills', amount },
+      { type: 'item', itemId, amount },
+    ];
+  }
+  return [{ type: 'item', itemId, amount }];
 }
 
 function addInventory(state, itemId, amount) {

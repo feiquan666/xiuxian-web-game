@@ -1,5 +1,6 @@
 import {
   actionConfigs,
+  buyPill,
   calculateBreakthroughChance,
   createInitialState,
   defaultEncounters,
@@ -51,9 +52,11 @@ const elements = {
   travelButton: document.querySelector('#travelButton'),
   exploreButton: document.querySelector('#exploreButton'),
   breakthroughButton: document.querySelector('#breakthroughButton'),
+  refinePillSelect: document.querySelector('#refinePillSelect'),
   refineButton: document.querySelector('#refineButton'),
   healButton: document.querySelector('#healButton'),
   suppressButton: document.querySelector('#suppressButton'),
+  buyPillSelect: document.querySelector('#buyPillSelect'),
   buyPillButton: document.querySelector('#buyPillButton'),
   encounterEmpty: document.querySelector('#encounterEmpty'),
   encounterCard: document.querySelector('#encounterCard'),
@@ -85,7 +88,6 @@ const actionButtonMap = new Map([
   [elements.exploreButton, 'explore'],
   [elements.healButton, 'heal'],
   [elements.suppressButton, 'suppress'],
-  [elements.buyPillButton, 'buyPill'],
 ]);
 
 let state = loadState();
@@ -97,7 +99,12 @@ for (const [button, actionId] of actionButtonMap) {
 }
 
 elements.refineButton.addEventListener('click', () => {
-  const result = refinePill(state);
+  const result = refinePill(state, Date.now(), Math.random(), elements.refinePillSelect.value);
+  applyResult(result);
+});
+
+elements.buyPillButton.addEventListener('click', () => {
+  const result = buyPill(state, elements.buyPillSelect.value);
   applyResult(result);
 });
 
@@ -153,6 +160,8 @@ for (const button of elements.bagFilterButtons) {
     renderInventory();
   });
 }
+
+elements.buyPillSelect.addEventListener('change', render);
 
 async function toggleFullscreen() {
   try {
@@ -217,6 +226,7 @@ function render() {
   const cooldownLeft = Math.max(0, Math.ceil((state.pillCooldownUntil - Date.now()) / 1000));
   const gainRate = realm.gainRate * (1 + state.aptitude * 0.018 + state.comprehension * 0.014 + state.technique * 0.018);
   const chance = calculateBreakthroughChance(state);
+  const buyCost = selectedPillBuyCost();
 
   elements.realmStep.textContent = realm.step;
   elements.realmName.textContent = realm.name;
@@ -247,11 +257,12 @@ function render() {
   elements.breakthroughButton.disabled = state.cultivation < realm.energyRequired || realm.final || Boolean(state.ending);
   elements.healButton.disabled = state.spiritStones < 10 || state.injury <= 0 || Boolean(state.ending);
   elements.suppressButton.disabled = state.cultivation < 20 || state.heartDemon <= 0 || Boolean(state.ending);
-  elements.buyPillButton.disabled = state.spiritStones < 20 || Boolean(state.ending);
+  elements.buyPillButton.disabled = state.spiritStones < buyCost || Boolean(state.ending);
+  elements.buyPillButton.textContent = `购买丹药 ${buyCost}`;
   setDisabledReason(elements.breakthroughButton, breakthroughDisabledReason(realm));
   setDisabledReason(elements.healButton, state.injury <= 0 ? '当前伤势为 0，无需疗伤' : state.spiritStones < 10 ? '灵石不足，疗伤需要 10' : '');
   setDisabledReason(elements.suppressButton, state.heartDemon <= 0 ? '当前心魔为 0，无需压制' : state.cultivation < 20 ? '修为不足，压制需要 20' : '');
-  setDisabledReason(elements.buyPillButton, state.spiritStones < 20 ? '灵石不足，购买丹药需要 20' : '');
+  setDisabledReason(elements.buyPillButton, state.spiritStones < buyCost ? `灵石不足，购买丹药需要 ${buyCost}` : '');
 
   renderEncounter();
   renderResourceCodex(realm);
@@ -699,6 +710,10 @@ function breakthroughDisabledReason(realm) {
 
 function inventoryCount(itemId) {
   return Math.max(0, Math.floor(Number(state.inventory?.[itemId] ?? 0)));
+}
+
+function selectedPillBuyCost() {
+  return elements.buyPillSelect.value === 'longevity_pill' ? 60 : 20;
 }
 
 function mergeLogEntries(logEntries = []) {

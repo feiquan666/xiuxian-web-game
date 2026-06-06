@@ -46,6 +46,15 @@ button {
   touch-action: manipulation;
 }
 
+select {
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.82);
+  font: inherit;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.48;
@@ -1160,6 +1169,28 @@ body[data-active-tab="practice"] .toast-message {
   min-height: 50px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.82);
+}
+
+.action-control {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 10px;
+  border: 1px solid rgba(40, 80, 60, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 250, 0.84);
+  color: #3e514b;
+  font-size: 0.92rem;
+}
+
+.action-control select {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .action-grid .primary-action {
