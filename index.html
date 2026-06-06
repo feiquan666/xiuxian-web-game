@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>修仙小游戏</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="topbar" aria-label="角色状态">
+        <div>
+          <p class="eyebrow">洞府清修</p>
+          <h1>修仙小游戏</h1>
+        </div>
+        <button id="resetButton" class="icon-button" type="button" title="重置存档" aria-label="重置存档">
+          ↻
+        </button>
+      </section>
+
+      <section class="resource-grid" aria-label="资源">
+        <article class="resource-card">
+          <span>境界</span>
+          <strong id="realmName">炼气一层</strong>
+        </article>
+        <article class="resource-card">
+          <span>灵气</span>
+          <strong id="energyValue">0</strong>
+        </article>
+        <article class="resource-card">
+          <span>丹药</span>
+          <strong id="pillValue">0</strong>
+        </article>
+        <article class="resource-card">
+          <span>产速</span>
+          <strong id="gainRate">1.0/s</strong>
+        </article>
+      </section>
+
+      <section class="cultivation-panel" aria-label="修炼">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">周天运转</p>
+            <h2 id="realmTitle">炼气一层</h2>
+          </div>
+          <span id="breakthroughChance" class="badge">突破率 78%</span>
+        </div>
+        <div class="progress-track" aria-label="灵气进度">
+          <div id="energyProgress" class="progress-fill"></div>
+        </div>
+        <p id="energyRequired" class="muted">0 / 60 灵气</p>
+        <div class="actions">
+          <button id="refineButton" class="primary-action" type="button">炼丹</button>
+          <button id="breakthroughButton" class="secondary-action" type="button" disabled>突破</button>
+        </div>
+        <p id="message" class="message" aria-live="polite"></p>
+      </section>
+
+      <section id="encounterPanel" class="encounter-panel hidden" aria-label="奇遇">
+        <p class="eyebrow">奇遇</p>
+        <h2 id="encounterTitle"></h2>
+        <p id="encounterDescription"></p>
+        <div id="encounterChoices" class="choice-list"></div>
+      </section>
+
+      <section class="log-panel" aria-label="修炼日志">
+        <h2>修炼日志</h2>
+        <ol id="logList"></ol>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
