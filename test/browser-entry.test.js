@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 
 test('index uses the module app entry for GitHub Pages', () => {
@@ -51,11 +51,11 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(app, /data-tab/);
 });
 
-test('GitHub Pages workflow deploys the static site through Actions', () => {
-  const workflow = readFileSync('.github/workflows/pages.yml', 'utf8');
+test('GitHub Pages static site uses branch-deploy friendly relative assets', () => {
+  const html = readFileSync('index.html', 'utf8');
 
-  assert.match(workflow, /actions\/configure-pages/);
-  assert.match(workflow, /actions\/upload-pages-artifact/);
-  assert.match(workflow, /actions\/deploy-pages/);
-  assert.match(workflow, /github-pages/);
+  assert.equal(existsSync('.nojekyll'), true);
+  assert.match(html, /href="\.\/styles\.css"/);
+  assert.match(html, /src="\.\/src\/app\.js"/);
+  assert.match(html, /href="\.\/manifest\.webmanifest"/);
 });

@@ -150,7 +150,7 @@ test('player actions provide feedback and affect different risk tracks', () => {
 test('refinePill increases pills and sets cooldown', () => {
   const state = createInitialState(0);
 
-  const result = refinePill(state, 1_000);
+  const result = refinePill(state, 1_000, 0.5);
 
   assert.equal(result.ok, true);
   assert.equal(result.state.pills, 1);
