@@ -11,8 +11,9 @@ test('index uses the module app entry for GitHub Pages', () => {
 
 test('mobile shell exposes all expected tabs and action controls', () => {
   const html = readFileSync('index.html', 'utf8');
-  const requiredTabs = ['practice', 'encounter', 'realm', 'npc', 'log'];
+  const requiredTabs = ['practice', 'encounter', 'bag', 'npc', 'realm', 'help'];
   const requiredButtons = [
+    'immersiveButton',
     'cultivateButton',
     'seclusionButton',
     'travelButton',
@@ -22,12 +23,21 @@ test('mobile shell exposes all expected tabs and action controls', () => {
     'suppressButton',
     'buyPillButton',
   ];
+  const requiredPanels = [
+    'itemGrid',
+    'helpContent',
+    'characterAvatar',
+    'attributeRadar',
+  ];
 
   for (const tab of requiredTabs) {
     assert.match(html, new RegExp(`data-tab="${tab}"`));
     assert.match(html, new RegExp(`id="${tab}Panel"`));
   }
   for (const id of requiredButtons) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  for (const id of requiredPanels) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
 });

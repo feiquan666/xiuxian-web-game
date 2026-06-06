@@ -1,5 +1,5 @@
 export const SAVE_KEY = 'xiuxian-web-save-v1';
-export const SAVE_VERSION = 2;
+export const SAVE_VERSION = 3;
 export const MAX_OFFLINE_SECONDS = 8 * 60 * 60;
 export const PILL_COOLDOWN_MS = 18_000;
 export const LOG_LIMIT = 60;
@@ -43,6 +43,8 @@ const REQUIREMENT_LABELS = {
   technique: '功法',
   sectContribution: '宗门贡献',
 };
+
+const COST_RESOURCE_KEYS = new Set(['spiritStones', 'pills', 'lifeSpan', 'sectContribution']);
 
 const MAJOR_STEPS = [
   { major: '凝气', phases: ['一层', '二层', '三层', '四层', '五层', '六层', '七层', '八层', '九层', '十层', '十一层', '十二层', '十三层', '十四层', '十五层'] },
@@ -121,6 +123,26 @@ export const actionConfigs = {
 
 export const defaultEncounters = buildEncounters();
 
+export const defaultItems = [
+  item('qi_pill', '聚气丹', '丹药', '灵', '突破时添一分把握。', ['突破', '丹药'], [{ type: 'pills', amount: 1 }], false),
+  item('healing_pill', '疗伤丹', '丹药', '灵', '温养经脉，缓解伤势。', ['疗伤'], [{ type: 'injury', amount: -18 }]),
+  item('cleansing_pill', '清心丹', '丹药', '玄', '清心压念，削去心魔。', ['心魔'], [{ type: 'heartDemon', amount: -14 }]),
+  item('breakthrough_pill', '破境丹', '丹药', '地', '短时提高突破把握。', ['突破'], [{ type: 'breakthroughBoost', amount: 0.08, durationMs: 180_000 }]),
+  item('array_flag', '阵旗', '法宝', '玄', '避开部分劫锋。', ['抗劫'], [{ type: 'tribulationResistance', amount: 2 }]),
+  item('thunder_talisman', '雷劫符', '法宝', '地', '引雷入阵，换取抗劫之力。', ['雷劫'], [{ type: 'tribulationResistance', amount: 4 }, { type: 'injury', amount: 5 }]),
+  item('jade_guard', '护身玉简', '法宝', '玄', '危急时护住根基。', ['防护'], [{ type: 'injury', amount: -10 }, { type: 'daoHeart', amount: 1 }]),
+  item('ancient_fragment', '古宝残片', '法宝', '地', '残破古宝仍有灵压。', ['战力'], [{ type: 'artifact', amount: 1 }, { type: 'combatPower', amount: 8 }]),
+  item('spirit_herb', '灵草', '材料', '凡', '炼丹常用灵材。', ['材料'], [{ type: 'alchemy', amount: 1 }], false),
+  item('spirit_ore', '灵矿', '材料', '灵', '炼器与阵旗材料。', ['材料'], [{ type: 'spiritStones', amount: 12 }]),
+  item('law_shard', '规则残片', '材料', '天', '隐有天地规则回声。', ['法则'], [{ type: 'law', amount: 4 }]),
+  item('origin_shard', '本源碎片', '材料', '天', '本源之力凝成微光。', ['本源'], [{ type: 'origin', amount: 3 }]),
+  item('incense', '香火', '材料', '玄', '信念杂音与愿力并存。', ['香火'], [{ type: 'cultivation', amount: 700, variance: 0.15 }, { type: 'heartDemon', amount: 2 }]),
+  item('heaven_defying_shadow', '天逆珠碎影', '特殊', '逆', '似能逆转一线命数。', ['气运', '逆修'], [{ type: 'luck', amount: 2 }, { type: 'daoHeart', amount: 2 }]),
+  item('cave_token', '洞府令', '特殊', '玄', '可换一处短暂清修之地。', ['洞府'], [{ type: 'cultivation', amount: 900, variance: 0.12 }]),
+  item('soul_lamp', '命魂灯', '特殊', '地', '灯火不灭，道心不散。', ['寿元'], [{ type: 'lifeSpan', amount: 20 }, { type: 'heartDemon', amount: -5 }]),
+  item('remnant_scroll', '残卷', '特殊', '地', '半页残卷藏着入道门径。', ['功法'], [{ type: 'technique', amount: 1 }, { type: 'comprehension', amount: 1 }]),
+];
+
 export function createInitialState(now = Date.now()) {
   return {
     saveVersion: SAVE_VERSION,
@@ -145,6 +167,10 @@ export function createInitialState(now = Date.now()) {
     technique: 1,
     sectContribution: 0,
     pills: 0,
+    inventory: {
+      cleansing_pill: 1,
+      cave_token: 1,
+    },
     titles: [],
     buffs: [],
     npcBonds: {},
@@ -220,12 +246,15 @@ export function performAction(state, actionId, now = Date.now(), roll = Math.ran
   }
 
   if (actionId === 'travel') {
-    const base = applyEffects(state, [
+    const effects = [
       { type: 'cultivation', amount: Math.round(realm.gainRate * 18), variance: 0.35 },
       { type: 'spiritStones', amount: 6, variance: 0.4 },
       { type: 'reputation', amount: 1 },
       { type: 'injury', amount: roll < 0.18 ? 6 : 0 },
-    ], now, roll);
+    ];
+    if (roll > 0.56) effects.push({ type: 'item', itemId: 'spirit_ore', amount: 1 });
+    if (roll > 0.74) effects.push({ type: 'item', itemId: 'cave_token', amount: 1 });
+    const base = applyEffects(state, effects, now, roll);
     const withEncounter = roll < 0.22 ? maybeRollEncounter(base, now, 0, roll) : base;
     return actionResult(withEncounter, withEncounter.pendingEncounterId ? '外出历练时撞见一桩奇遇。' : '历练归来，行囊与见识都重了些。', now);
   }
@@ -240,6 +269,9 @@ export function performAction(state, actionId, now = Date.now(), roll = Math.ran
     ];
     if (realm.index >= firstIndexOf('窥涅')) effects.push({ type: 'law', amount: 1 });
     if (realm.index >= firstIndexOf('碎涅')) effects.push({ type: 'origin', amount: 1 });
+    if (realm.index >= firstIndexOf('窥涅') && roll > 0.44) effects.push({ type: 'item', itemId: 'law_shard', amount: 1 });
+    if (realm.index >= firstIndexOf('碎涅') && roll > 0.62) effects.push({ type: 'item', itemId: 'origin_shard', amount: 1 });
+    if (realm.special && roll > 0.7) effects.push({ type: 'item', itemId: 'heaven_defying_shadow', amount: 1 });
     if (roll < 0.28) effects.push({ type: 'injury', amount: 12 }, { type: 'heartDemon', amount: 7 });
     const next = maybeRollEncounter(applyEffects(state, effects, now, roll), now, 0.01, roll);
     return actionResult(next, roll < 0.28 ? '秘境崩塌前夺路而出，机缘到手，伤势也不轻。' : '秘境深处有所得。', now);
@@ -301,6 +333,8 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
       },
       [
         { type: 'pills', amount: 1 + bonus },
+        { type: 'item', itemId: 'qi_pill', amount: 1 + bonus },
+        { type: 'item', itemId: 'spirit_herb', amount: roll > 0.68 ? 1 : 0 },
         { type: 'alchemy', amount: 1 },
         { type: 'sectContribution', amount: 1 },
       ],
@@ -311,6 +345,28 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
     now,
   );
   return { ok: true, message: bonus ? '多成一枚聚气丹。' : '得聚气丹一枚。', state: next };
+}
+
+export function useInventoryItem(state, itemId, now = Date.now(), varianceRoll = Math.random()) {
+  if (state.ending) {
+    return { ok: false, message: state.ending, state };
+  }
+
+  const selected = defaultItems.find((itemConfig) => itemConfig.id === itemId);
+  if (!selected) {
+    return { ok: false, message: '此物尚未入袋。', state };
+  }
+  if (!selected.usable) {
+    return { ok: false, message: `${selected.name}暂不可直接使用。`, state };
+  }
+  if (inventoryCount(state, itemId) <= 0) {
+    return { ok: false, message: '储物袋中暂无此物。', state };
+  }
+
+  const withConsumed = addInventory(state, itemId, -1);
+  const withEffects = applyEffects(withConsumed, selected.effects, now, varianceRoll);
+  const next = addLog(ensureLiving(withEffects, now), `使用${selected.name}。`, now);
+  return { ok: true, message: `使用${selected.name}。`, state: next };
 }
 
 export function calculateBreakthroughChance(state) {
@@ -326,7 +382,10 @@ export function calculateBreakthroughChance(state) {
     (state.pills > 0 ? 0.06 + state.alchemy * 0.002 : 0) +
     state.technique * 0.004 +
     state.artifact * 0.003 +
-    state.tribulationResistance * 0.004;
+    state.tribulationResistance * 0.004 +
+    activeBuffs(state.buffs, Date.now())
+      .filter((buff) => buff.type === 'breakthroughBoost')
+      .reduce((sum, buff) => sum + buff.amount, 0);
   const penalty = state.heartDemon * 0.006 + state.injury * 0.007;
   const specialPenalty =
     (realm.special === 'five-decline' ? 0.08 : 0) +
@@ -448,7 +507,10 @@ export function resolveEncounter(state, choiceId, now = Date.now(), varianceRoll
     return { ok: false, message: '当前无奇遇。', state };
   }
 
-  const missingCost = choice.effects.find((effect) => effect.amount < 0 && (state[effect.type] ?? 0) < Math.abs(effect.amount));
+  const missingCost = choice.effects.find((effect) =>
+    COST_RESOURCE_KEYS.has(effect.type) &&
+    effect.amount < 0 &&
+    (state[effect.type] ?? 0) < Math.abs(effect.amount));
   if (missingCost && missingCost.type !== 'cultivation') {
     return { ok: false, message: `${REQUIREMENT_LABELS[missingCost.type] ?? '资源'}不足。`, state };
   }
@@ -476,6 +538,9 @@ export function loadState(storage = globalThis.localStorage, now = Date.now()) {
     const parsed = JSON.parse(raw);
     if (parsed.saveVersion === 1) {
       return migrateV1Save(parsed, now);
+    }
+    if (parsed.saveVersion === 2) {
+      return addLog(normalizeState(parsed, now), '储物袋已开，旧物归位。', now);
     }
     if (parsed.saveVersion !== SAVE_VERSION) {
       return addLog(createInitialState(now), '存档版本不兼容，已重新入山。', now);
@@ -734,6 +799,26 @@ function choice(id, label, result, effects, npcBond = 0) {
   return { id, label, result, effects, npcBond };
 }
 
+function item(id, name, category, rarity, description, tags, effects, usable = true) {
+  return { id, name, category, rarity, description, tags, effects, usable };
+}
+
+function addInventory(state, itemId, amount) {
+  const current = inventoryCount(state, itemId);
+  const nextCount = Math.max(0, current + Math.round(amount));
+  return {
+    ...state,
+    inventory: {
+      ...(state.inventory ?? {}),
+      [itemId]: nextCount,
+    },
+  };
+}
+
+function inventoryCount(state, itemId) {
+  return Math.max(0, Math.floor(Number(state.inventory?.[itemId] ?? 0)));
+}
+
 function actionResult(state, message, now) {
   return { ok: true, message, state: addLog(ensureLiving(state, now), message, now) };
 }
@@ -754,6 +839,9 @@ function applyEffects(state, effects, now, varianceRoll = 0.5) {
           },
         ],
       };
+    }
+    if (effect.type === 'item') {
+      return addInventory(next, effect.itemId, amount);
     }
     if (ATTRIBUTE_KEYS.includes(effect.type) || effect.type === 'pills') {
       return setNumeric(next, effect.type, amount);
@@ -802,11 +890,23 @@ function normalizeState(state, now) {
   }
   next.pills = Number.isFinite(Number(next.pills)) ? Math.max(0, Number(next.pills)) : 0;
   next.realmIndex = clamp(Math.floor(Number(next.realmIndex) || 0), 0, defaultRealms.length - 1);
+  next.inventory = normalizeInventory(next.inventory);
   next.buffs = Array.isArray(next.buffs) ? next.buffs : [];
   next.log = Array.isArray(next.log) ? next.log.slice(0, LOG_LIMIT) : initial.log;
   next.npcBonds = next.npcBonds && typeof next.npcBonds === 'object' ? next.npcBonds : {};
   next.npcRecords = Array.isArray(next.npcRecords) ? next.npcRecords : [];
   return ensureLiving(next, now);
+}
+
+function normalizeInventory(inventory) {
+  if (!inventory || typeof inventory !== 'object' || Array.isArray(inventory)) {
+    return {};
+  }
+  return Object.fromEntries(
+    Object.entries(inventory)
+      .map(([itemId, count]) => [itemId, Math.max(0, Math.floor(Number(count) || 0))])
+      .filter(([, count]) => count > 0),
+  );
 }
 
 function migrateV1Save(parsed, now) {

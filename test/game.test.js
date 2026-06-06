@@ -5,6 +5,7 @@ import {
   ATTRIBUTE_KEYS,
   calculateBreakthroughChance,
   createInitialState,
+  defaultItems,
   defaultEncounters,
   defaultRealms,
   getCurrentRealm,
@@ -15,6 +16,7 @@ import {
   resolveEncounter,
   tick,
   tryBreakthrough,
+  useInventoryItem,
 } from '../src/game.js';
 
 test('content follows the Xian Ni main cultivation chain', () => {
@@ -118,7 +120,15 @@ test('initial state contains all core and advanced attributes', () => {
   }
   assert.equal(state.realmIndex, 0);
   assert.equal(getCurrentRealm(state).name, '凝气一层');
-  assert.equal(state.saveVersion, 2);
+  assert.equal(state.saveVersion, 3);
+  assert.ok(Object.hasOwn(state, 'inventory'));
+  assert.equal(typeof state.inventory, 'object');
+});
+
+test('item content provides categorized storage bag entries', () => {
+  assert.ok(defaultItems.length >= 12);
+  assert.ok(defaultItems.some((item) => item.id === 'cleansing_pill' && item.usable));
+  assert.ok(defaultItems.some((item) => item.category === '特殊'));
 });
 
 test('player actions provide feedback and affect different risk tracks', () => {
@@ -248,6 +258,61 @@ test('resolveEncounter applies effects and clears pending encounter', () => {
   assert.equal(result.state.pendingEncounterId, null);
 });
 
+test('encounter costs only block true consumable resources', () => {
+  const state = {
+    ...createInitialState(0),
+    pendingEncounterId: 'five-decline',
+    spiritStones: 100,
+    heartDemon: 0,
+  };
+
+  const result = resolveEncounter(state, 'avoid', 1_000, 0.5);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.heartDemon, 0);
+  assert.equal(result.state.spiritStones, 20);
+});
+
+test('encounter still blocks true resource shortages', () => {
+  const state = {
+    ...createInitialState(0),
+    pendingEncounterId: 'five-decline',
+    spiritStones: 20,
+    heartDemon: 0,
+  };
+
+  const result = resolveEncounter(state, 'avoid', 1_000, 0.5);
+
+  assert.equal(result.ok, false);
+  assert.match(result.message, /灵石不足/);
+});
+
+test('using a cleansing pill lowers heart demon and consumes inventory', () => {
+  const state = {
+    ...createInitialState(0),
+    heartDemon: 18,
+    inventory: { cleansing_pill: 1 },
+  };
+
+  const result = useInventoryItem(state, 'cleansing_pill', 1_000);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.cleansing_pill, 0);
+  assert.ok(result.state.heartDemon < 18);
+});
+
+test('using a missing item is blocked', () => {
+  const state = {
+    ...createInitialState(0),
+    inventory: {},
+  };
+
+  const result = useInventoryItem(state, 'cleansing_pill', 1_000);
+
+  assert.equal(result.ok, false);
+  assert.match(result.message, /储物袋/);
+});
+
 test('weighted encounter rolls respect realm ranges and luck', () => {
   const state = {
     ...createInitialState(0),
@@ -280,9 +345,10 @@ test('loadState migrates v1 browser saves into the expanded v2 state', () => {
 
   const state = loadState(api, 1_000);
 
-  assert.equal(state.saveVersion, 2);
+  assert.equal(state.saveVersion, 3);
   assert.equal(state.realmIndex, 2);
   assert.equal(state.cultivation, 123);
   assert.equal(state.pills, 2);
   assert.equal(state.lifeSpan, 80);
+  assert.ok(Object.hasOwn(state, 'inventory'));
 });

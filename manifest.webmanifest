@@ -1,0 +1,9 @@
+{
+  "name": "修仙小游戏",
+  "short_name": "修仙",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef4ef",
+  "theme_color": "#2f735f",
+  "icons": []
+}
