@@ -243,11 +243,25 @@ h2 {
 }
 
 .tab-button {
+  position: relative;
   min-height: 48px;
   border-color: transparent;
   background: transparent;
   color: #4b5a55;
   font-size: 0.92rem;
+}
+
+.tab-button.has-encounter-notice::after {
+  position: absolute;
+  top: 8px;
+  right: max(12px, 22%);
+  width: 8px;
+  height: 8px;
+  border: 2px solid rgba(255, 254, 250, 0.96);
+  border-radius: 50%;
+  background: var(--cinnabar);
+  box-shadow: 0 0 0 1px rgba(154, 63, 63, 0.18);
+  content: "";
 }
 
 .tab-button.is-active {

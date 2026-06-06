@@ -68,6 +68,8 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(app, /tryBreakthrough/);
   assert.match(app, /openPillChoiceDialog/);
   assert.match(app, /function pillBuyCost/);
+  assert.match(app, /has-encounter-notice/);
+  assert.doesNotMatch(app, /switchTab\('encounter'\)/);
   assert.match(app, /toastTimeoutId/);
   assert.match(app, /clearTimeout\(toastTimeoutId\)/);
   assert.match(app, /setTimeout\(/);
@@ -83,6 +85,7 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(css, /\.compact-status-header/);
   assert.match(css, /\.modal-backdrop/);
   assert.match(css, /\.pill-choice-list/);
+  assert.match(css, /\.tab-button\.has-encounter-notice::after/);
   assert.doesNotMatch(css, /repeat\(6, minmax\(0, 1fr\)\)/);
   assert.match(css, /body\[data-active-tab\]:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
   assert.doesNotMatch(css, /body:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);

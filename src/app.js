@@ -242,9 +242,6 @@ for (const button of elements.tabButtons) {
 function runAction(actionId) {
   const result = performAction(state, actionId);
   applyResult(result);
-  if (state.pendingEncounterId) {
-    switchTab('encounter');
-  }
 }
 
 function applyResult(result) {
@@ -618,8 +615,14 @@ function renderLog() {
 
 function renderTabs() {
   document.body.dataset.activeTab = activeTab;
+  const hasPendingEncounter = Boolean(state.pendingEncounterId);
   for (const button of elements.tabButtons) {
     button.classList.toggle('is-active', button.dataset.tab === activeTab);
+    const shouldShowNotice = button.dataset.tab === 'encounter' && hasPendingEncounter && activeTab !== 'encounter';
+    button.classList.toggle('has-encounter-notice', shouldShowNotice);
+    if (button.dataset.tab === 'encounter') {
+      button.setAttribute('aria-label', shouldShowNotice ? '奇遇，有新奇遇' : '奇遇');
+    }
   }
   for (const panel of elements.panels) {
     panel.classList.toggle('is-active', panel.id === `${activeTab}Panel`);
