@@ -272,6 +272,51 @@ test('failed breakthrough applies heavier penalties during heavenly decline', ()
   assert.ok(result.state.heartDemon > state.heartDemon);
 });
 
+test('heavenly decline breakthrough accepts life span above 300 years', () => {
+  const declineIndex = defaultRealms.findIndex((realm) => realm.major === '天人五衰');
+  const state = {
+    ...createInitialState(0),
+    realmIndex: declineIndex,
+    cultivation: defaultRealms[declineIndex].energyRequired,
+    spiritStones: 300,
+    pills: 2,
+    daoHeart: 40,
+    insight: 300,
+    law: 300,
+    origin: 300,
+    tribulationResistance: 20,
+    lifeSpan: 320,
+  };
+
+  const result = tryBreakthrough(state, 1_000, 0.01);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.realmIndex, declineIndex + 1);
+});
+
+test('life span gate tells the player current and required values', () => {
+  const declineIndex = defaultRealms.findIndex((realm) => realm.major === '天人五衰');
+  const state = {
+    ...createInitialState(0),
+    realmIndex: declineIndex,
+    cultivation: defaultRealms[declineIndex].energyRequired,
+    spiritStones: 300,
+    pills: 2,
+    daoHeart: 40,
+    insight: 300,
+    law: 300,
+    origin: 300,
+    tribulationResistance: 20,
+    lifeSpan: 299,
+  };
+
+  const result = tryBreakthrough(state, 1_000, 0.01);
+
+  assert.equal(result.ok, false);
+  assert.match(result.message, /寿元不足/);
+  assert.match(result.message, /299\s*\/\s*300/);
+});
+
 test('resolveEncounter applies effects and clears pending encounter', () => {
   const event = defaultEncounters.find((item) => item.id === 'npc-wanglin-daoxin');
   const state = {

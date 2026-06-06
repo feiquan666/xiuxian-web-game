@@ -232,7 +232,7 @@ h2 {
   left: 0;
   z-index: 10;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1px;
   width: min(980px, 100%);
   margin: 0 auto;
@@ -900,7 +900,7 @@ h2 {
   .tabbar {
     position: sticky;
     bottom: 12px;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     border: 1px solid var(--line);
     border-radius: 8px;
   }
@@ -1205,6 +1205,49 @@ body[data-active-tab="practice"] .toast-message {
 
 .action-grid .risk-action {
   background: rgba(255, 239, 232, 0.88);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: end center;
+  padding: 18px 14px calc(96px + env(safe-area-inset-bottom));
+  background: rgba(18, 30, 25, 0.24);
+}
+
+.pill-choice-card {
+  width: min(420px, 100%);
+  padding: 14px;
+  border: 1px solid rgba(40, 80, 60, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 250, 0.96);
+  box-shadow: 0 18px 42px rgba(20, 40, 30, 0.18);
+}
+
+.pill-choice-list {
+  display: grid;
+  gap: 8px;
+}
+
+.pill-choice-list button {
+  display: grid;
+  width: 100%;
+  min-height: 64px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.82);
+  text-align: left;
+}
+
+.pill-choice-list strong {
+  color: var(--pine);
+  font-size: 1rem;
+}
+
+.pill-choice-list span {
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
 .filter-bar {

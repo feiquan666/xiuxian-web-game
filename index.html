@@ -9,7 +9,7 @@
     <title>修仙小游戏</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="preload" href="./assets/ink-mountain.svg" as="image">
-    <link rel="stylesheet" href="./styles.css?v=ui-20260606-3">
+    <link rel="stylesheet" href="./styles.css?v=ui-20260606-4">
   </head>
   <body>
     <main class="game-shell">
@@ -115,23 +115,9 @@
           <button id="travelButton" type="button">外出历练</button>
           <button id="exploreButton" class="risk-action" type="button">探索秘境</button>
           <button id="breakthroughButton" class="secondary-action" type="button">突破境界</button>
-          <label class="action-control">
-            <span>炼制</span>
-            <select id="refinePillSelect" aria-label="选择炼制丹药">
-              <option value="qi_pill">聚气丹</option>
-              <option value="longevity_pill">寿元丹</option>
-            </select>
-          </label>
           <button id="refineButton" type="button">炼丹</button>
           <button id="healButton" type="button">疗伤</button>
           <button id="suppressButton" type="button">压制心魔</button>
-          <label class="action-control">
-            <span>购买</span>
-            <select id="buyPillSelect" aria-label="选择购买丹药">
-              <option value="qi_pill">聚气丹</option>
-              <option value="longevity_pill">寿元丹</option>
-            </select>
-          </label>
           <button id="buyPillButton" type="button">购买丹药</button>
         </div>
         <div class="compact-log">
@@ -226,6 +212,28 @@
       </section>
     </main>
 
-    <script type="module" src="./src/app.js?v=ui-20260606-3"></script>
+    <section id="pillChoiceDialog" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="pillChoiceTitle">
+      <div class="pill-choice-card">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">丹药</p>
+            <h2 id="pillChoiceTitle">选择丹药</h2>
+          </div>
+          <button id="pillChoiceCloseButton" class="icon-button menu-button" type="button">关闭</button>
+        </div>
+        <div class="pill-choice-list">
+          <button type="button" data-pill-choice="qi_pill">
+            <strong>聚气丹</strong>
+            <span>突破准备，20 灵石</span>
+          </button>
+          <button type="button" data-pill-choice="longevity_pill">
+            <strong>寿元丹</strong>
+            <span>寿元 +80，60 灵石</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="./src/app.js?v=ui-20260606-4"></script>
   </body>
 </html>

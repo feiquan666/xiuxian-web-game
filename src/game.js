@@ -431,7 +431,7 @@ export function tryBreakthrough(state, now = Date.now(), roll = Math.random()) {
 
   const missing = missingRequirements(state, realm);
   if (missing.length > 0) {
-    return { ok: false, message: `${missing[0].label}不足，冲关只会自损根基。`, state };
+    return { ok: false, message: `${missing[0].label}不足（${formatRequirementProgress(missing[0])}），冲关只会自损根基。`, state };
   }
 
   const chance = calculateBreakthroughChance(state);
@@ -633,7 +633,7 @@ function buildRequirements(major, index) {
   if (major === '天人五衰') {
     requirements.daoHeart += 8;
     requirements.tribulationResistance = 8;
-    requirements.lifeSpan = 400;
+    requirements.lifeSpan = 300;
   }
   if (major === '空玄' || major === '空劫') {
     requirements.origin += 8;
@@ -928,7 +928,16 @@ function missingRequirements(state, realm) {
     .filter(([key]) => key !== 'cultivation')
     .filter(([key, needed]) => Number(state[key] ?? 0) < needed)
     .sort(([left], [right]) => order.indexOf(left) - order.indexOf(right))
-    .map(([key, needed]) => ({ key, needed, label: REQUIREMENT_LABELS[key] ?? key }));
+    .map(([key, needed]) => ({
+      key,
+      needed,
+      current: Math.floor(Number(state[key] ?? 0)),
+      label: REQUIREMENT_LABELS[key] ?? key,
+    }));
+}
+
+function formatRequirementProgress(requirement) {
+  return `${requirement.current} / ${requirement.needed}`;
 }
 
 function normalizeState(state, now) {

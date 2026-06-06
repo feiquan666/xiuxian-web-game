@@ -26,6 +26,8 @@ test('mobile shell exposes all expected tabs and action controls', () => {
   const requiredPanels = [
     'fullStatusDashboard',
     'compactStatusHeader',
+    'pillChoiceDialog',
+    'pillChoiceTitle',
     'progressStatus',
     'toastMessage',
     'itemGrid',
@@ -36,11 +38,6 @@ test('mobile shell exposes all expected tabs and action controls', () => {
     'attributeRadar',
     'morePanel',
   ];
-  const requiredControls = [
-    'refinePillSelect',
-    'buyPillSelect',
-  ];
-
   for (const tab of requiredTabs) {
     assert.match(html, new RegExp(`data-tab="${tab}"`));
     assert.match(html, new RegExp(`id="${tab}Panel"`));
@@ -50,13 +47,12 @@ test('mobile shell exposes all expected tabs and action controls', () => {
   for (const id of requiredButtons) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
-  for (const id of requiredControls) {
-    assert.match(html, new RegExp(`id="${id}"`));
-  }
   for (const id of requiredPanels) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
-  assert.match(html, /<option value="longevity_pill">寿元丹<\/option>/);
+  assert.match(html, /data-pill-choice="longevity_pill"/);
+  assert.doesNotMatch(html, /id="refinePillSelect"/);
+  assert.doesNotMatch(html, /id="buyPillSelect"/);
   assert.match(html, />储物<\/button>/);
   assert.match(html, /id="topMenuButton"[^>]*>菜单<\/button>/);
   assert.doesNotMatch(html, />\.\.\.<\/button>/);
@@ -70,6 +66,11 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(app, /performAction/);
   assert.match(app, /buyPill/);
   assert.match(app, /tryBreakthrough/);
+  assert.match(app, /openPillChoiceDialog/);
+  assert.match(app, /function pillBuyCost/);
+  assert.match(app, /toastTimeoutId/);
+  assert.match(app, /clearTimeout\(toastTimeoutId\)/);
+  assert.match(app, /setTimeout\(/);
   assert.match(app, /data-tab/);
   assert.match(app, /bag-category-title/);
   assert.match(app, /formatChineseNumber/);
@@ -80,9 +81,14 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(css, /\.avatar-core\s+\.avatar-halo/);
   assert.match(css, /calc\(88px \+ env\(safe-area-inset-bottom\)\)/);
   assert.match(css, /\.compact-status-header/);
+  assert.match(css, /\.modal-backdrop/);
+  assert.match(css, /\.pill-choice-list/);
+  assert.doesNotMatch(css, /repeat\(6, minmax\(0, 1fr\)\)/);
   assert.match(css, /body\[data-active-tab\]:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
   assert.doesNotMatch(css, /body:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
   assert.match(css, /\.resource-codex/);
+  assert.doesNotMatch(app, /buyPillSelect/);
+  assert.doesNotMatch(app, /selectedPillBuyCost/);
 });
 
 test('GitHub Pages static site uses branch-deploy friendly relative assets', () => {

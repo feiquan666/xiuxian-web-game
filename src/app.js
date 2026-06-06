@@ -52,12 +52,14 @@ const elements = {
   travelButton: document.querySelector('#travelButton'),
   exploreButton: document.querySelector('#exploreButton'),
   breakthroughButton: document.querySelector('#breakthroughButton'),
-  refinePillSelect: document.querySelector('#refinePillSelect'),
   refineButton: document.querySelector('#refineButton'),
   healButton: document.querySelector('#healButton'),
   suppressButton: document.querySelector('#suppressButton'),
-  buyPillSelect: document.querySelector('#buyPillSelect'),
   buyPillButton: document.querySelector('#buyPillButton'),
+  pillChoiceDialog: document.querySelector('#pillChoiceDialog'),
+  pillChoiceTitle: document.querySelector('#pillChoiceTitle'),
+  pillChoiceCloseButton: document.querySelector('#pillChoiceCloseButton'),
+  pillChoiceButtons: document.querySelectorAll('[data-pill-choice]'),
   encounterEmpty: document.querySelector('#encounterEmpty'),
   encounterCard: document.querySelector('#encounterCard'),
   encounterTitle: document.querySelector('#encounterTitle'),
@@ -93,19 +95,19 @@ const actionButtonMap = new Map([
 let state = loadState();
 let activeTab = 'practice';
 let activeBagFilter = '全部';
+let pendingPillAction = null;
+let toastTimeoutId = null;
 
 for (const [button, actionId] of actionButtonMap) {
   button.addEventListener('click', () => runAction(actionId));
 }
 
 elements.refineButton.addEventListener('click', () => {
-  const result = refinePill(state, Date.now(), Math.random(), elements.refinePillSelect.value);
-  applyResult(result);
+  openPillChoiceDialog('refine');
 });
 
 elements.buyPillButton.addEventListener('click', () => {
-  const result = buyPill(state, elements.buyPillSelect.value);
-  applyResult(result);
+  openPillChoiceDialog('buy');
 });
 
 elements.breakthroughButton.addEventListener('click', () => {
@@ -161,7 +163,25 @@ for (const button of elements.bagFilterButtons) {
   });
 }
 
-elements.buyPillSelect.addEventListener('change', render);
+elements.pillChoiceCloseButton.addEventListener('click', closePillChoiceDialog);
+
+elements.pillChoiceDialog.addEventListener('click', (event) => {
+  if (event.target === elements.pillChoiceDialog) {
+    closePillChoiceDialog();
+  }
+});
+
+for (const button of elements.pillChoiceButtons) {
+  button.addEventListener('click', () => {
+    if (!pendingPillAction) return;
+    const itemId = button.dataset.pillChoice;
+    const result = pendingPillAction === 'refine'
+      ? refinePill(state, Date.now(), Math.random(), itemId)
+      : buyPill(state, itemId);
+    closePillChoiceDialog();
+    applyResult(result);
+  });
+}
 
 async function toggleFullscreen() {
   try {
@@ -187,6 +207,28 @@ function resetGame() {
   saveState(state);
   showMessage('重新入山。');
   render();
+}
+
+function openPillChoiceDialog(action) {
+  pendingPillAction = action;
+  elements.pillChoiceTitle.textContent = action === 'refine' ? '选择炼制丹药' : '选择购买丹药';
+  updatePillChoiceButtons();
+  elements.pillChoiceDialog.classList.remove('hidden');
+}
+
+function closePillChoiceDialog() {
+  pendingPillAction = null;
+  elements.pillChoiceDialog.classList.add('hidden');
+}
+
+function updatePillChoiceButtons() {
+  for (const button of elements.pillChoiceButtons) {
+    const itemId = button.dataset.pillChoice;
+    const cost = pillBuyCost(itemId);
+    const shouldDisable = pendingPillAction === 'buy' && state.spiritStones < cost;
+    button.disabled = shouldDisable;
+    button.title = shouldDisable ? `灵石不足，需要 ${cost}` : '';
+  }
 }
 
 for (const button of elements.tabButtons) {
@@ -226,7 +268,6 @@ function render() {
   const cooldownLeft = Math.max(0, Math.ceil((state.pillCooldownUntil - Date.now()) / 1000));
   const gainRate = realm.gainRate * (1 + state.aptitude * 0.018 + state.comprehension * 0.014 + state.technique * 0.018);
   const chance = calculateBreakthroughChance(state);
-  const buyCost = selectedPillBuyCost();
 
   elements.realmStep.textContent = realm.step;
   elements.realmName.textContent = realm.name;
@@ -246,6 +287,9 @@ function render() {
   elements.progressStatus.textContent = hasReachedBreakthrough ? '已满足突破条件' : '境界进度';
   elements.cultivationRequired.textContent = `修为 ${formatChineseNumber(state.cultivation)} / ${formatChineseNumber(realm.energyRequired)}`;
   elements.cultivationRequired.title = `${formatNumber(state.cultivation)} / ${formatNumber(realm.energyRequired)} 修为`;
+  if (pendingPillAction) {
+    updatePillChoiceButtons();
+  }
   elements.compactRealmName.textContent = realm.name;
   elements.compactCultivation.textContent = `修为 ${formatChineseNumber(state.cultivation)} / ${formatChineseNumber(realm.energyRequired)}`;
   elements.compactLifeSpan.textContent = `寿元 ${formatChineseNumber(state.lifeSpan)}年`;
@@ -257,12 +301,12 @@ function render() {
   elements.breakthroughButton.disabled = state.cultivation < realm.energyRequired || realm.final || Boolean(state.ending);
   elements.healButton.disabled = state.spiritStones < 10 || state.injury <= 0 || Boolean(state.ending);
   elements.suppressButton.disabled = state.cultivation < 20 || state.heartDemon <= 0 || Boolean(state.ending);
-  elements.buyPillButton.disabled = state.spiritStones < buyCost || Boolean(state.ending);
-  elements.buyPillButton.textContent = `购买丹药 ${buyCost}`;
+  elements.buyPillButton.disabled = state.spiritStones < 20 || Boolean(state.ending);
+  elements.buyPillButton.textContent = '购买丹药';
   setDisabledReason(elements.breakthroughButton, breakthroughDisabledReason(realm));
   setDisabledReason(elements.healButton, state.injury <= 0 ? '当前伤势为 0，无需疗伤' : state.spiritStones < 10 ? '灵石不足，疗伤需要 10' : '');
   setDisabledReason(elements.suppressButton, state.heartDemon <= 0 ? '当前心魔为 0，无需压制' : state.cultivation < 20 ? '修为不足，压制需要 20' : '');
-  setDisabledReason(elements.buyPillButton, state.spiritStones < buyCost ? `灵石不足，购买丹药需要 ${buyCost}` : '');
+  setDisabledReason(elements.buyPillButton, state.spiritStones < 20 ? '灵石不足，购买丹药至少需要 20' : '');
 
   renderEncounter();
   renderResourceCodex(realm);
@@ -592,6 +636,13 @@ function switchTab(tabId) {
 function showMessage(message) {
   elements.message.textContent = message;
   elements.toastMessage.textContent = message;
+  if (toastTimeoutId) {
+    clearTimeout(toastTimeoutId);
+  }
+  toastTimeoutId = setTimeout(() => {
+    elements.toastMessage.textContent = '';
+    toastTimeoutId = null;
+  }, 2600);
 }
 
 function metaChip(text) {
@@ -712,8 +763,8 @@ function inventoryCount(itemId) {
   return Math.max(0, Math.floor(Number(state.inventory?.[itemId] ?? 0)));
 }
 
-function selectedPillBuyCost() {
-  return elements.buyPillSelect.value === 'longevity_pill' ? 60 : 20;
+function pillBuyCost(itemId) {
+  return itemId === 'longevity_pill' ? 60 : 20;
 }
 
 function mergeLogEntries(logEntries = []) {
