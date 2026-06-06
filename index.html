@@ -9,7 +9,7 @@
     <title>修仙小游戏</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="preload" href="./assets/ink-mountain.svg" as="image">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=ui-20260606-2">
   </head>
   <body>
     <main class="game-shell">
@@ -19,7 +19,7 @@
           <h1>修仙小游戏</h1>
         </div>
         <div class="top-actions">
-          <button id="topMenuButton" class="icon-button" type="button" title="更多操作" aria-label="更多操作" aria-expanded="false">...</button>
+          <button id="topMenuButton" class="icon-button menu-button" type="button" title="菜单" aria-label="菜单" aria-expanded="false">菜单</button>
           <div id="topMenuPanel" class="top-menu-panel hidden" aria-label="更多操作">
             <button id="immersiveButton" type="button">全屏</button>
             <button id="helpShortcutButton" type="button">说明</button>
@@ -46,7 +46,7 @@
       <nav class="tabbar" aria-label="游戏栏目">
         <button class="tab-button is-active" type="button" data-tab="practice">修炼</button>
         <button class="tab-button" type="button" data-tab="encounter">奇遇</button>
-        <button class="tab-button" type="button" data-tab="bag">储物袋</button>
+        <button class="tab-button" type="button" data-tab="bag" aria-label="储物袋">储物</button>
         <button class="tab-button" type="button" data-tab="npc">人物</button>
         <button class="tab-button" type="button" data-tab="more">更多</button>
       </nav>
@@ -212,6 +212,6 @@
       </section>
     </main>
 
-    <script type="module" src="./src/app.js"></script>
+    <script type="module" src="./src/app.js?v=ui-20260606-2"></script>
   </body>
 </html>

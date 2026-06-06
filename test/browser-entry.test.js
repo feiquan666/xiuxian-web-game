@@ -5,7 +5,7 @@ import test from 'node:test';
 test('index uses the module app entry for GitHub Pages', () => {
   const html = readFileSync('index.html', 'utf8');
 
-  assert.match(html, /<script type="module" src="\.\/src\/app\.js"><\/script>/);
+  assert.match(html, /<script type="module" src="\.\/src\/app\.js\?v=[^"]+"><\/script>/);
   assert.equal(html.includes('game-browser.js'), false);
 });
 
@@ -49,6 +49,9 @@ test('mobile shell exposes all expected tabs and action controls', () => {
   for (const id of requiredPanels) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  assert.match(html, />储物<\/button>/);
+  assert.match(html, /id="topMenuButton"[^>]*>菜单<\/button>/);
+  assert.doesNotMatch(html, />\.\.\.<\/button>/);
 });
 
 test('app script imports game engine and wires tabbed gameplay actions', () => {
@@ -68,6 +71,8 @@ test('app script imports game engine and wires tabbed gameplay actions', () => {
   assert.match(css, /\.avatar-core\s+\.avatar-halo/);
   assert.match(css, /calc\(88px \+ env\(safe-area-inset-bottom\)\)/);
   assert.match(css, /\.compact-status-header/);
+  assert.match(css, /body\[data-active-tab\]:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
+  assert.doesNotMatch(css, /body:not\(\[data-active-tab="practice"\]\)\s+\.compact-status-header/);
   assert.match(css, /\.resource-codex/);
 });
 
@@ -75,7 +80,7 @@ test('GitHub Pages static site uses branch-deploy friendly relative assets', () 
   const html = readFileSync('index.html', 'utf8');
 
   assert.equal(existsSync('.nojekyll'), true);
-  assert.match(html, /href="\.\/styles\.css"/);
-  assert.match(html, /src="\.\/src\/app\.js"/);
+  assert.match(html, /href="\.\/styles\.css\?v=[^"]+"/);
+  assert.match(html, /src="\.\/src\/app\.js\?v=[^"]+"/);
   assert.match(html, /href="\.\/manifest\.webmanifest"/);
 });

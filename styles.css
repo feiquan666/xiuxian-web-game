@@ -942,6 +942,13 @@ body {
   font-size: 1rem;
 }
 
+.menu-button {
+  width: 52px;
+  flex-basis: 52px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .top-menu-panel {
   position: absolute;
   top: calc(100% + 8px);
@@ -974,7 +981,7 @@ body {
   box-shadow: 0 6px 18px rgba(20, 40, 30, 0.06);
 }
 
-body:not([data-active-tab="practice"]) .compact-status-header {
+body[data-active-tab]:not([data-active-tab="practice"]) .compact-status-header {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr);
   gap: 10px;
@@ -1027,8 +1034,12 @@ body[data-active-tab="practice"] .toast-message {
 }
 
 .tab-button {
+  display: grid;
+  place-items: center;
   min-height: 46px;
+  padding: 0 4px;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .tab-panel {
@@ -1300,7 +1311,7 @@ body[data-active-tab="practice"] .toast-message {
 }
 
 @media (max-width: 380px) {
-  body:not([data-active-tab="practice"]) .compact-status-header {
+  body[data-active-tab]:not([data-active-tab="practice"]) .compact-status-header {
     grid-template-columns: 1fr;
   }
 
