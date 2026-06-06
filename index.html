@@ -9,6 +9,8 @@
     <title>修仙小游戏</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="preload" href="./assets/ink-mountain.svg" as="image">
+    <link rel="preload" href="./generated-assets/xiuxian-pack-v1/backgrounds/cave-cultivation.svg" as="image">
+    <link rel="preload" href="./generated-assets/xiuxian-pack-v1/sprites/icons-sprite.svg" as="image">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
@@ -106,8 +108,13 @@
       <section id="encounterPanel" class="tab-panel" aria-label="奇遇事件">
         <div id="encounterEmpty" class="empty-state">山风暂歇，未有奇遇。</div>
         <article id="encounterCard" class="encounter-card hidden">
-          <p class="eyebrow">奇遇</p>
-          <h2 id="encounterTitle"></h2>
+          <div class="encounter-heading">
+            <img id="encounterBadge" class="encounter-badge" src="./generated-assets/xiuxian-pack-v1/icons/npc-badges/root-test.svg" alt="" aria-hidden="true">
+            <div>
+              <p class="eyebrow">奇遇</p>
+              <h2 id="encounterTitle"></h2>
+            </div>
+          </div>
           <p id="encounterDescription"></p>
           <div id="encounterMeta" class="meta-row"></div>
           <div id="encounterChoices" class="choice-list"></div>

@@ -130,7 +130,7 @@ h2 {
   overflow: hidden;
   background:
     linear-gradient(105deg, rgba(255, 255, 250, 0.93), rgba(234, 242, 238, 0.66)),
-    url("./assets/ink-mountain.svg") right bottom / 230px auto no-repeat;
+    url("./generated-assets/xiuxian-pack-v1/backgrounds/cave-cultivation.svg") right bottom / 360px auto no-repeat;
 }
 
 .realm-hint {
@@ -234,16 +234,61 @@ h2 {
 }
 
 .tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
   min-height: 48px;
   border-color: transparent;
   background: transparent;
   color: #4b5a55;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
+}
+
+.tab-button::before,
+.action-grid button::before {
+  display: block;
+  flex: 0 0 auto;
+  width: 21px;
+  height: 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+}
+
+.tab-button::before {
+  filter: saturate(0.9);
 }
 
 .tab-button.is-active {
   color: white;
   background: var(--pine);
+}
+
+.tab-button[data-tab="practice"]::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/cultivate.svg");
+}
+
+.tab-button[data-tab="encounter"]::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/explore-secret-realm.svg");
+}
+
+.tab-button[data-tab="bag"]::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/items/cave-token.svg");
+}
+
+.tab-button[data-tab="npc"]::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/resources/dao-heart.svg");
+}
+
+.tab-button[data-tab="realm"]::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/realms/heaven-trampling.svg");
+}
+
+.tab-button[data-tab="help"]::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/resources/technique.svg");
 }
 
 .tab-panel {
@@ -263,9 +308,54 @@ h2 {
 }
 
 .action-grid button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   min-height: 52px;
   background: rgba(255, 255, 255, 0.64);
   font-size: 1rem;
+}
+
+.action-grid button::before {
+  width: 24px;
+  height: 24px;
+}
+
+#cultivateButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/cultivate.svg");
+}
+
+#seclusionButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/seclusion.svg");
+}
+
+#travelButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/travel.svg");
+}
+
+#exploreButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/explore-secret-realm.svg");
+}
+
+#breakthroughButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/breakthrough.svg");
+}
+
+#refineButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/refine-pill.svg");
+}
+
+#healButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/heal.svg");
+}
+
+#suppressButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/suppress-heart-demon.svg");
+}
+
+#buyPillButton::before {
+  background-image: url("./generated-assets/xiuxian-pack-v1/icons/actions/buy-pill.svg");
 }
 
 .action-grid .primary-action {
@@ -307,6 +397,30 @@ h2 {
 .encounter-card h2,
 .encounter-card p:not(.eyebrow) {
   margin-top: 8px;
+}
+
+.encounter-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 250, 0.88), rgba(255, 255, 250, 0.68)),
+    url("./generated-assets/xiuxian-pack-v1/backgrounds/secret-realm-exploration.svg") right bottom / 460px auto no-repeat,
+    rgba(255, 255, 255, 0.62);
+}
+
+.encounter-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.encounter-badge {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  border: 1px solid rgba(47, 115, 95, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 250, 0.72);
+  object-fit: contain;
+  padding: 4px;
 }
 
 .encounter-card p:not(.eyebrow) {
@@ -363,11 +477,26 @@ h2 {
 }
 
 .resource-chip {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
   min-height: 70px;
   padding: 8px;
   border: 1px solid rgba(47, 115, 95, 0.18);
   border-radius: 8px;
   background: rgba(236, 246, 241, 0.72);
+}
+
+.resource-chip-icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 250, 0.72);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 92%;
 }
 
 .resource-chip span,
@@ -433,6 +562,9 @@ h2 {
   border-radius: 8px;
   color: white;
   background: linear-gradient(140deg, var(--jade), var(--indigo));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 88%;
   font-weight: 700;
 }
 
@@ -525,7 +657,23 @@ h2 {
   padding: 14px;
   background:
     linear-gradient(180deg, rgba(255, 255, 250, 0.8), rgba(226, 235, 230, 0.72)),
-    url("./assets/ink-mountain.svg") center bottom / 320px auto no-repeat;
+    url("./generated-assets/xiuxian-pack-v1/backgrounds/heaven-trampling-nine-bridge.svg") center bottom / 480px auto no-repeat;
+}
+
+.character-avatar::before {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(47, 115, 95, 0.18);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 250, 0.72);
+  background-image: var(--realm-emblem);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 92%;
+  content: "";
 }
 
 .avatar-figure {

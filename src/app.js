@@ -46,6 +46,7 @@ const elements = {
   buyPillButton: document.querySelector('#buyPillButton'),
   encounterEmpty: document.querySelector('#encounterEmpty'),
   encounterCard: document.querySelector('#encounterCard'),
+  encounterBadge: document.querySelector('#encounterBadge'),
   encounterTitle: document.querySelector('#encounterTitle'),
   encounterDescription: document.querySelector('#encounterDescription'),
   encounterMeta: document.querySelector('#encounterMeta'),
@@ -61,6 +62,98 @@ const elements = {
   logList: document.querySelector('#logList'),
   tabButtons: document.querySelectorAll('[data-tab]'),
   panels: document.querySelectorAll('.tab-panel'),
+};
+
+const ASSET_BASE = './generated-assets/xiuxian-pack-v1';
+
+const itemIconPaths = {
+  qi_pill: 'icons/items/qi-pill.svg',
+  healing_pill: 'icons/items/healing-pill.svg',
+  cleansing_pill: 'icons/items/cleansing-pill.svg',
+  breakthrough_pill: 'icons/items/breakthrough-pill.svg',
+  life_span_pill: 'icons/items/life-span-pill.svg',
+  array_flag: 'icons/items/array-flag.svg',
+  thunder_talisman: 'icons/items/thunder-talisman.svg',
+  jade_guard: 'icons/items/jade-guard.svg',
+  ancient_fragment: 'icons/items/ancient-fragment.svg',
+  spirit_herb: 'icons/items/spirit-herb.svg',
+  spirit_ore: 'icons/items/spirit-ore.svg',
+  law_shard: 'icons/items/law-shard.svg',
+  origin_shard: 'icons/items/origin-shard.svg',
+  incense: 'icons/items/incense.svg',
+  heaven_defying_shadow: 'icons/items/heaven-defying-shadow.svg',
+  cave_token: 'icons/items/cave-token.svg',
+  soul_lamp: 'icons/items/soul-lamp.svg',
+  remnant_scroll: 'icons/items/remnant-scroll.svg',
+};
+
+const resourceIconPaths = {
+  灵石: 'icons/resources/spirit-stones.svg',
+  丹药: 'icons/items/qi-pill.svg',
+  法宝: 'icons/resources/artifact.svg',
+  功法: 'icons/resources/technique.svg',
+  意境: 'icons/resources/insight.svg',
+  法则: 'icons/resources/law.svg',
+  本源: 'icons/resources/origin.svg',
+  香火: 'icons/items/incense.svg',
+};
+
+const realmIconPaths = {
+  凝气: 'icons/realms/ningqi.svg',
+  筑基: 'icons/realms/foundation-building.svg',
+  结丹: 'icons/realms/core-formation.svg',
+  元婴: 'icons/realms/nascent-soul.svg',
+  化神: 'icons/realms/spirit-transformation.svg',
+  婴变: 'icons/realms/infant-transformation.svg',
+  问鼎: 'icons/realms/ask-ding.svg',
+  阴虚: 'icons/realms/yin-xu.svg',
+  阳实: 'icons/realms/yang-shi.svg',
+  窥涅: 'icons/realms/peek-nirvana.svg',
+  净涅: 'icons/realms/clean-nirvana.svg',
+  碎涅: 'icons/realms/shatter-nirvana.svg',
+  天人五衰: 'icons/realms/five-declines.svg',
+  空涅: 'icons/realms/empty-nirvana.svg',
+  空灵: 'icons/realms/empty-spirit.svg',
+  空玄: 'icons/realms/empty-mystic.svg',
+  空劫: 'icons/realms/empty-calamity.svg',
+  半步踏天: 'icons/realms/half-step-heaven-trampling.svg',
+  踏天: 'icons/realms/heaven-trampling.svg',
+};
+
+const encounterBadgePaths = {
+  'qigong-root-test': 'icons/npc-badges/root-test.svg',
+  'foundation-cave': 'icons/npc-badges/cave-contest.svg',
+  'core-thunder': 'icons/npc-badges/core-thunder-tribulation.svg',
+  'nascent-out': 'icons/npc-badges/nascent-soul-out-of-body.svg',
+  'spirit-red-dust': 'icons/npc-badges/red-dust-heart-refinement.svg',
+  'infant-transform': 'icons/npc-badges/primordial-spirit-transformation.svg',
+  'ask-ding': 'icons/npc-badges/ask-ding-heaven-gate.svg',
+  'yin-empty': 'icons/npc-badges/void-real-transition.svg',
+  'yang-real': 'icons/npc-badges/origin-threshold.svg',
+  'peek-nirvana': 'icons/npc-badges/first-glimpse-of-law.svg',
+  'clean-nirvana': 'icons/npc-badges/domain-purification.svg',
+  'shatter-nirvana': 'icons/npc-badges/origin-seed.svg',
+  'five-decline': 'icons/npc-badges/encounter-five-declines.svg',
+  'empty-nirvana': 'icons/npc-badges/origin-threshold.svg',
+  'empty-spirit': 'icons/npc-badges/origin-seed.svg',
+  'empty-mystic': 'icons/npc-badges/mystic-tribulation.svg',
+  'empty-calamity': 'icons/npc-badges/domain-purification.svg',
+  'half-heaven': 'icons/npc-badges/heaven-bridge.svg',
+  'heaven-trampling': 'icons/npc-badges/heaven-bridge.svg',
+};
+
+const npcBadgePaths = {
+  王林: 'icons/npc-badges/senior-discourse.svg',
+  司徒南: 'icons/items/heaven-defying-shadow.svg',
+  李慕婉: 'icons/npc-badges/pill-cultivator-gift.svg',
+  柳眉: 'icons/npc-badges/red-dust-heart-refinement.svg',
+  李倩梅: 'icons/resources/dao-heart.svg',
+  清水: 'icons/resources/combat-power.svg',
+  天运子: 'icons/npc-badges/causal-chess-game.svg',
+  朱雀子: 'icons/npc-badges/core-thunder-tribulation.svg',
+  贪狼: 'icons/items/ancient-fragment.svg',
+  木冰眉: 'icons/resources/law.svg',
+  王平: 'icons/resources/origin.svg',
 };
 
 const actionButtonMap = new Map([
@@ -197,6 +290,8 @@ function renderEncounter() {
   }
 
   elements.encounterTitle.textContent = encounter.title;
+  elements.encounterBadge.src = encounterBadgePath(encounter);
+  elements.encounterBadge.alt = '';
   elements.encounterDescription.textContent = encounter.description;
   elements.encounterMeta.replaceChildren(
     metaChip(`风险 ${riskLabel(encounter.risk)}`),
@@ -232,7 +327,12 @@ function renderResourceCodex(realm) {
     ...resourceEntries.map(([label, value, hint]) => {
       const item = document.createElement('article');
       item.className = 'resource-chip';
-      item.innerHTML = `<span>${label}</span><strong>${formatNumber(value)}</strong><small>${hint}</small>`;
+      const icon = document.createElement('span');
+      icon.className = 'resource-chip-icon';
+      icon.style.backgroundImage = `url("${resourceIconPath(label)}")`;
+      const text = document.createElement('div');
+      text.innerHTML = `<span>${label}</span><strong>${formatNumber(value)}</strong><small>${hint}</small>`;
+      item.append(icon, text);
       return item;
     }),
   );
@@ -264,7 +364,13 @@ function renderInventory() {
 
       const icon = document.createElement('div');
       icon.className = 'item-icon';
-      icon.textContent = itemIcon(item);
+      const assetPath = itemAssetPath(item);
+      if (assetPath) {
+        icon.style.backgroundImage = `url("${assetPath}")`;
+        icon.setAttribute('aria-label', item.name);
+      } else {
+        icon.textContent = itemIcon(item);
+      }
 
       const body = document.createElement('div');
       body.className = 'item-body';
@@ -337,6 +443,7 @@ function renderCharacter(realm) {
     state.heartDemon > 20 ? 'has-demon' : '',
     state.artifact > 0 ? 'has-artifact' : '',
   ].filter(Boolean).join(' ');
+  elements.characterAvatar.style.setProperty('--realm-emblem', `url("${realmIconPath(realm)}")`);
 
   const figure = document.createElement('div');
   figure.className = 'avatar-figure';
@@ -468,6 +575,29 @@ function renderTabs() {
 
 function showMessage(message) {
   elements.message.textContent = message;
+}
+
+function assetPath(relativePath) {
+  return `${ASSET_BASE}/${relativePath}`;
+}
+
+function itemAssetPath(item) {
+  return itemIconPaths[item.id] ? assetPath(itemIconPaths[item.id]) : '';
+}
+
+function resourceIconPath(label) {
+  return assetPath(resourceIconPaths[label] ?? 'icons/resources/cultivation.svg');
+}
+
+function realmIconPath(realm) {
+  return assetPath(realmIconPaths[realm.major] ?? 'icons/realms/ningqi.svg');
+}
+
+function encounterBadgePath(encounter) {
+  if (encounter.npc && npcBadgePaths[encounter.npc]) {
+    return assetPath(npcBadgePaths[encounter.npc]);
+  }
+  return assetPath(encounterBadgePaths[encounter.id] ?? 'icons/npc-badges/root-test.svg');
 }
 
 function metaChip(text) {

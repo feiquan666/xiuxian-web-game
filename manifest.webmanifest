@@ -5,5 +5,18 @@
   "display": "standalone",
   "background_color": "#eef4ef",
   "theme_color": "#2f735f",
-  "icons": []
+  "icons": [
+    {
+      "src": "./generated-assets/xiuxian-pack-v1/icons/realms/ningqi.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./generated-assets/xiuxian-pack-v1/icons/items/life-span-pill.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
 }

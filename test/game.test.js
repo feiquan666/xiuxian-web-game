@@ -128,7 +128,22 @@ test('initial state contains all core and advanced attributes', () => {
 test('item content provides categorized storage bag entries', () => {
   assert.ok(defaultItems.length >= 12);
   assert.ok(defaultItems.some((item) => item.id === 'cleansing_pill' && item.usable));
+  assert.ok(defaultItems.some((item) => item.id === 'life_span_pill' && item.usable));
   assert.ok(defaultItems.some((item) => item.category === '特殊'));
+});
+
+test('life span pill is usable and restores life span', () => {
+  const state = {
+    ...createInitialState(0),
+    lifeSpan: 40,
+    inventory: { life_span_pill: 1 },
+  };
+
+  const result = useInventoryItem(state, 'life_span_pill', 1_000);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.life_span_pill, 0);
+  assert.ok(result.state.lifeSpan > state.lifeSpan);
 });
 
 test('player actions provide feedback and affect different risk tracks', () => {
@@ -155,6 +170,16 @@ test('refinePill increases pills and sets cooldown', () => {
   assert.equal(result.ok, true);
   assert.equal(result.state.pills, 1);
   assert.ok(result.state.pillCooldownUntil > 1_000);
+});
+
+test('refinePill can rarely produce a life span pill', () => {
+  const state = createInitialState(0);
+
+  const result = refinePill(state, 1_000, 0.99);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.inventory.life_span_pill, 1);
+  assert.match(result.message, /寿元丹/);
 });
 
 test('breakthrough is blocked before enough cultivation', () => {

@@ -128,6 +128,7 @@ export const defaultItems = [
   item('healing_pill', '疗伤丹', '丹药', '灵', '温养经脉，缓解伤势。', ['疗伤'], [{ type: 'injury', amount: -18 }]),
   item('cleansing_pill', '清心丹', '丹药', '玄', '清心压念，削去心魔。', ['心魔'], [{ type: 'heartDemon', amount: -14 }]),
   item('breakthrough_pill', '破境丹', '丹药', '地', '短时提高突破把握。', ['突破'], [{ type: 'breakthroughBoost', amount: 0.08, durationMs: 180_000 }]),
+  item('life_span_pill', '寿元丹', '丹药', '地', '青金寿纹凝成一线生机，能补回部分寿元。', ['寿元', '珍稀'], [{ type: 'lifeSpan', amount: 30 }]),
   item('array_flag', '阵旗', '法宝', '玄', '避开部分劫锋。', ['抗劫'], [{ type: 'tribulationResistance', amount: 2 }]),
   item('thunder_talisman', '雷劫符', '法宝', '地', '引雷入阵，换取抗劫之力。', ['雷劫'], [{ type: 'tribulationResistance', amount: 4 }, { type: 'injury', amount: 5 }]),
   item('jade_guard', '护身玉简', '法宝', '玄', '危急时护住根基。', ['防护'], [{ type: 'injury', amount: -10 }, { type: 'daoHeart', amount: 1 }]),
@@ -325,6 +326,7 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
   }
 
   const bonus = roll > 0.86 ? 1 : 0;
+  const rareLifeSpanPill = roll > 0.96 ? 1 : 0;
   const next = addLog(
     applyEffects(
       {
@@ -334,6 +336,7 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
       [
         { type: 'pills', amount: 1 + bonus },
         { type: 'item', itemId: 'qi_pill', amount: 1 + bonus },
+        { type: 'item', itemId: 'life_span_pill', amount: rareLifeSpanPill },
         { type: 'item', itemId: 'spirit_herb', amount: roll > 0.68 ? 1 : 0 },
         { type: 'alchemy', amount: 1 },
         { type: 'sectContribution', amount: 1 },
@@ -341,10 +344,10 @@ export function refinePill(state, now = Date.now(), roll = Math.random()) {
       now,
       roll,
     ),
-    bonus ? '炉火生纹，多成一枚聚气丹。' : '炉火一转，得聚气丹一枚。',
+    rareLifeSpanPill ? '炉中寿纹一闪，得寿元丹一枚。' : bonus ? '炉火生纹，多成一枚聚气丹。' : '炉火一转，得聚气丹一枚。',
     now,
   );
-  return { ok: true, message: bonus ? '多成一枚聚气丹。' : '得聚气丹一枚。', state: next };
+  return { ok: true, message: rareLifeSpanPill ? '得寿元丹一枚。' : bonus ? '多成一枚聚气丹。' : '得聚气丹一枚。', state: next };
 }
 
 export function useInventoryItem(state, itemId, now = Date.now(), varianceRoll = Math.random()) {
